@@ -19,7 +19,7 @@
 - 🤖 **降AI率改写** — 句式变换 + 个人观点注入 + 学术语气调整
 - 📚 **参考文献管理** — DOI 一键解析，GB/T 7714 / APA / BibTeX 格式输出
 - 📐 **格式检查** — 字体、字号、行距、页边距一键检查
-- 🤖 **多 Agent 兼容** — Cursor、Claude Code、Gemini CLI、Codex CLI
+- 🤖 **7+ Agent 平台兼容** — Cursor、OpenClaw、Claude Code、Windsurf、Augment、Gemini CLI、Codex CLI
 
 ---
 
@@ -181,17 +181,43 @@ python scripts/papercash.py --diagnose
 
 克隆项目后，在 Cursor 中将 `SKILL.md` 添加为项目技能。
 
+### OpenClaw
+
+```bash
+git clone https://github.com/Jesseovo/PaperCash.git ~/.openclaw/skills/papercash
+```
+
+或通过 ClawHub 安装（即将上线）。
+
 ### Claude Code
 
 ```bash
 git clone https://github.com/Jesseovo/PaperCash.git ~/.claude/skills/papercash
 ```
 
+### Windsurf
+
+```bash
+git clone https://github.com/Jesseovo/PaperCash.git
+cp -r PaperCash/.windsurf/skills/papercash ~/.codeium/windsurf/skills/papercash
+```
+
+或将整个项目作为工作区打开，Windsurf 会自动加载 `.windsurf/skills/` 中的技能。
+
+### Augment Code
+
+```bash
+git clone https://github.com/Jesseovo/PaperCash.git
+cp -r PaperCash/.augment/skills/papercash ~/.augment/skills/papercash
+```
+
+支持 `AGENTS.md` 自动发现，直接在项目根目录使用即可。
+
 ### Gemini CLI
 
 ```bash
 git clone https://github.com/Jesseovo/PaperCash.git
-# 在 Gemini CLI 中作为扩展加载
+# 在 Gemini CLI 中作为扩展加载（参考 gemini-extension.json）
 ```
 
 ### Codex CLI
@@ -206,7 +232,9 @@ git clone https://github.com/Jesseovo/PaperCash.git ~/.agents/skills/papercash
 
 ```
 PaperCash/
-├── 📄 SKILL.md              # Agent 技能定义
+├── 📄 SKILL.md              # Agent 技能定义（含 YAML frontmatter）
+├── 📄 AGENTS.md             # Augment / 通用 Agent 指令
+├── 📄 clawhub.json          # ClawHub 发布元数据
 ├── 📄 README.md             # 项目说明（本文件）
 ├── 📄 requirements.txt      # Python 依赖
 ├── 📁 scripts/
@@ -235,8 +263,11 @@ PaperCash/
 │           ├── format_helper.py
 │           └── citation.py
 ├── 📁 fixtures/              # 示例数据
-├── 📁 tests/                 # 测试用例
-└── 📁 hooks/                 # Agent 钩子
+├── 📁 hooks/                 # Agent 钩子
+├── 📁 .windsurf/skills/      # Windsurf 适配
+├── 📁 .augment/skills/       # Augment 适配
+├── 📁 .claude-plugin/        # Claude Code 适配
+└── 📁 agents/                # Codex CLI 适配
 ```
 
 ---

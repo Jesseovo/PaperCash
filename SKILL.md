@@ -1,3 +1,8 @@
+---
+name: papercash
+description: "论文全流程辅助: 8源检索、综述生成、查重预检、降AI率、参考文献格式化、Word导出"
+---
+
 # PaperCash — 论文全流程辅助 Skill
 
 > 论文检索、文献综述、写作辅助、查重预检、降AI率、参考文献管理 —— 一个 Skill 全搞定。
