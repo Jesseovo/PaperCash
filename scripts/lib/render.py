@@ -99,25 +99,45 @@ def _render_markdown(result: SearchResult) -> str:
     return "\n".join(lines)
 
 
-def render_check_results(results: list[CheckResult], mode: str = "compact") -> str:
+def render_check_results(
+    results: list[CheckResult],
+    mode: str = "compact",
+    stats: dict | None = None,
+) -> str:
     if mode == "json":
-        return json.dumps([{
+        rows = [{
             "sentence": r.sentence,
             "similarity": r.similarity,
             "risk_level": r.risk_level,
             "matched_title": r.matched_title,
             "suggestion": r.suggestion,
-        } for r in results], ensure_ascii=False, indent=2)
+        } for r in results]
+        if stats is not None:
+            return json.dumps(
+                {"statistics": stats, "results": rows},
+                ensure_ascii=False,
+                indent=2,
+            )
+        return json.dumps(rows, ensure_ascii=False, indent=2)
 
     lines: list[str] = []
     lines.append(f"\n{'=' * 60}")
     lines.append(f"  PaperCash 查重预检报告")
     lines.append(f"{'=' * 60}\n")
 
-    high = sum(1 for r in results if r.risk_level == "high")
-    med = sum(1 for r in results if r.risk_level == "medium")
-    low = sum(1 for r in results if r.risk_level == "low")
-    lines.append(f"  总句数: {len(results)} | 高风险: {high} | 中风险: {med} | 低风险: {low}\n")
+    if stats is not None:
+        lines.append(
+            f"  总句数: {stats['total_sentences']} | 检查句数: {stats['checked_sentences']} | "
+            f"高风险: {stats['high_risk']} | 中风险: {stats['medium_risk']} | "
+            f"低风险: {stats['low_risk']}\n"
+        )
+    else:
+        high = sum(1 for r in results if r.risk_level == "high")
+        med = sum(1 for r in results if r.risk_level == "medium")
+        low = sum(1 for r in results if r.risk_level == "low")
+        lines.append(
+            f"  总句数: {len(results)} | 高风险: {high} | 中风险: {med} | 低风险: {low}\n"
+        )
 
     risk_order = {"high": 0, "medium": 1, "low": 2}
     sorted_results = sorted(results, key=lambda r: risk_order.get(r.risk_level, 3))

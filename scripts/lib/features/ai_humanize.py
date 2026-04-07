@@ -24,6 +24,87 @@ _AI_CLICHES_CN = {
     "毋庸置疑": ["可以确认的是", "研究证据表明", "数据显示"],
     "显而易见": ["从数据中可以观察到", "分析结果表明", "实证结果显示"],
     "总的来说": ["整体而言", "从全局来看", "综合各方面因素"],
+    "具有重要的理论和实践意义": [
+        "对理论发展与实践应用均具有一定推动作用",
+        "在理论层面与实践层面均具备参考价值",
+        "对相关理论的完善与实际问题的解决有所助益",
+    ],
+    "取得了一定的研究成果": [
+        "积累了较为丰富的研究资料与认识",
+        "形成了若干可供后续深入的分析结论",
+        "在既有基础上获得了阶段性认识",
+    ],
+    "在此基础上": [
+        "以此为基础",
+        "在上述分析的前提下",
+        "承接上文讨论",
+        "结合前述论证",
+    ],
+    "进一步深入研究": [
+        "开展更为系统的后续探讨",
+        "在更广样本与更长周期上加以验证",
+        "从多维度拓展分析深度",
+    ],
+    "具有重要的现实意义": [
+        "对现实问题具有一定解释与指导价值",
+        "可为相关实务提供参考依据",
+        "在政策与操作层面具有借鉴意义",
+    ],
+    "不断推动": [
+        "持续促进",
+        "逐步带动",
+        "稳步助推",
+    ],
+    "充分发挥作用": [
+        "更充分地体现其功能",
+        "在相应情境下释放更大效能",
+        "得到更为有效的运用",
+    ],
+    "取得了显著成效": [
+        "呈现出较为积极的改善趋势",
+        "在关键指标上表现出可观察的提升",
+        "获得了与预期大体一致的效果",
+    ],
+    "深入分析": [
+        "展开较为细致的讨论",
+        "从多层面加以梳理",
+        "结合证据进行系统考察",
+    ],
+    "全面梳理": [
+        "对相关内容作系统整理",
+        "分层次归纳既有研究",
+        "从主要脉络上加以回顾",
+    ],
+    "有效提升": [
+        "带来可感知的改善",
+        "在相当程度上增强",
+        "对整体水平产生积极推动",
+    ],
+    "值得关注": [
+        "有必要给予重视",
+        "不宜忽视",
+        "值得后续跟踪",
+    ],
+    "在一定程度上": [
+        "在相当范围内",
+        "就现有条件而言",
+        "从可观测层面来看",
+    ],
+    "充分利用": [
+        "更为有效地运用",
+        "在合理范围内发挥",
+        "结合情境加以使用",
+    ],
+    "日益完善": [
+        "逐步趋于成熟",
+        "持续得到补充与修正",
+        "在迭代中不断优化",
+    ],
+    "系统阐述": [
+        "分层次加以说明",
+        "结合主线展开论述",
+        "从整体框架上予以说明",
+    ],
 }
 
 _AI_CLICHES_EN = {
@@ -155,6 +236,27 @@ def _cn_restructure(sentence: str) -> str:
     if sentence.startswith("这") and random.random() > 0.5:
         sentence = "该" + sentence[1:]
 
+    if sentence.startswith("可以") and random.random() > 0.5:
+        sentence = "能够" + sentence[2:]
+
+    if "不仅" in sentence and "而且" in sentence and random.random() > 0.5:
+        sentence = sentence.replace("而且", "亦", 1)
+
+    if sentence.startswith("由于") and random.random() > 0.5 and len(sentence) > 4:
+        rest = sentence[2:].lstrip()
+        if rest:
+            comma = rest.find("，")
+            if comma > 0:
+                cause, effect = rest[:comma], rest[comma + 1 :]
+                if effect.strip():
+                    sentence = f"{effect.strip()}，其原因在于{cause.strip()}"
+
+    if "通过" in sentence and "实现" in sentence and random.random() > 0.5:
+        sentence = sentence.replace("通过", "借助", 1)
+
+    if sentence.endswith("的问题") and random.random() > 0.5:
+        sentence = sentence[: -len("的问题")] + "相关议题"
+
     return sentence
 
 
@@ -215,7 +317,25 @@ def _vary_sentence_length(text: str, is_cn: bool) -> str:
                     continue
             result.append(s)
         return "。".join(result) + ("。" if result else "")
-    return text
+
+    sentences = text.split(". ")
+    result_en: list[str] = []
+    for s in sentences:
+        s = s.strip()
+        if not s:
+            continue
+        core = s.rstrip(".")
+        if len(core) > 85 and ", " in core:
+            parts = core.split(", ", 1)
+            if len(parts[0]) > 25 and len(parts[1]) > 25:
+                result_en.append(parts[0] + ".")
+                result_en.append(parts[1])
+                continue
+        result_en.append(s)
+    out = ". ".join(result_en)
+    if result_en and not out.endswith("."):
+        out += "."
+    return out
 
 
 def _diff_summary(original: str, modified: str, is_cn: bool) -> list[str]:

@@ -9,6 +9,46 @@ from schema import SearchResult
 from query import is_chinese
 
 _ORAL_TO_ACADEMIC_CN = {
+    "非常": "极为",
+    "太": "过于",
+    "还有": "另外",
+    "之后": "此后",
+    "看一下": "审视",
+    "瞧一瞧": "考察",
+    "说一下": "阐述",
+    "讲一讲": "论述",
+    "好像": "似乎",
+    "大约": "约",
+    "左右": "上下",
+    "我认为": "笔者认为",
+    "我们觉得": "研究认为",
+    "我们发现": "研究发现",
+    "我感觉": "可见",
+    "超级": "极为",
+    "特别": "尤为",
+    "挺": "较为",
+    "蛮": "颇为",
+    "巨": "极为",
+    "贼": "极为",
+    "接下来": "继而",
+    "更是": "愈加",
+    "老是": "往往",
+    "立马": "即刻",
+    "马上": "即刻",
+    "啥的": "等相关要素",
+    "之类": "等",
+    "反正": "总体而言",
+    "说白了": "换言之",
+    "基本上": "总体上",
+    "差不多": "基本一致",
+    "一点点": "若干",
+    "一下": "简要",
+    "搞定": "完成",
+    "弄好": "完善",
+    "挺多": "较多",
+    "挺好": "较佳",
+    "还行": "尚可",
+    "不好": "欠佳",
     "很好": "表现优异",
     "很多": "大量",
     "很大": "显著",
@@ -23,7 +63,6 @@ _ORAL_TO_ACADEMIC_CN = {
     "说明了": "表明",
     "看出来": "可以观察到",
     "没什么": "并无显著",
-    "差不多": "基本一致",
     "比较好": "较为理想",
     "特别是": "尤其是",
     "而且": "此外",
@@ -47,6 +86,28 @@ _ORAL_TO_ACADEMIC_CN = {
 }
 
 _ORAL_TO_ACADEMIC_EN = {
+    "also": "additionally",
+    "besides": "moreover",
+    "after that": "subsequently",
+    "later on": "thereafter",
+    "take a look at": "examine",
+    "have a look": "review",
+    "talk about": "discuss",
+    "tell you": "elucidate",
+    "seems like": "appears to",
+    "kinda": "somewhat",
+    "pretty much": "largely",
+    "I think": "it is argued that",
+    "we think": "the analysis suggests",
+    "we found": "the study reveals",
+    "we believe": "the evidence indicates",
+    "very much": "considerably",
+    "too much": "excessive",
+    "super": "highly",
+    "awesome": "noteworthy",
+    "huge": "substantial",
+    "tiny": "minimal",
+    "fix": "remedy",
     "a lot of": "numerous",
     "lots of": "a significant number of",
     "really good": "highly effective",
@@ -258,8 +319,9 @@ def polish_text(text: str) -> str:
     replacements_made: list[tuple[str, str]] = []
 
     mapping = _ORAL_TO_ACADEMIC_CN if is_chinese(text) else _ORAL_TO_ACADEMIC_EN
+    items = sorted(mapping.items(), key=lambda kv: len(kv[0]), reverse=True)
 
-    for oral, academic in mapping.items():
+    for oral, academic in items:
         if oral in polished.lower() if not is_chinese(text) else oral in polished:
             if is_chinese(text):
                 polished = polished.replace(oral, academic)

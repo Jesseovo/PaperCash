@@ -17,6 +17,7 @@ class Paper:
     citation_count: int = 0
     source: str = ""
     venue: Optional[str] = None
+    paper_type: Optional[str] = None  # e.g. "book" for GB/T 7714 [M]
     keywords: list[str] = field(default_factory=list)
     paper_id: Optional[str] = None
     relevance_score: float = 0.0
@@ -47,6 +48,7 @@ class Paper:
             "citation_count": self.citation_count,
             "source": self.source,
             "venue": self.venue,
+            "paper_type": self.paper_type,
             "keywords": self.keywords,
             "relevance_score": self.relevance_score,
             "final_score": self.final_score,

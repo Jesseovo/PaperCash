@@ -26,7 +26,8 @@
 **Agent 执行步骤：**
 1. 运行 `python scripts/papercash.py search "<主题>" --emit compact`
 2. 将输出结果呈现给用户，包含论文标题、作者、年份、引用数、摘要摘录
-3. 提供后续建议：生成综述、格式化引用、深入某篇论文
+3. 可选 `--export-docx` 导出 Word 文档
+4. 提供后续建议：生成综述、格式化引用、深入某篇论文
 
 ### 2. 文献综述 (review)
 基于检索结果，自动生成结构化文献综述。
@@ -37,13 +38,14 @@
 ```
 
 **Agent 执行步骤：**
-1. 运行 `python scripts/papercash.py review "<主题>" --emit context`
-2. 基于返回的论文数据，Agent 生成结构化综述：
+1. 运行 `python scripts/papercash.py review "<主题>" --format gb7714`
+2. 脚本自动完成检索 + 综述生成，输出结构化综述：
    - 研究背景与现状
    - 国内外研究对比
    - 研究方法分类
    - 研究空白与不足
    - 每段附带真实引用 [作者, 年份]
+3. 可选 `--export-docx` 直接导出 Word 文档
 
 ### 3. 写作辅助 (outline / expand / polish)
 生成论文大纲、段落扩写、学术润色。
@@ -83,7 +85,7 @@
 ```
 
 **Agent 执行步骤：**
-1. 运行 `python scripts/papercash.py humanize "<文件路径>" --emit compact`
+1. 运行 `python scripts/papercash.py humanize "<文件路径>"`
 2. 返回改写后的文本，并标注修改点
 3. 改写策略：
    - 被动改主动、长句拆短句
@@ -113,7 +115,7 @@
 ```
 
 **Agent 执行步骤：**
-1. 运行 `python scripts/papercash.py format "<文件路径>" --emit compact`
+1. 运行 `python scripts/papercash.py format "<文件路径>"`
 2. 返回格式检查报告：字体、字号、行距、页边距、参考文献格式等
 
 ## 配置诊断

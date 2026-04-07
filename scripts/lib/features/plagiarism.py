@@ -22,22 +22,16 @@ def _split_sentences(text: str) -> list[str]:
     return [s.strip() for s in sentences if s.strip() and len(s.strip()) > 10]
 
 
-def _search_sentence(sentence: str) -> list[Paper]:
-    """对单个句子进行学术库检索"""
-    keywords = extract_keywords(sentence, top_k=5)
-    if not keywords:
-        return []
-
-    query = " ".join(keywords)
+def _search_sentence(query: str, search_cache: dict[str, list[Paper]]) -> list[Paper]:
+    if query in search_cache:
+        return search_cache[query]
     papers: list[Paper] = []
-
     try:
         from sources.semantic_scholar import search as ss_search
-        results = ss_search(query, limit=5)
-        papers.extend(results)
+        papers = ss_search(query, limit=5)
     except Exception:
         pass
-
+    search_cache[query] = papers
     return papers
 
 
@@ -70,41 +64,34 @@ def _generate_suggestion(sentence: str, risk_level: str) -> str | None:
     return random.choice(suggestions)
 
 
-def check_plagiarism(text: str, sample_rate: float = 0.3) -> list[CheckResult]:
-    """查重预检
-
-    Args:
-        text: 待检查文本
-        sample_rate: 抽样比例（0.0~1.0），降低API调用量
-    """
+def check_plagiarism(text: str) -> tuple[list[CheckResult], dict]:
     sentences = _split_sentences(text)
     if not sentences:
-        return []
+        stats = {
+            "total_sentences": 0,
+            "checked_sentences": 0,
+            "high_risk": 0,
+            "medium_risk": 0,
+            "low_risk": 0,
+        }
+        return [], stats
 
-    import random
-    sample_size = max(5, int(len(sentences) * sample_rate))
-    if sample_size < len(sentences):
-        sampled_indices = set(random.sample(range(len(sentences)), sample_size))
-    else:
-        sampled_indices = set(range(len(sentences)))
-
+    search_cache: dict[str, list[Paper]] = {}
     results: list[CheckResult] = []
+    checked_sentences = 0
 
     for idx, sentence in enumerate(sentences):
-        if idx not in sampled_indices:
-            results.append(CheckResult(
-                sentence=sentence,
-                similarity=0.0,
-                risk_level="low",
-            ))
-            continue
-
         progress(idx + 1, len(sentences), "查重检索中...")
 
-        try:
-            matched_papers = _search_sentence(sentence)
-        except Exception:
-            matched_papers = []
+        keywords = extract_keywords(sentence, top_k=5)
+        matched_papers: list[Paper] = []
+        if keywords:
+            checked_sentences += 1
+            q = " ".join(keywords)
+            try:
+                matched_papers = _search_sentence(q, search_cache)
+            except Exception:
+                matched_papers = []
 
         max_sim = 0.0
         best_match: Paper | None = None
@@ -139,4 +126,15 @@ def check_plagiarism(text: str, sample_rate: float = 0.3) -> list[CheckResult]:
 
         results.append(result)
 
-    return results
+    high = sum(1 for r in results if r.risk_level == "high")
+    med = sum(1 for r in results if r.risk_level == "medium")
+    low = sum(1 for r in results if r.risk_level == "low")
+    stats = {
+        "total_sentences": len(sentences),
+        "checked_sentences": checked_sentences,
+        "high_risk": high,
+        "medium_risk": med,
+        "low_risk": low,
+    }
+
+    return results, stats

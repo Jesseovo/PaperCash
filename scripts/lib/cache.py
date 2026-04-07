@@ -4,7 +4,7 @@ import json
 import hashlib
 import time
 from pathlib import Path
-from typing import Optional
+from typing import Any, Optional
 
 _CACHE_DIR = Path.home() / ".cache" / "papercash"
 _DEFAULT_TTL = 3600 * 24  # 24 hours
@@ -19,7 +19,7 @@ def _key_path(key: str) -> Path:
     return _CACHE_DIR / f"{h}.json"
 
 
-def get(key: str) -> Optional[dict]:
+def get(key: str) -> Optional[Any]:
     path = _key_path(key)
     if not path.exists():
         return None
@@ -33,7 +33,7 @@ def get(key: str) -> Optional[dict]:
         return None
 
 
-def put(key: str, value: dict, ttl: int = _DEFAULT_TTL):
+def put(key: str, value: Any, ttl: int = _DEFAULT_TTL):
     _ensure_dir()
     path = _key_path(key)
     data = {"_ts": time.time(), "_ttl": ttl, "value": value}

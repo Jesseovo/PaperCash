@@ -12,6 +12,46 @@ def _clean_text(text: str) -> str:
     return html_mod.unescape(text) if text else text
 
 
+_CONF_VENUE_MARKERS = ("conference", "proceedings", "symposium", "workshop")
+
+
+def _venue_suggests_book(venue_lower: str) -> bool:
+    return any(
+        k in venue_lower
+        for k in ("isbn", "publisher", "press", "monograph", "专著", "出版社")
+    )
+
+
+def _detect_doc_type(paper: Paper) -> str:
+    """GB/T 7714 文献类型标识"""
+    venue_raw = (paper.venue or "").strip()
+    venue_l = venue_raw.lower()
+    has_venue = bool(venue_raw)
+    has_doi = bool(paper.doi and str(paper.doi).strip())
+    has_url = bool(paper.url and str(paper.url).strip())
+    ptype = (getattr(paper, "paper_type", None) or "").strip().lower()
+
+    if has_url and not has_doi and not has_venue:
+        return "EB/OL"
+
+    if has_venue and any(m in venue_l for m in _CONF_VENUE_MARKERS):
+        return "C"
+
+    if has_venue and ("thesis" in venue_l or "dissertation" in venue_l):
+        return "D"
+
+    if ptype == "book" or (has_venue and _venue_suggests_book(venue_l)):
+        return "M"
+
+    if has_venue:
+        return "J/OL" if has_doi else "J"
+
+    if has_doi:
+        return "J/OL"
+
+    return "M"
+
+
 def _get_paper_from_doi(doi: str) -> Paper | None:
     """通过 DOI 获取论文信息（先 CrossRef 再 Semantic Scholar）"""
     from sources.crossref import get_by_doi as cr_get
@@ -31,14 +71,21 @@ def format_gb7714(paper: Paper) -> str:
 
     year = paper.year or "n.d."
     title = _clean_text(paper.title)
+    doc = _detect_doc_type(paper)
+    marker = f"[{doc}]"
 
     if paper.venue:
         venue = _clean_text(paper.venue)
-        result = f"[{paper.citation_key}] {authors}. {title}[J]. {venue}, {year}."
+        tail = f"{venue}, {year}."
+        if paper.doi:
+            tail += f" DOI: {paper.doi}."
+        result = f"[{paper.citation_key}] {authors}. {title}{marker}. {tail}"
     elif paper.doi:
-        result = f"[{paper.citation_key}] {authors}. {title}[J/OL]. {year}. DOI: {paper.doi}."
+        result = f"[{paper.citation_key}] {authors}. {title}{marker}. {year}. DOI: {paper.doi}."
+    elif paper.url:
+        result = f"[{paper.citation_key}] {authors}. {title}{marker}. {year}. {paper.url}."
     else:
-        result = f"[{paper.citation_key}] {authors}. {title}[J]. {year}."
+        result = f"[{paper.citation_key}] {authors}. {title}{marker}. {year}."
 
     return result
 

@@ -2,10 +2,12 @@
 """PaperCash - 论文全流程辅助引擎 CLI"""
 
 import argparse
+import importlib
 import json
 import sys
 import os
 import time
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
 if sys.platform == "win32":
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
@@ -35,7 +37,7 @@ def _search_all_sources(query: str, limit: int = 20,
     from env import diagnose as env_diagnose
     status = env_diagnose()
     for extra in ["google_scholar", "pubmed", "cnki", "wanfang"]:
-        if status.get(extra):
+        if status.get(extra) is True:
             default_sources.append(extra)
 
     available = sources or default_sources
@@ -51,20 +53,27 @@ def _search_all_sources(query: str, limit: int = 20,
         "wanfang": ("sources.wanfang", "baidu_xueshu", "万方"),
     }
 
-    for src in available:
-        if src not in _SOURCE_MAP:
-            continue
+    def _search_one_source(src: str):
         module_path, query_key, display_name = _SOURCE_MAP[src]
         try:
-            import importlib
             mod = importlib.import_module(module_path)
             search_query = queries.get(query_key, queries.get("original", query))
             papers = mod.search(search_query, limit=limit)
+            return display_name, papers, None
+        except Exception as e:
+            return display_name, [], e
+
+    to_run = [s for s in available if s in _SOURCE_MAP]
+    with ThreadPoolExecutor(max_workers=4) as ex:
+        futures = {ex.submit(_search_one_source, src): src for src in to_run}
+        for fut in as_completed(futures):
+            display_name, papers, err = fut.result()
+            if err is not None:
+                warning(f"{display_name} 搜索失败: {err}")
+                continue
             if papers:
                 all_papers.extend(papers)
                 sources_used.append(display_name)
-        except Exception as e:
-            warning(f"{display_name} 搜索失败: {e}")
 
     scored = score_papers(all_papers, query)
     deduped = dedupe_papers(scored)
@@ -97,6 +106,15 @@ def cmd_search(args):
     if args.save_dir:
         _save_result(output, args.save_dir, args.query, args.emit)
 
+    if args.export_docx is not None:
+        from features.docx_export import export_search_to_docx
+        out = args.export_docx or _default_docx_path(args.query, "search")
+        msg = export_search_to_docx(result, out)
+        if msg.startswith("[错误]"):
+            error(msg)
+        else:
+            success(msg)
+
 
 def cmd_review(args):
     """文献综述生成"""
@@ -114,6 +132,15 @@ def cmd_review(args):
 
     if args.save_dir:
         _save_result(review, args.save_dir, args.topic, "md")
+
+    if args.export_docx is not None:
+        from features.docx_export import export_review_to_docx
+        out = args.export_docx or _default_docx_path(args.topic, "review")
+        msg = export_review_to_docx(review, out, title=args.topic)
+        if msg.startswith("[错误]"):
+            error(msg)
+        else:
+            success(msg)
 
 
 def _generate_review(result: SearchResult, cite_format: str = "gb7714") -> str:
@@ -156,8 +183,8 @@ def cmd_check(args):
     info(f"文本长度: {len(text)} 字\n")
 
     from features.plagiarism import check_plagiarism
-    results = check_plagiarism(text)
-    output = render_check_results(results, mode=args.emit)
+    results, stats = check_plagiarism(text)
+    output = render_check_results(results, mode=args.emit, stats=stats)
     print(output)
 
 
@@ -214,6 +241,12 @@ def _read_input(path_or_text: str) -> str:
 
 _EMIT_TO_EXT = {"compact": "txt", "json": "json", "md": "md", "context": "md"}
 
+
+def _default_docx_path(topic: str, kind: str) -> str:
+    safe = "".join(c if c.isalnum() or c in "._- " else "_" for c in topic)[:50]
+    return os.path.join(os.getcwd(), f"papercash_{kind}_{safe}.docx")
+
+
 def _save_result(content: str, save_dir: str, topic: str, ext: str):
     """保存结果到文件"""
     os.makedirs(save_dir, exist_ok=True)
@@ -244,6 +277,14 @@ def main():
                           help="输出格式")
     p_search.add_argument("--sources", default=None, help="指定数据源（逗号分隔）")
     p_search.add_argument("--save-dir", default=None, help="保存结果目录")
+    p_search.add_argument(
+        "--export-docx",
+        nargs="?",
+        const="",
+        default=None,
+        metavar="PATH",
+        help="导出检索结果为 Word；省略路径则写入当前目录",
+    )
     p_search.set_defaults(func=cmd_search)
 
     # review
@@ -254,6 +295,14 @@ def main():
     p_review.add_argument("--emit", default="md",
                           choices=["md", "json", "context"], help="输出格式")
     p_review.add_argument("--save-dir", default=None, help="保存结果目录")
+    p_review.add_argument(
+        "--export-docx",
+        nargs="?",
+        const="",
+        default=None,
+        metavar="PATH",
+        help="导出综述为 Word；省略路径则写入当前目录",
+    )
     p_review.set_defaults(func=cmd_review)
 
     # outline

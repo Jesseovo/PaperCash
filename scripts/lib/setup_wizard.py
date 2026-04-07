@@ -65,10 +65,12 @@ def run_wizard():
     section("当前数据源状态")
     status = diagnose()
     for name, available in status.items():
-        if available:
+        if available is True:
             success(name)
-        else:
+        elif available is False:
             warning(f"{name} (未配置)")
+        else:
+            warning(f"{name} ({available})")
 
     print()
     info("配置完成！运行 'python scripts/papercash.py --diagnose' 可随时检查状态。")

@@ -68,11 +68,13 @@ def progress(current: int, total: int, label: str = ""):
         print()
 
 
-def diagnose_table(status: dict[str, bool]):
+def diagnose_table(status: dict[str, bool | str]):
     header("PaperCash 数据源诊断")
     for name, available in status.items():
-        if available:
+        if available is True:
             success(f"{name}")
-        else:
+        elif available is False:
             warning(f"{name} (未配置)")
+        else:
+            warning(f"{name} ({available})")
     print()
