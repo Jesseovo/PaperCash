@@ -1,0 +1,24 @@
+{
+  "description": "示例搜索结果 - 用于测试和演示",
+  "query": "深度学习 医学图像",
+  "sample_papers": [
+    {
+      "title": "Deep Learning in Medical Imaging: A Survey",
+      "authors": ["Geert Litjens", "Thijs Kooi", "Babak Ehteshami Bejnordi"],
+      "year": 2017,
+      "doi": "10.1016/j.media.2017.07.005",
+      "citation_count": 12500,
+      "source": "Semantic Scholar",
+      "venue": "Medical Image Analysis"
+    },
+    {
+      "title": "深度学习在医学图像分析中的应用综述",
+      "authors": ["张三", "李四", "王五"],
+      "year": 2023,
+      "doi": null,
+      "citation_count": 156,
+      "source": "百度学术",
+      "venue": "计算机学报"
+    }
+  ]
+}

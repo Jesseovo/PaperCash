@@ -1,0 +1,11 @@
+{
+  "name": "papercash",
+  "display_name": "PaperCash - Academic Paper Skill",
+  "description": "Full-stack academic paper assistance: search, literature review, writing, plagiarism check, AI detection reduction, citation management",
+  "version": "1.0.0",
+  "entry_point": "SKILL.md",
+  "author": "Jesse (@Jesseovo)",
+  "repository": "https://github.com/Jesseovo/PaperCash",
+  "license": "MIT",
+  "keywords": ["paper", "academic", "citation", "literature-review", "plagiarism", "ai-detection"]
+}

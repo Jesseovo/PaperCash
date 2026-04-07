@@ -1,0 +1,13 @@
+name: papercash
+description: "Full-stack academic paper assistance: search, review, write, check, humanize, cite"
+version: "1.0.0"
+skill_file: SKILL.md
+triggers:
+  - "papercash"
+  - "论文"
+  - "文献"
+  - "查重"
+  - "降AI"
+  - "参考文献"
+  - "paper"
+  - "citation"
