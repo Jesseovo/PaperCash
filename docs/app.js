@@ -198,8 +198,9 @@
     const titleId = `title-${paper.id}`;
     card.setAttribute('aria-labelledby', titleId);
     const top = element('div', 'paper-top');
-    const tag = element('span', 'paper-tag', topicLabel(paper.topics[0]));
-    tag.dataset.topic = paper.topics[0];
+    const displayTopic = state.topic !== 'all' && paper.topics.includes(state.topic) ? state.topic : paper.topics[0];
+    const tag = element('span', 'paper-tag', topicLabel(displayTopic));
+    tag.dataset.topic = displayTopic;
     const save = element('button', 'save-button');
     save.innerHTML = icons.bookmark;
     save.type = 'button';
