@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8f7f2">
+  <meta name="description" content="PaperCash 论文发现页：发现真实论文，收藏阅读线索，复制引用，把好奇心交给你的 Agent 继续研究。">
+  <meta property="og:title" content="PaperCash · 你的论文小书桌">
+  <meta property="og:description" content="找论文，理思路，让写作慢慢清晰。一个陪你整理文献、引用与写作思路的好帮手。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://jesseovo.github.io/PaperCash/">
+  <link rel="canonical" href="https://jesseovo.github.io/PaperCash/">
+  <link rel="icon" type="image/svg+xml" href="assets/book.svg">
+  <link rel="stylesheet" href="styles.css">
+  <title>PaperCash · 你的论文小书桌</title>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#library">跳到论文书单</a>
+  <header class="site-header shell">
+    <a class="wordmark" href="./" aria-label="PaperCash 首页"><img src="assets/book.svg" width="38" height="38" alt=""><span>PaperCash<span class="wordmark-dot">.</span></span></a>
+    <nav aria-label="主导航">
+      <a href="#library" class="nav-link">发现论文</a>
+      <button class="nav-link bookmark-nav" id="saved-toggle" type="button" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4h12v17l-6-4-6 4z"/></svg>我的书签 <span id="saved-count">0</span></button>
+      <a class="github-link" href="https://github.com/Jesseovo/PaperCash" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+    </nav>
+  </header>
+
+  <main class="shell">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="pixel-spark" aria-hidden="true">✳</span> A LITTLE ROOM FOR BIG IDEAS</div>
+        <h1 id="hero-title">下一篇好论文，<br>从<span class="curiosity">好奇心</span>开始。</h1>
+        <p class="hero-description">一本慢慢变厚的论文书单。<br>发现、收藏、整理引用，把更多时间留给思考。</p>
+        <div class="hero-actions"><a href="#library" class="button button-primary">逛逛论文书桌 <span aria-hidden="true">↓</span></a><button class="button button-text" id="setup-button" type="button">一句话，交给 Agent <span aria-hidden="true">↗</span></button></div>
+        <div class="hero-footnote"><span class="status-dot" aria-hidden="true"></span><span id="snapshot-note">正在翻开今天的书单…</span></div>
+      </div>
+      <aside class="reading-corner" aria-label="随手翻一篇">
+        <div class="corner-top"><span class="tiny-label">A PAGE TO START WITH</span><img src="assets/pixel-cat-walk.gif" width="220" height="55" alt="一只散步、招手和伸懒腰的像素小猫" class="desk-cat"></div>
+        <div class="featured-paper" id="featured"><span class="featured-label">随手翻一篇 <span aria-hidden="true">↙</span></span><p class="featured-loading">好奇心正在找座位…</p></div>
+        <div class="corner-bottom"><span>one paper, one new possibility.</span><button id="shuffle-button" type="button" aria-label="换一篇论文">换一篇 <span aria-hidden="true">↻</span></button></div>
+      </aside>
+    </section>
+
+    <section class="library" id="library" aria-labelledby="library-title">
+      <div class="section-heading"><div><span class="eyebrow">THE READING DESK</span><h2 id="library-title">今天，想读点什么<span class="sage-text">？</span></h2></div><span class="collection-count" id="collection-count" aria-live="polite">正在整理书单</span></div>
+      <div class="library-tools">
+        <label class="search-field" for="search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg><input type="search" id="search" placeholder="在这份书单里，找一个关键词…" aria-label="筛选书单中的标题、作者、摘要和关键词" autocomplete="off"><kbd aria-hidden="true">/</kbd></label>
+        <label class="sort-field"><span class="visually-hidden">论文排序</span><select id="sort" aria-label="论文排序"><option value="newest">发表时间 ↓</option><option value="title">标题 A—Z</option></select></label>
+      </div>
+      <div class="filter-row"><div class="topic-filters" id="topic-filters" role="group" aria-label="按主题筛选"></div><label class="source-field"><span class="visually-hidden">按来源筛选</span><select id="source" aria-label="按来源筛选"><option value="all">全部来源</option><option value="arXiv">arXiv</option><option value="Crossref">Crossref</option></select></label></div>
+      <div class="saved-banner" id="saved-banner" hidden><span>你的阅读线索，先在这里放一放。<small>书签保存在当前浏览器。</small></span><div><button type="button" id="export-bib">导出 BibTeX <span aria-hidden="true">↓</span></button><button type="button" id="show-all">回到全部论文</button></div></div>
+      <p class="filter-note" id="filter-note">按主题检索收录，不代表热门排名。预印本与出版文献会分别标注。</p>
+      <div class="paper-grid" id="papers" aria-busy="true"></div>
+      <div class="empty-state" id="empty-state" hidden><img src="assets/book.svg" width="64" height="64" alt=""><h3 id="empty-title">这一页暂时还空着</h3><p id="empty-copy">试试换个关键词，或看看其他主题。</p><button class="button button-primary" id="reset-filters" type="button">重新看看全部论文</button></div>
+      <div class="load-state" id="load-state" role="status">正在从书架上取下论文…</div>
+      <button class="button load-more" id="load-more" type="button" hidden>再翻几篇 <span aria-hidden="true">↓</span></button>
+    </section>
+
+    <section class="agent-shelf" aria-labelledby="agent-title"><div><span class="eyebrow">KEEP THE CURIOSITY GOING</span><h2 id="agent-title">好问题，值得再往前一步。</h2><p>看到想读的论文？点“交给 Agent”，带着来源继续读。<br>检索相关研究、整理摘要、排好引用，让 PaperCash 来搭把手。</p><button class="button button-primary" id="bottom-setup" type="button">复制一句话，开始使用 <span aria-hidden="true">↗</span></button></div><img src="assets/little-desk-light.svg" width="780" height="104" alt="像素小书桌上的书、咖啡与绿植" class="shelf-art"></section>
+    <details class="data-details"><summary>关于这份书单 <span id="data-summary"></span><span class="details-plus" aria-hidden="true">+</span></summary><div><p>书单来自 arXiv 近期预印本与 Crossref 近一年按主题检索的期刊元数据，每天北京时间 08:20 左右更新。筛选只作用于当前收录的论文。摘要保持来源原文；来源未提供摘要时会明确注明。</p><p>引用是基于现有元数据的草稿，使用前请核对。预印本尚未必经过同行评审；深入研究时仍应阅读原文。收藏只保存在当前浏览器，可导出 BibTeX。</p><ul id="feed-status"></ul><p class="data-disclosure" id="data-disclosure"></p></div></details>
+  </main>
+
+  <footer class="site-footer shell"><a class="footer-wordmark" href="./">PaperCash<span class="wordmark-dot">.</span></a><span>找论文，理思路，让写作慢慢清晰。</span><div><a href="https://github.com/Jesseovo" target="_blank" rel="noopener noreferrer">Made by Jesse ↗</a><a href="https://github.com/Jesseovo/PaperCash/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">MIT</a></div></footer>
+  <dialog id="paper-dialog" aria-labelledby="dialog-title"><div class="dialog-top"><span class="eyebrow" id="dialog-eyebrow">A LITTLE HELP</span><button type="button" id="dialog-close" class="icon-button" aria-label="关闭弹窗">×</button></div><h2 id="dialog-title"></h2><div id="dialog-body"></div><div class="dialog-actions" id="dialog-actions"></div></dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+  <noscript><div class="noscript-note">启用 JavaScript 即可浏览和筛选论文。你也可以<a href="data/papers.json">下载原始书单</a>，或<a href="https://github.com/Jesseovo/PaperCash">前往 GitHub</a>把 PaperCash 交给你的 Agent。</div></noscript>
+</body>
+</html>

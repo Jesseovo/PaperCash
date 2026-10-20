@@ -1,0 +1,2051 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-10-20T17:22:57+08:00",
+  "topics": [
+    {
+      "id": "agents",
+      "label": "AI 与 Agent",
+      "note": "语言、推理与智能体"
+    },
+    {
+      "id": "vision",
+      "label": "计算机视觉",
+      "note": "图像与多模态"
+    },
+    {
+      "id": "robotics",
+      "label": "机器人",
+      "note": "从感知到行动"
+    },
+    {
+      "id": "health",
+      "label": "医学与健康",
+      "note": "医学影像与机器学习"
+    },
+    {
+      "id": "human",
+      "label": "人机交互",
+      "note": "人与 AI 的相处方式"
+    }
+  ],
+  "feeds": [
+    {
+      "id": "arxiv-agents",
+      "topic": "agents",
+      "source": "arXiv",
+      "checked_at": "2026-10-20T17:22:57+08:00",
+      "status": "ok",
+      "updated_at": "2026-10-20T17:22:57+08:00",
+      "count": 12
+    },
+    {
+      "id": "arxiv-vision",
+      "topic": "vision",
+      "source": "arXiv",
+      "checked_at": "2026-10-20T17:22:57+08:00",
+      "status": "ok",
+      "updated_at": "2026-10-20T17:22:57+08:00",
+      "count": 12
+    },
+    {
+      "id": "arxiv-robotics",
+      "topic": "robotics",
+      "source": "arXiv",
+      "checked_at": "2026-10-20T17:22:57+08:00",
+      "status": "ok",
+      "updated_at": "2026-10-20T17:22:57+08:00",
+      "count": 12
+    },
+    {
+      "id": "crossref-health",
+      "topic": "health",
+      "source": "Crossref",
+      "checked_at": "2026-10-20T17:22:57+08:00",
+      "status": "ok",
+      "updated_at": "2026-10-20T17:22:57+08:00",
+      "count": 12
+    },
+    {
+      "id": "crossref-human",
+      "topic": "human",
+      "source": "Crossref",
+      "checked_at": "2026-10-20T17:22:57+08:00",
+      "status": "ok",
+      "updated_at": "2026-10-20T17:22:57+08:00",
+      "count": 12
+    }
+  ],
+  "papers": [
+    {
+      "title": "Where is Physical RSI capability from? An Observational Scaling Law of LLM-as-policy",
+      "authors": [
+        "Zekai Li",
+        "Jiayi Yu",
+        "Jinlu Zhang",
+        "Luyang Niu",
+        "Zekun Qi",
+        "Jun Zheng",
+        "Xuchuan Chen",
+        "Dairu Liu",
+        "Yintianrun Zhang",
+        "He Wang",
+        "Li Yi"
+      ],
+      "abstract": "In this paper, we systematically investigate the mechanisms, scaling behavior, and generalization of physical Recursive self-improvement. We introduce PhysRSI-eval to quantify physical RSI through a five-axis metric: First-Attempt Performance, Efficiency, Success, Budget and Improvement from failure. Different VLMs are evaluated on 18 manipulation tasks under a fixed interaction budget. The analysis of experimental results motivates the Physical Barrel Hypothesis: different capabilities may constrain different parts of improvement. The five-axis metrics also distinguish systems with close public benchmark averages and show that high scores need not come with early or efficient gains. We study observational scaling from two perspectives: predicting the relative performance of VLM agents from their public capabilities, and forecasting later progress from early physical feedback. Together, these analyses ask how quickly and how far an agent can improve. Moreover, we conduct workspace interventions and then analyze what improvement leaves behind. Removing history reduces late-round success, frozen workspaces remain useful on unseen layouts, and three cross-task cases achieve success earlier. The results suggest that scene-specific adaptation and reusable experience can coexist.",
+      "doi": "",
+      "arxiv_id": "2610.26848",
+      "url": "https://arxiv.org/abs/2610.26848",
+      "pdf_url": "https://arxiv.org/pdf/2610.26848",
+      "published": "2026-10-19",
+      "updated": "2026-10-19",
+      "venue": "arXiv",
+      "source": "arXiv",
+      "kind": "preprint",
+      "keywords": [
+        "cs.RO",
+        "cs.AI",
+        "cs.CV"
+      ],
+      "id": "538793aec87496d8b5e9",
+      "topics": [
+        "agents",
+        "robotics",
+        "vision"
+      ],
+      "feeds": [
+        "arxiv-agents",
+        "arxiv-robotics",
+        "arxiv-vision"
+      ],
+      "year": 2026,
+      "citations": {
+        "gb7714": "Zekai Li, Jiayi Yu, Jinlu Zhang, et al.. Where is Physical RSI capability from? An Observational Scaling Law of LLM-as-policy[EB/OL]. arXiv, 2026. https://arxiv.org/abs/2610.26848.",
+        "apa": "Li, Z., Yu, J., Zhang, J., Niu, L., Qi, Z., Zheng, J., Chen, X., Liu, D., Zhang, Y., Wang, H., & Yi, L. (2026). Where is Physical RSI capability from? An Observational Scaling Law of LLM-as-policy. arXiv. https://arxiv.org/abs/2610.26848",
+        "bibtex": "@misc{arxiv261026848,\n  title = {Where is Physical RSI capability from? An Observational Scaling Law of LLM-as-policy},\n  author = {Zekai Li and Jiayi Yu and Jinlu Zhang and Luyang Niu and Zekun Qi and Jun Zheng and Xuchuan Chen and Dairu Liu and Yintianrun Zhang and He Wang and Li Yi},\n  year = {2026},\n  eprint = {2610.26848},\n  archivePrefix = {arXiv},\n  url = {https://arxiv.org/abs/2610.26848}\n}"
+      }
+    },
+    {
+      "title": "WeAct: Dynamic Weight Switching as Agent Actions",
+      "authors": [
+        "Rui Shi",
+        "Xunjian Yin",
+        "Jiacheng Sang",
+        "Zichuan Liu",
+        "Shuyan Zhou"
+      ],
+      "abstract": "Long-horizon agents must learn heterogeneous capabilities from interleaved trajectories. Updating shared parameters to learn new capabilities can degrade previously acquired ones, resulting in catastrophic forgetting. As a trajectory unfolds, different stages may require different capabilities, yet conventional joint training and static adapter merging maintain a fixed parameter configuration throughout execution. We introduce WeAct (Weight-level Internal Actions), which trains independent capability-specific LoRA adapters over a frozen backbone and adds adapter selection to the agent's action space. These internal actions use the model's native tool-calling interface for on-demand capability composition in a shared context. Across eight deep-research benchmarks, Qwen3-32B with WeAct improves average accuracy by 6.2% relative to full fine-tuning counterparts despite using less compute, and by 27.5% relative to the strongest static LoRA-merging method. WeAct also supports modular continual adaptation, by adding a new code computation adapter to expand the agent's capabilities and updating the existing writing adapter to improve report quality. Both updates leave the backbone and other adapters unchanged, supporting modular continual adaptation in agents.",
+      "doi": "",
+      "arxiv_id": "2610.26847",
+      "url": "https://arxiv.org/abs/2610.26847",
+      "pdf_url": "https://arxiv.org/pdf/2610.26847",
+      "published": "2026-10-19",
+      "updated": "2026-10-19",
+      "venue": "arXiv",
+      "source": "arXiv",
+      "kind": "preprint",
+      "keywords": [
+        "cs.LG",
+        "cs.AI",
+        "cs.CL"
+      ],
+      "id": "539fbd9d7d7f7b75d0e2",
+      "topics": [
+        "agents"
+      ],
+      "feeds": [
+        "arxiv-agents"
+      ],
+      "year": 2026,
+      "citations": {
+        "gb7714": "Rui Shi, Xunjian Yin, Jiacheng Sang, et al.. WeAct: Dynamic Weight Switching as Agent Actions[EB/OL]. arXiv, 2026. https://arxiv.org/abs/2610.26847.",
+        "apa": "Shi, R., Yin, X., Sang, J., Liu, Z., & Zhou, S. (2026). WeAct: Dynamic Weight Switching as Agent Actions. arXiv. https://arxiv.org/abs/2610.26847",
+        "bibtex": "@misc{arxiv261026847,\n  title = {WeAct: Dynamic Weight Switching as Agent Actions},\n  author = {Rui Shi and Xunjian Yin and Jiacheng Sang and Zichuan Liu and Shuyan Zhou},\n  year = {2026},\n  eprint = {2610.26847},\n  archivePrefix = {arXiv},\n  url = {https://arxiv.org/abs/2610.26847}\n}"
+      }
+    },
+    {
+      "title": "VideoMaMa++: Temporally Consistent Video Matting via Preserve-and-Refine Token",
+      "authors": [
+        "Sangbeom Lim",
+        "Seoung Wug Oh",
+        "Heeji Yoon",
+        "Seungryong Kim",
+        "Joon-Young Lee"
+      ],
+      "abstract": "Diffusion-based video matting has recently emerged as a leading approach, leveraging video diffusion priors from internet-scale pretraining to achieve strong zero-shot generalization from limited synthetic data. However, the heavy compute of these diffusion backbones limits inference to a short chunk of just 6 to 24 frames, so even ordinary videos span multiple chunks. Because each chunk is matted independently from coarse mask guidance, existing methods fail to maintain consistency across chunk boundaries, producing flickering edges and discontinuous transparency. We address this with a mask-guided diffusion-matting framework built on two ideas. The RGB and mask conditioning are represented as separate token streams that interact through full spatio-temporal self-attention, letting the model adaptively combine fine RGB texture with coarse mask layout rather than committing to a fixed channel-wise fusion. On top of this, we propose a novel pair of learnable embeddings, the preserve token and the refine token, that act as a per-frame conditioning interface and enable a sliding-window inference scheme in which already-generated mattes are propagated across chunk boundaries for local temporal consistency, complemented by a globally shared reference anchor at every chunk to prevent error accumulation in long sequences without any additional training. Across standard video matting benchmarks and in-the-wild long footage, our framework outperforms prior diffusion-based methods in both fine-detail accuracy and temporal consistency, and uniquely maintains consistency across chunk boundaries on long videos.",
+      "doi": "",
+      "arxiv_id": "2610.26857",
+      "url": "https://arxiv.org/abs/2610.26857",
+      "pdf_url": "https://arxiv.org/pdf/2610.26857",
+      "published": "2026-10-19",
+      "updated": "2026-10-19",
+      "venue": "arXiv",
+      "source": "arXiv",
+      "kind": "preprint",
+      "keywords": [
+        "cs.CV"
+      ],
+      "id": "678d5fb2039c683f10b9",
+      "topics": [
+        "vision"
+      ],
+      "feeds": [
+        "arxiv-vision"
+      ],
+      "year": 2026,
+      "citations": {
+        "gb7714": "Sangbeom Lim, Seoung Wug Oh, Heeji Yoon, et al.. VideoMaMa++: Temporally Consistent Video Matting via Preserve-and-Refine Token[EB/OL]. arXiv, 2026. https://arxiv.org/abs/2610.26857.",
+        "apa": "Lim, S., Oh, S. W., Yoon, H., Kim, S., & Lee, J. (2026). VideoMaMa++: Temporally Consistent Video Matting via Preserve-and-Refine Token. arXiv. https://arxiv.org/abs/2610.26857",
+        "bibtex": "@misc{arxiv261026857,\n  title = {VideoMaMa++: Temporally Consistent Video Matting via Preserve-and-Refine Token},\n  author = {Sangbeom Lim and Seoung Wug Oh and Heeji Yoon and Seungryong Kim and Joon-Young Lee},\n  year = {2026},\n  eprint = {2610.26857},\n  archivePrefix = {arXiv},\n  url = {https://arxiv.org/abs/2610.26857}\n}"
+      }
+    },
+    {
+      "title": "Train An Imaginative Agent",
+      "authors": [
+        "Jiaxin Ge",
+        "Junyi Zhang",
+        "Tianning Chai",
+        "Hanjun Yoo",
+        "Chenyang Wang",
+        "Xiuyu Li",
+        "Weijia Shi",
+        "XuDong Wang",
+        "Sewon Min",
+        "Luke Zettlemoyer",
+        "Trevor Darrell",
+        "Haiwen Feng"
+      ],
+      "abstract": "A seemingly reasonable push in Sokoban can make the puzzle unsolvable. To avoid such mistakes, an agent has to anticipate the consequences of its actions before execution, especially when feedback from the real environment is sparse or actions are irreversible. We introduce Agentic Imagination (Agima), a training framework that trains an agent to imagine before acting, i.e. to be imaginative. Agima trains a single omni model to propose actions, generate images of their outcomes, and then reason over these imagined futures to decide what to execute in the real environment. Rather than committing to a single plan, the agent can simulate a sequence of actions, explore alternatives, and compare possible futures. We first use supervised fine-tuning (SFT) to unify policy and world modeling within a single omni model. This enables the agent to predict future outcomes and perform basic forms of imagination, such as forward thinking and counterfactual branching. We then use agentic reinforcement learning (RL) to teach the agent to reason with its imagined futures and use them effectively for planning. Across four environments spanning Maze2D, Sokoban, Pacman, and PushT, Agima generalizes to harder settings unseen during training. Trained with SFT alone on two-box Sokoban, Agima solves 40% of four-box puzzles while seeing the real board only once every five moves, compared with an action-only planner that only solves 2%. After RL, new behaviors emerge in how Agima uses its imagination: it learns a new unified format that was unseen during the SFT stage, learns to conduct forward thinking only when necessary, and branches more frequently at critical decision points. An agent that can picture where its actions lead can learn when and where to look ahead, that is, to plan. Project page: https://agima.net/.",
+      "doi": "",
+      "arxiv_id": "2610.26845",
+      "url": "https://arxiv.org/abs/2610.26845",
+      "pdf_url": "https://arxiv.org/pdf/2610.26845",
+      "published": "2026-10-19",
+      "updated": "2026-10-19",
+      "venue": "arXiv",
+      "source": "arXiv",
+      "kind": "preprint",
+      "keywords": [
+        "cs.AI"
+      ],
+      "id": "2bcfec23a9687b7492e7",
+      "topics": [
+        "agents"
+      ],
+      "feeds": [
+        "arxiv-agents"
+      ],
+      "year": 2026,
+      "citations": {
+        "gb7714": "Jiaxin Ge, Junyi Zhang, Tianning Chai, et al.. Train An Imaginative Agent[EB/OL]. arXiv, 2026. https://arxiv.org/abs/2610.26845.",
+        "apa": "Ge, J., Zhang, J., Chai, T., Yoo, H., Wang, C., Li, X., Shi, W., Wang, X., Min, S., Zettlemoyer, L., Darrell, T., & Feng, H. (2026). Train An Imaginative Agent. arXiv. https://arxiv.org/abs/2610.26845",
+        "bibtex": "@misc{arxiv261026845,\n  title = {Train An Imaginative Agent},\n  author = {Jiaxin Ge and Junyi Zhang and Tianning Chai and Hanjun Yoo and Chenyang Wang and Xiuyu Li and Weijia Shi and XuDong Wang and Sewon Min and Luke Zettlemoyer and Trevor Darrell and Haiwen Feng},\n  year = {2026},\n  eprint = {2610.26845},\n  archivePrefix = {arXiv},\n  url = {https://arxiv.org/abs/2610.26845}\n}"
+      }
+    },
+    {
+      "title": "Text-to-Image Generative Modeling Without Language Pretraining",
+      "authors": [
+        "Keshigeyan Chandrasegaran",
+        "Yue Zhao",
+        "Armin W. Thomas",
+        "Ehsan Adeli",
+        "Jiajun Wu",
+        "Juan Carlos Niebles",
+        "Li Fei-Fei",
+        "Michael Poli"
+      ],
+      "abstract": "Modern text-to-image (T2I) systems use internet-scale language pretraining for text-conditioned image generation. We ask whether language pretraining is necessary for strong T2I generation. We introduce Halcyon, a family of early-fusion multimodal autoregressive models pretrained entirely from scratch on GPIC, a dataset of 100M image-text pairs. Halcyon-0.52B outperforms LlamaGen-XL/8 (48.0 vs. 63.3 gFD) with 18.2$\\times$ less pretraining compute. Further, Halcyon-1.6B outperforms JiT-T2I-XXL/8++ (35.3 vs. 41.0 gFD) with 275$\\times$ less pretraining compute. Controlled experiments show that text-only pretraining does not improve T2I generation. Halcyon also learns image captioning by replacing caption dropout with I2T supervision, maintaining competitive T2I generation quality under the same pretraining budget. We show that strong T2I systems can be trained from scratch without internet-scale language pretraining. Code and models are available at https://cs.stanford.edu/~keshik/halcyon",
+      "doi": "",
+      "arxiv_id": "2610.26863",
+      "url": "https://arxiv.org/abs/2610.26863",
+      "pdf_url": "https://arxiv.org/pdf/2610.26863",
+      "published": "2026-10-19",
+      "updated": "2026-10-19",
+      "venue": "arXiv",
+      "source": "arXiv",
+      "kind": "preprint",
+      "keywords": [
+        "cs.LG",
+        "cs.CV"
+      ],
+      "id": "aa213211dffaff84f055",
+      "topics": [
+        "vision"
+      ],
+      "feeds": [
+        "arxiv-vision"
+      ],
+      "year": 2026,
+      "citations": {
+        "gb7714": "Keshigeyan Chandrasegaran, Yue Zhao, Armin W. Thomas, et al.. Text-to-Image Generative Modeling Without Language Pretraining[EB/OL]. arXiv, 2026. https://arxiv.org/abs/2610.26863.",
+        "apa": "Chandrasegaran, K., Zhao, Y., Thomas, A. W., Adeli, E., Wu, J., Niebles, J. C., Fei-Fei, L., & Poli, M. (2026). Text-to-Image Generative Modeling Without Language Pretraining. arXiv. https://arxiv.org/abs/2610.26863",
+        "bibtex": "@misc{arxiv261026863,\n  title = {Text-to-Image Generative Modeling Without Language Pretraining},\n  author = {Keshigeyan Chandrasegaran and Yue Zhao and Armin W. Thomas and Ehsan Adeli and Jiajun Wu and Juan Carlos Niebles and Li Fei-Fei and Michael Poli},\n  year = {2026},\n  eprint = {2610.26863},\n  archivePrefix = {arXiv},\n  url = {https://arxiv.org/abs/2610.26863}\n}"
+      }
+    },
+    {
+      "title": "Tactile In-Hand Object Rotation: A Comparative Study of Hand Morphology in Simulation and Hardware",
+      "authors": [
+        "Wenhao He",
+        "Max Yang",
+        "Chenghua Lu",
+        "Yijiong Lin",
+        "David A. W. Barton",
+        "Nathan F. Lepora"
+      ],
+      "abstract": "Continuous in-hand rotation requires coordinated contact maintenance and renewal, linking manipulation performance to both hand geometry and tactile feedback. We investigate these relationships through rotational progress, finger participation, and fingertip loading on two versions of the low-cost LEAP Hand with anthropomorphic and symmetric finger arrangements. Both hands are integrated with TacTip vision-based tactile sensors and use a shared reinforcement learning framework. Simulation evaluates full tactile, binary touch, and proprioception-only observations on 12 unseen objects; hardware experiments evaluate full tactile policies on ten objects under multiple hand orientations. In simulation, full tactile observations increase mean normalized rotation per episode over proprioception alone by 94.8% for the anthropomorphic hand and 66.9% for the symmetric hand, with longer mean episode durations and lower mean total fingertip loads. Hardware contact measurements reveal more differentiated finger participation in the anthropomorphic hand, while cumulative loading is more evenly distributed across the symmetric hand's fingers. Overall, the symmetric hand achieves a 32.0% higher mean rotation count and a 25.8% higher aggregate rotation rate, together with longer manipulation duration. Additional hardware force recordings show a 19.9% lower mean total fingertip load for this layout. These findings relate finger arrangement to contact organization and load sharing, and show that richer tactile information supports greater task progress at lower mean loading in both simulated embodiments.",
+      "doi": "",
+      "arxiv_id": "2610.26759",
+      "url": "https://arxiv.org/abs/2610.26759",
+      "pdf_url": "https://arxiv.org/pdf/2610.26759",
+      "published": "2026-10-19",
+      "updated": "2026-10-19",
+      "venue": "arXiv",
+      "source": "arXiv",
+      "kind": "preprint",
+      "keywords": [
+        "cs.RO"
+      ],
+      "id": "5523bdd6d2b6730bf522",
+      "topics": [
+        "robotics"
+      ],
+      "feeds": [
+        "arxiv-robotics"
+      ],
+      "year": 2026,
+      "citations": {
+        "gb7714": "Wenhao He, Max Yang, Chenghua Lu, et al.. Tactile In-Hand Object Rotation: A Comparative Study of Hand Morphology in Simulation and Hardware[EB/OL]. arXiv, 2026. https://arxiv.org/abs/2610.26759.",
+        "apa": "He, W., Yang, M., Lu, C., Lin, Y., Barton, D. A. W., & Lepora, N. F. (2026). Tactile In-Hand Object Rotation: A Comparative Study of Hand Morphology in Simulation and Hardware. arXiv. https://arxiv.org/abs/2610.26759",
+        "bibtex": "@misc{arxiv261026759,\n  title = {Tactile In-Hand Object Rotation: A Comparative Study of Hand Morphology in Simulation and Hardware},\n  author = {Wenhao He and Max Yang and Chenghua Lu and Yijiong Lin and David A. W. Barton and Nathan F. Lepora},\n  year = {2026},\n  eprint = {2610.26759},\n  archivePrefix = {arXiv},\n  url = {https://arxiv.org/abs/2610.26759}\n}"
+      }
+    },
+    {
+      "title": "SpecKCast: Spectral Kalman Forecasting for Diffusion Acceleration",
+      "authors": [
+        "Javad Rajabi",
+        "Hakki Can Karaimer",
+        "David B. Lindell",
+        "Babak Taati",
+        "Michael S. Brown"
+      ],
+      "abstract": "Diffusion Transformers (DiTs) achieve high-fidelity image and video generation, but they suffer from substantial inference costs due to repeated transformer evaluations across many denoising steps. Feature caching reduces this cost by reusing features across denoising steps. Recent forecasting methods extend this idea by extrapolating features to skipped steps instead of reusing them. However, existing forecasting methods extrapolate the features they predict uniformly, even though the spatial-frequency components of these features change most at different stages of denoising. They also overlook that denoising progresses nonuniformly, so equal step intervals can correspond to very different amounts of change. These mismatches amplify forecast errors as more steps are skipped, limiting the achievable acceleration. We propose SpecKCast, a training-free method that forecasts the model output in the frequency domain. SpecKCast applies a 2D discrete cosine transform (DCT) to the output and tracks each coefficient with a lightweight Kalman filter along a band-specific time coordinate derived from the noise schedule. The filter tracks each coefficient's value and rate of change, and the transformer is evaluated only when the filter's forecast uncertainty exceeds a threshold. Experiments on FLUX.1-dev, Qwen-Image, Wan2.1-14B, and HunyuanVideo show that SpecKCast achieves a better trade-off between acceleration and fidelity than existing caching and forecasting methods, reaching up to 6x speedup with less than 0.05 GiB of additional memory.",
+      "doi": "",
+      "arxiv_id": "2610.26837",
+      "url": "https://arxiv.org/abs/2610.26837",
+      "pdf_url": "https://arxiv.org/pdf/2610.26837",
+      "published": "2026-10-19",
+      "updated": "2026-10-19",
+      "venue": "arXiv",
+      "source": "arXiv",
+      "kind": "preprint",
+      "keywords": [
+        "cs.CV"
+      ],
+      "id": "22ce334b51d06e244215",
+      "topics": [
+        "vision"
+      ],
+      "feeds": [
+        "arxiv-vision"
+      ],
+      "year": 2026,
+      "citations": {
+        "gb7714": "Javad Rajabi, Hakki Can Karaimer, David B. Lindell, et al.. SpecKCast: Spectral Kalman Forecasting for Diffusion Acceleration[EB/OL]. arXiv, 2026. https://arxiv.org/abs/2610.26837.",
+        "apa": "Rajabi, J., Karaimer, H. C., Lindell, D. B., Taati, B., & Brown, M. S. (2026). SpecKCast: Spectral Kalman Forecasting for Diffusion Acceleration. arXiv. https://arxiv.org/abs/2610.26837",
+        "bibtex": "@misc{arxiv261026837,\n  title = {SpecKCast: Spectral Kalman Forecasting for Diffusion Acceleration},\n  author = {Javad Rajabi and Hakki Can Karaimer and David B. Lindell and Babak Taati and Michael S. Brown},\n  year = {2026},\n  eprint = {2610.26837},\n  archivePrefix = {arXiv},\n  url = {https://arxiv.org/abs/2610.26837}\n}"
+      }
+    },
+    {
+      "title": "Simulation Priors for Rapid Adaptation in Model-Based RL for Autonomous Racing",
+      "authors": [
+        "Adrian Remonda",
+        "Jiajun Xi",
+        "Nicklas Hansen",
+        "Marcus Greiff",
+        "Thomas Lew",
+        "John Talbot",
+        "John Subosits",
+        "Xiaolong Wang"
+      ],
+      "abstract": "Reinforcement learning enables learning high-performance control policies, but its reliance on extensive interaction limits deployment on physical systems where data collection is costly, and failures are unsafe. We introduce Prior-Informed Adaptation (PIA), an offline-to-online model-based RL framework that uses structured simulation priors for rapid adaptation. PIA pretrains a world model on heterogeneous low- and high-fidelity simulated trajectories, then adapts it with limited target-domain interaction using uncertainty-regularized planning. Rather than requiring an accurate simulator for policy transfer, PIA treats simulated trajectories as biased priors whose residual mismatch is corrected during online adaptation. We evaluate PIA in autonomous racing using high-fidelity simulation and on a real full-size autonomous race car. In simulation, PIA adapts faster across track and surface shifts than strong baselines, achieving lower lap times and fewer failures. On hardware, PIA achieves reliable few-shot adaptation with less than one hour of on-vehicle interaction.",
+      "doi": "",
+      "arxiv_id": "2610.26757",
+      "url": "https://arxiv.org/abs/2610.26757",
+      "pdf_url": "https://arxiv.org/pdf/2610.26757",
+      "published": "2026-10-19",
+      "updated": "2026-10-19",
+      "venue": "arXiv",
+      "source": "arXiv",
+      "kind": "preprint",
+      "keywords": [
+        "cs.LG",
+        "cs.RO",
+        "eess.SY"
+      ],
+      "id": "0c5b4cdf8be098cd85ea",
+      "topics": [
+        "robotics"
+      ],
+      "feeds": [
+        "arxiv-robotics"
+      ],
+      "year": 2026,
+      "citations": {
+        "gb7714": "Adrian Remonda, Jiajun Xi, Nicklas Hansen, et al.. Simulation Priors for Rapid Adaptation in Model-Based RL for Autonomous Racing[EB/OL]. arXiv, 2026. https://arxiv.org/abs/2610.26757.",
+        "apa": "Remonda, A., Xi, J., Hansen, N., Greiff, M., Lew, T., Talbot, J., Subosits, J., & Wang, X. (2026). Simulation Priors for Rapid Adaptation in Model-Based RL for Autonomous Racing. arXiv. https://arxiv.org/abs/2610.26757",
+        "bibtex": "@misc{arxiv261026757,\n  title = {Simulation Priors for Rapid Adaptation in Model-Based RL for Autonomous Racing},\n  author = {Adrian Remonda and Jiajun Xi and Nicklas Hansen and Marcus Greiff and Thomas Lew and John Talbot and John Subosits and Xiaolong Wang},\n  year = {2026},\n  eprint = {2610.26757},\n  archivePrefix = {arXiv},\n  url = {https://arxiv.org/abs/2610.26757}\n}"
+      }
+    },
+    {
+      "title": "Same Simulation, Different Evidence: Where Retrieved Tool Output Costs LLM Agents Accuracy",
+      "authors": [
+        "Ke Zhang",
+        "Sahchit Chundur",
+        "Jerry Peprah Owusu",
+        "Mohammad Javad Abdolhosseini Qomi",
+        "Maziar Raissi"
+      ],
+      "abstract": "LLM agents that compute the right answer can still answer wrongly. Agent harnesses increasingly keep long tool outputs out of the context window, saving them to files that the agent searches or reads on demand. We ask where this costs accuracy with a real scientific tool: PHREEQC, a widely used geochemistry simulator from the USGS, whose reports reach 846.8k characters and whose determinism lets every printed value be traced. Agents use it to answer 158 execution-verified multiple-choice items. When agents read the simulator's report through a section index rather than in context, GPT-5.1 and GPT-5.2 lose 11.3 and 7.9 points of accuracy, while Claude Opus 4.6 and Claude Sonnet 4.6 show no detectable cost. Re-running all 11,007 logged simulator calls shows that both GPT models compute the keyed value about as often as before; what changes is the evidence they answer from. Under retrieval they often skip the report, answer from their own higher-precision output files, and misround to a neighboring option, a failure we call evidence substitution. With the simulation held fixed, retrieval still costs GPT-5.2 9.4 points. For GPT-5.4, more frequent correct simulations mask an evidence-use loss of about ten points, leaving a net change indistinguishable from zero. Naming the authoritative output raises accuracy by 6.3-7.9 points over plain retrieval for the three GPT models; for GPT-5.1 and GPT-5.2, inlining outputs that fit works as well, while asking for correct rounding does not. Context-management choices in agent harnesses should be judged by where accuracy is lost, not only by final accuracy.",
+      "doi": "",
+      "arxiv_id": "2610.26836",
+      "url": "https://arxiv.org/abs/2610.26836",
+      "pdf_url": "https://arxiv.org/pdf/2610.26836",
+      "published": "2026-10-19",
+      "updated": "2026-10-19",
+      "venue": "arXiv",
+      "source": "arXiv",
+      "kind": "preprint",
+      "keywords": [
+        "cs.AI"
+      ],
+      "id": "841e5a91fb44f4d19c8b",
+      "topics": [
+        "agents"
+      ],
+      "feeds": [
+        "arxiv-agents"
+      ],
+      "year": 2026,
+      "citations": {
+        "gb7714": "Ke Zhang, Sahchit Chundur, Jerry Peprah Owusu, et al.. Same Simulation, Different Evidence: Where Retrieved Tool Output Costs LLM Agents Accuracy[EB/OL]. arXiv, 2026. https://arxiv.org/abs/2610.26836.",
+        "apa": "Zhang, K., Chundur, S., Owusu, J. P., Qomi, M. J. A., & Raissi, M. (2026). Same Simulation, Different Evidence: Where Retrieved Tool Output Costs LLM Agents Accuracy. arXiv. https://arxiv.org/abs/2610.26836",
+        "bibtex": "@misc{arxiv261026836,\n  title = {Same Simulation, Different Evidence: Where Retrieved Tool Output Costs LLM Agents Accuracy},\n  author = {Ke Zhang and Sahchit Chundur and Jerry Peprah Owusu and Mohammad Javad Abdolhosseini Qomi and Maziar Raissi},\n  year = {2026},\n  eprint = {2610.26836},\n  archivePrefix = {arXiv},\n  url = {https://arxiv.org/abs/2610.26836}\n}"
+      }
+    },
+    {
+      "title": "Ropedia W0: Scaling Loco-Manipulation World Models across Embodiments with Human Experience",
+      "authors": [
+        "Tianqi Liu",
+        "Hanfei Zhao",
+        "Qifeng Liang",
+        "Hui En Pang",
+        "Jiarui Xu",
+        "Sayang Mu",
+        "Penghao Qiu",
+        "YingSheng Zhang",
+        "Jun Wang",
+        "Ziang Cao",
+        "Mingze Sun",
+        "Yukang Cao",
+        "Fangzhou Hong",
+        "Zhaoxi Chen",
+        "Ziwei Liu"
+      ],
+      "abstract": "World models enable embodied agents to anticipate action consequences, yet jointly modeling locomotion and manipulation across diverse embodiments remains challenging due to heterogeneous action spaces and limited multimodal supervision. We present Ropedia W0, the first egocentric loco-manipulation world foundation model spanning humans and robots with diverse embodiments. We curate Xp-Data, comprising 10k hours of egocentric human data and 3k hours of robot data with unified multimodal annotations and systematic quality control. A unified kinematic representation encodes locomotion through camera poses and manipulation through projected skeletons, with robot skeletons combining embodiment-specific forward kinematics with extensive manual keypoint annotation and correction. We also introduce Xp-Teleop, a long-horizon loco-manipulation benchmark based on high-quality dexterous humanoid teleoperation data. Evaluations demonstrate state-of-the-art performance across five cross-embodiment benchmarks (DreamDojo, $Ψ_0$, $ω$-HOME, Xp-Teleop, and AgiBot) and on held-out human egocentric video, from zero-shot inference to few-shot and full-data post-training. Scaling human pre-training data improves performance on both human and robot evaluations. After distillation, our model supports real-time, minute-long rollouts, enabling live VR interaction. Applications in policy evaluation, model-based planning, and world-action modeling further demonstrate the model's utility for embodied decision-making.",
+      "doi": "",
+      "arxiv_id": "2610.26855",
+      "url": "https://arxiv.org/abs/2610.26855",
+      "pdf_url": "https://arxiv.org/pdf/2610.26855",
+      "published": "2026-10-19",
+      "updated": "2026-10-19",
+      "venue": "arXiv",
+      "source": "arXiv",
+      "kind": "preprint",
+      "keywords": [
+        "cs.CV",
+        "cs.RO"
+      ],
+      "id": "491d4cb816a16a37aa09",
+      "topics": [
+        "robotics",
+        "vision"
+      ],
+      "feeds": [
+        "arxiv-robotics",
+        "arxiv-vision"
+      ],
+      "year": 2026,
+      "citations": {
+        "gb7714": "Tianqi Liu, Hanfei Zhao, Qifeng Liang, et al.. Ropedia W0: Scaling Loco-Manipulation World Models across Embodiments with Human Experience[EB/OL]. arXiv, 2026. https://arxiv.org/abs/2610.26855.",
+        "apa": "Liu, T., Zhao, H., Liang, Q., Pang, H. E., Xu, J., Mu, S., Qiu, P., Zhang, Y., Wang, J., Cao, Z., Sun, M., Cao, Y., Hong, F., Chen, Z., & Liu, Z. (2026). Ropedia W0: Scaling Loco-Manipulation World Models across Embodiments with Human Experience. arXiv. https://arxiv.org/abs/2610.26855",
+        "bibtex": "@misc{arxiv261026855,\n  title = {Ropedia W0: Scaling Loco-Manipulation World Models across Embodiments with Human Experience},\n  author = {Tianqi Liu and Hanfei Zhao and Qifeng Liang and Hui En Pang and Jiarui Xu and Sayang Mu and Penghao Qiu and YingSheng Zhang and Jun Wang and Ziang Cao and Mingze Sun and Yukang Cao and Fangzhou Hong and Zhaoxi Chen and Ziwei Liu},\n  year = {2026},\n  eprint = {2610.26855},\n  archivePrefix = {arXiv},\n  url = {https://arxiv.org/abs/2610.26855}\n}"
+      }
+    },
+    {
+      "title": "Robot Learning with Vision-Language-Action Models for Agricultural Manipulation",
+      "authors": [
+        "Hamid Hafezi",
+        "Javad Mohammadpour Velni",
+        "Mohammadreza Davoodi"
+      ],
+      "abstract": "Robotic manipulation in agricultural environments remains challenging due to variations in plant geometry, occlusion, and camera viewpoints. Pretrained vision-language-action (VLA) and generalist robot policies offer a promising approach to addressing these challenges by learning manipulation behaviors from multimodal observations and language instructions. However, adapting these policies to agricultural tasks requires domain-specific demonstrations, which are costly and time-consuming to collect on physical robots. In this work, we develop a simulation-to-real robot-learning framework for agricultural reaching and grasping that integrates task-specific demonstration collection and pretrained policy adaptation. A MuJoCo-based agricultural environment is developed with diverse tomato plant structures to support demonstration collection and controlled evaluation. Expert demonstrations are collected through joystick teleoperation, with a low-level controller used to execute robot actions. Two pretrained generalist robot policies, Octo and $π_{0.5}$, are adapted using simulated demonstrations, followed by further fine-tuning on a physical Franka Research 3 manipulator using real-robot demonstrations. The adapted policies are evaluated under in-distribution, viewpoint/spatial-shift, and out-of-distribution conditions in simulation, followed by physical-robot experiments. The influence of proprioceptive information on policy performance is also investigated. Results show that $π_{0.5}$ achieves higher task-performance scores than Octo and exhibits less degradation under distribution shifts. These findings demonstrate the potential of integrating pretrained generalist policies with task-specific demonstration learning for agricultural manipulation.",
+      "doi": "",
+      "arxiv_id": "2610.26717",
+      "url": "https://arxiv.org/abs/2610.26717",
+      "pdf_url": "https://arxiv.org/pdf/2610.26717",
+      "published": "2026-10-19",
+      "updated": "2026-10-19",
+      "venue": "arXiv",
+      "source": "arXiv",
+      "kind": "preprint",
+      "keywords": [
+        "cs.RO"
+      ],
+      "id": "4ebdb14c88f581baa794",
+      "topics": [
+        "robotics"
+      ],
+      "feeds": [
+        "arxiv-robotics"
+      ],
+      "year": 2026,
+      "citations": {
+        "gb7714": "Hamid Hafezi, Javad Mohammadpour Velni, Mohammadreza Davoodi. Robot Learning with Vision-Language-Action Models for Agricultural Manipulation[EB/OL]. arXiv, 2026. https://arxiv.org/abs/2610.26717.",
+        "apa": "Hafezi, H., Velni, J. M., & Davoodi, M. (2026). Robot Learning with Vision-Language-Action Models for Agricultural Manipulation. arXiv. https://arxiv.org/abs/2610.26717",
+        "bibtex": "@misc{arxiv261026717,\n  title = {Robot Learning with Vision-Language-Action Models for Agricultural Manipulation},\n  author = {Hamid Hafezi and Javad Mohammadpour Velni and Mohammadreza Davoodi},\n  year = {2026},\n  eprint = {2610.26717},\n  archivePrefix = {arXiv},\n  url = {https://arxiv.org/abs/2610.26717}\n}"
+      }
+    },
+    {
+      "title": "Reinforcement Learning with Visually Attributable On-Policy Self-Distillation",
+      "authors": [
+        "Shiao Xie",
+        "Siyu Chen",
+        "Jianwei Lv",
+        "Xiandong Li",
+        "Yujin Wang"
+      ],
+      "abstract": "Multimodal reinforcement learning with verifiable rewards (RLVR) provides reliable task-level supervision, yet offers limited guidance for localizing errors in visual reasoning. On-policy self-distillation (OPSD) complements this supervision with dense token-level corrections from a privileged teacher equipped with an evidence-centered visual view. However, the resulting corrections may conflate visual evidence with non-visual shifts induced by linguistic priors, response style, or the privileged view itself. We formalize this phenomenon as privileged-correction contamination: a token-level correction is contaminated when its update direction cannot be consistently attributed to the privileged visual evidence. Directly distilling contaminated corrections may therefore reinforce erroneous token-level updates. To address this issue, we propose reinforcement learning with visually attributable on-policy self-distillation, an evidence-consistent paradigm that augments task-level RLVR supervision with privileged token-level corrections grounded in visual evidence. We instantiate this paradigm with Visual-Attribution Gating (VAG), which uses the verifier-derived advantage as the optimization anchor and validates each privileged correction against the contrast between evidence-present and evidence-degraded teacher views. By admitting only corrections directionally supported by this visual contrast, VAG preserves visually grounded guidance while suppressing inconsistent residuals. Experiments across six visual reasoning benchmarks show that VAG consistently outperforms GRPO and OPSD methods, establishing new state-of-the-art average performance.",
+      "doi": "",
+      "arxiv_id": "2610.26856",
+      "url": "https://arxiv.org/abs/2610.26856",
+      "pdf_url": "https://arxiv.org/pdf/2610.26856",
+      "published": "2026-10-19",
+      "updated": "2026-10-19",
+      "venue": "arXiv",
+      "source": "arXiv",
+      "kind": "preprint",
+      "keywords": [
+        "cs.CV",
+        "cs.AI"
+      ],
+      "id": "07794e82eb1f65dd2178",
+      "topics": [
+        "agents",
+        "vision"
+      ],
+      "feeds": [
+        "arxiv-agents",
+        "arxiv-vision"
+      ],
+      "year": 2026,
+      "citations": {
+        "gb7714": "Shiao Xie, Siyu Chen, Jianwei Lv, et al.. Reinforcement Learning with Visually Attributable On-Policy Self-Distillation[EB/OL]. arXiv, 2026. https://arxiv.org/abs/2610.26856.",
+        "apa": "Xie, S., Chen, S., Lv, J., Li, X., & Wang, Y. (2026). Reinforcement Learning with Visually Attributable On-Policy Self-Distillation. arXiv. https://arxiv.org/abs/2610.26856",
+        "bibtex": "@misc{arxiv261026856,\n  title = {Reinforcement Learning with Visually Attributable On-Policy Self-Distillation},\n  author = {Shiao Xie and Siyu Chen and Jianwei Lv and Xiandong Li and Yujin Wang},\n  year = {2026},\n  eprint = {2610.26856},\n  archivePrefix = {arXiv},\n  url = {https://arxiv.org/abs/2610.26856}\n}"
+      }
+    },
+    {
+      "title": "RefCraft: Benchmarking Visual-Reference-Conditioned Agentic Generation through Web Development",
+      "authors": [
+        "Yuchi Wang",
+        "Rongyao Fang",
+        "Weihao Yu",
+        "Xilin Wei",
+        "Tiancheng Gu",
+        "Dingkang Yang",
+        "Hang Zhang",
+        "Dayiheng Liu",
+        "Hongsheng Li",
+        "Shuai Bai"
+      ],
+      "abstract": "Beyond basic tool use and coding skills, effectively incorporating visual references into agentic generation is equally essential for applying AI agents to real-world productivity tasks. We study this crucial capability through webpage development, a practical and readily evaluable setting in which existing benchmarks remain largely idealized: they typically focus on reconstructing visual targets or generating webpages from textual instructions alone, overlooking the more common workflow of developing from visual examples. Specifically, we introduce RefCraft, a benchmark comprising 300 realistic multimodal webpage-development tasks that combine natural-language instructions with screenshots from one to five reference webpages. Agents must selectively interpret and utilize these references while rendering, visually inspecting, and iteratively refining their outputs. We evaluate the resulting open-ended artifacts using independently verifiable keypoints and complementary programmatic and VLM judges. Across nine frontier (M)LLMs, the strongest system achieves an overall score of only 52.12 out of 100, revealing that visual-reference-conditioned agentic generation remains a substantial challenge for current models in practical webpage-development settings.",
+      "doi": "",
+      "arxiv_id": "2610.26826",
+      "url": "https://arxiv.org/abs/2610.26826",
+      "pdf_url": "https://arxiv.org/pdf/2610.26826",
+      "published": "2026-10-19",
+      "updated": "2026-10-19",
+      "venue": "arXiv",
+      "source": "arXiv",
+      "kind": "preprint",
+      "keywords": [
+        "cs.CL",
+        "cs.AI",
+        "cs.CV"
+      ],
+      "id": "1a9100ac33ff8dbe0657",
+      "topics": [
+        "vision"
+      ],
+      "feeds": [
+        "arxiv-vision"
+      ],
+      "year": 2026,
+      "citations": {
+        "gb7714": "Yuchi Wang, Rongyao Fang, Weihao Yu, et al.. RefCraft: Benchmarking Visual-Reference-Conditioned Agentic Generation through Web Development[EB/OL]. arXiv, 2026. https://arxiv.org/abs/2610.26826.",
+        "apa": "Wang, Y., Fang, R., Yu, W., Wei, X., Gu, T., Yang, D., Zhang, H., Liu, D., Li, H., & Bai, S. (2026). RefCraft: Benchmarking Visual-Reference-Conditioned Agentic Generation through Web Development. arXiv. https://arxiv.org/abs/2610.26826",
+        "bibtex": "@misc{arxiv261026826,\n  title = {RefCraft: Benchmarking Visual-Reference-Conditioned Agentic Generation through Web Development},\n  author = {Yuchi Wang and Rongyao Fang and Weihao Yu and Xilin Wei and Tiancheng Gu and Dingkang Yang and Hang Zhang and Dayiheng Liu and Hongsheng Li and Shuai Bai},\n  year = {2026},\n  eprint = {2610.26826},\n  archivePrefix = {arXiv},\n  url = {https://arxiv.org/abs/2610.26826}\n}"
+      }
+    },
+    {
+      "title": "Physical Words: A Vocabulary for Structuring Latent Reasoning in Robot Manipulation",
+      "authors": [
+        "Jiaming Liu",
+        "Xinghao Zhu",
+        "Yiming Zhang",
+        "Shanghang Zhang",
+        "Yinxi Wang",
+        "Yichu Yang",
+        "Zhuoyang Liu",
+        "Dantong Niu",
+        "Soha Pouya",
+        "Juekun Li",
+        "Yan Chang"
+      ],
+      "abstract": "Multimodal reasoning provides robotic foundation models with predictive context needed for reliable action generation. However, language-based reasoning captures task semantics but struggles to express fine-grained physical dynamics, while latent reasoning models future state evolution but offers limited structure for organizing these dynamics into reusable reasoning primitives. To bridge this gap, we introduce PhysWord, a reasoning-before-acting foundation model built on Physical Words, which use atomic action verbs as shared semantic anchors for continuous representations of physical dynamics. Specifically, PhysWord predicts upcoming atomic action words and directly aligns their contextual hidden states with latent targets derived from the corresponding future observations. Building on these primitives, we construct a temporally structured PhysWord space with visual and optional tactile variants of each action word. Autoregressively predicting Physical Words across future timesteps captures transitions between execution stages, providing structured multimodal context for action generation. PhysWord achieves state-of-the-art success rates of 90.3\\% on visuotactile UniVTAC and 99.6\\% on vision-based LIBERO-Long, and outperforms competing methods on real-world tasks using bimanual grippers and dexterous hands. Further evaluations demonstrate that our structured latent reasoning framework generalizes to unseen scenarios and enables long-horizon manipulation.",
+      "doi": "",
+      "arxiv_id": "2610.26854",
+      "url": "https://arxiv.org/abs/2610.26854",
+      "pdf_url": "https://arxiv.org/pdf/2610.26854",
+      "published": "2026-10-19",
+      "updated": "2026-10-19",
+      "venue": "arXiv",
+      "source": "arXiv",
+      "kind": "preprint",
+      "keywords": [
+        "cs.RO"
+      ],
+      "id": "a9b57725bf24a6536077",
+      "topics": [
+        "robotics"
+      ],
+      "feeds": [
+        "arxiv-robotics"
+      ],
+      "year": 2026,
+      "citations": {
+        "gb7714": "Jiaming Liu, Xinghao Zhu, Yiming Zhang, et al.. Physical Words: A Vocabulary for Structuring Latent Reasoning in Robot Manipulation[EB/OL]. arXiv, 2026. https://arxiv.org/abs/2610.26854.",
+        "apa": "Liu, J., Zhu, X., Zhang, Y., Zhang, S., Wang, Y., Yang, Y., Liu, Z., Niu, D., Pouya, S., Li, J., & Chang, Y. (2026). Physical Words: A Vocabulary for Structuring Latent Reasoning in Robot Manipulation. arXiv. https://arxiv.org/abs/2610.26854",
+        "bibtex": "@misc{arxiv261026854,\n  title = {Physical Words: A Vocabulary for Structuring Latent Reasoning in Robot Manipulation},\n  author = {Jiaming Liu and Xinghao Zhu and Yiming Zhang and Shanghang Zhang and Yinxi Wang and Yichu Yang and Zhuoyang Liu and Dantong Niu and Soha Pouya and Juekun Li and Yan Chang},\n  year = {2026},\n  eprint = {2610.26854},\n  archivePrefix = {arXiv},\n  url = {https://arxiv.org/abs/2610.26854}\n}"
+      }
+    },
+    {
+      "title": "PICA-WAM: Visual Perturbation Invariance via Cross-Appearance Self-Alignment in World Action Models",
+      "authors": [
+        "Yude Zou",
+        "Yifei Yao",
+        "Guanbo Jiao",
+        "Jianming Ma",
+        "Guanjie Zheng",
+        "Xing Gao"
+      ],
+      "abstract": "World Action Models (WAMs) jointly predict future video and generate actions, yet remain sensitive to task-irrelevant visual perturbations, i.e., changes in visual appearance that should not affect robot behavior. We identify a gap in conventional WAM training: video prediction encourages representations to preserve appearance information, while action generation does not explicitly enforce invariance to task-irrelevant appearance. Data augmentation exposes WAMs to such perturbations but does not require perturbed and nominal observations to produce consistent action representations, and alignment with external pretrained features does not guarantee the desired invariance. To address this gap, we propose PICA-WAM, a self-supervised training framework that casts perturbation invariance as an auxiliary cross-appearance self-alignment task for WAMs. An exponential-moving-average (EMA) teacher processes the nominal observation to provide a deeper-layer target, while the online WAM processes a perturbed observation and aligns its shallower-layer action representation to this target through a lightweight projection head. Across four strong WAMs evaluated on RoboTwin 2.0, LIBERO-Plus, EBench, and a real robot, PICA-WAM consistently improves robustness under visual perturbations, preserves nominal performance in simulation, and raises the real robot success rate. PICA-WAM further reduces the sensitivity of video features to task-irrelevant appearance and its propagation into actions, as shown by paired layer-wise diagnostics. Code: https://github.com/YudeZou/PICA-WAM-release",
+      "doi": "",
+      "arxiv_id": "2610.26813",
+      "url": "https://arxiv.org/abs/2610.26813",
+      "pdf_url": "https://arxiv.org/pdf/2610.26813",
+      "published": "2026-10-19",
+      "updated": "2026-10-19",
+      "venue": "arXiv",
+      "source": "arXiv",
+      "kind": "preprint",
+      "keywords": [
+        "cs.CV",
+        "cs.RO"
+      ],
+      "id": "9f980c1f39c50b600157",
+      "topics": [
+        "robotics"
+      ],
+      "feeds": [
+        "arxiv-robotics"
+      ],
+      "year": 2026,
+      "citations": {
+        "gb7714": "Yude Zou, Yifei Yao, Guanbo Jiao, et al.. PICA-WAM: Visual Perturbation Invariance via Cross-Appearance Self-Alignment in World Action Models[EB/OL]. arXiv, 2026. https://arxiv.org/abs/2610.26813.",
+        "apa": "Zou, Y., Yao, Y., Jiao, G., Ma, J., Zheng, G., & Gao, X. (2026). PICA-WAM: Visual Perturbation Invariance via Cross-Appearance Self-Alignment in World Action Models. arXiv. https://arxiv.org/abs/2610.26813",
+        "bibtex": "@misc{arxiv261026813,\n  title = {PICA-WAM: Visual Perturbation Invariance via Cross-Appearance Self-Alignment in World Action Models},\n  author = {Yude Zou and Yifei Yao and Guanbo Jiao and Jianming Ma and Guanjie Zheng and Xing Gao},\n  year = {2026},\n  eprint = {2610.26813},\n  archivePrefix = {arXiv},\n  url = {https://arxiv.org/abs/2610.26813}\n}"
+      }
+    },
+    {
+      "title": "OpenVLHarness: Real World Visual Agentic Tool-Use with Multimodal Memory",
+      "authors": [
+        "Yu Zhou",
+        "Cheng-Fu Yang",
+        "Rui Sun",
+        "Di Wu",
+        "Sibo Peng",
+        "Mingyang Zhang",
+        "Zhen Yang",
+        "Ruiyi Zhang",
+        "Nanyun Peng",
+        "Zhe Gan",
+        "Kai-Wei Chang"
+      ],
+      "abstract": "Multimodal large language models (MLLMs) have made rapid progress on visual reasoning, yet many tasks require evidence that is difficult to obtain through internal reasoning alone: our controlled study on 22 benchmarks shows that simply increasing the inference budget of the base model yields only modest gains. Such tasks demand grounded perception, external knowledge, and numerical measurements obtained through heterogeneous tools, whose outputs must be made interpretable to the model and retained across reasoning steps. We introduce OpenVLHarness, a multimodal reasoning harness organized around a capability layer and persistent multimodal memory. The capability layer combines task-level tool interfaces with evidence rendering, providing consistent access to heterogeneous backends and converting their outputs into model-readable observations. Persistent multimodal memory retains the corresponding images, structured data, and web references as addressable artifacts throughout each query. A coding interface executes generated programs over stored data, enabling computations that combine results from multiple tools. Together, these mechanisms support an iterative process of acquiring, inspecting, and composing multimodal evidence. Evaluated on 22 benchmarks with eight open and proprietary backbones, OpenVLHarness improves average scores by 9.7-12.6 points over matched no-tool baselines, including +11.2 with Qwen3-VL-8B, +9.7 with Kimi K3, and +9.9 with GPT-6 Astra. With GPT-6 Luna at medium reasoning effort, OpenVLHarness outperforms the base model, Codex, and Visual Sketchpad at maximum effort by 7.7-8.5 points while incurring at most 37% of their model-token cost.",
+      "doi": "",
+      "arxiv_id": "2610.26860",
+      "url": "https://arxiv.org/abs/2610.26860",
+      "pdf_url": "https://arxiv.org/pdf/2610.26860",
+      "published": "2026-10-19",
+      "updated": "2026-10-19",
+      "venue": "arXiv",
+      "source": "arXiv",
+      "kind": "preprint",
+      "keywords": [
+        "cs.CL",
+        "cs.AI",
+        "cs.CV",
+        "cs.LG",
+        "cs.MM"
+      ],
+      "id": "59fa2b10a07f3ef9f905",
+      "topics": [
+        "agents",
+        "vision"
+      ],
+      "feeds": [
+        "arxiv-agents",
+        "arxiv-vision"
+      ],
+      "year": 2026,
+      "citations": {
+        "gb7714": "Yu Zhou, Cheng-Fu Yang, Rui Sun, et al.. OpenVLHarness: Real World Visual Agentic Tool-Use with Multimodal Memory[EB/OL]. arXiv, 2026. https://arxiv.org/abs/2610.26860.",
+        "apa": "Zhou, Y., Yang, C., Sun, R., Wu, D., Peng, S., Zhang, M., Yang, Z., Zhang, R., Peng, N., Gan, Z., & Chang, K. (2026). OpenVLHarness: Real World Visual Agentic Tool-Use with Multimodal Memory. arXiv. https://arxiv.org/abs/2610.26860",
+        "bibtex": "@misc{arxiv261026860,\n  title = {OpenVLHarness: Real World Visual Agentic Tool-Use with Multimodal Memory},\n  author = {Yu Zhou and Cheng-Fu Yang and Rui Sun and Di Wu and Sibo Peng and Mingyang Zhang and Zhen Yang and Ruiyi Zhang and Nanyun Peng and Zhe Gan and Kai-Wei Chang},\n  year = {2026},\n  eprint = {2610.26860},\n  archivePrefix = {arXiv},\n  url = {https://arxiv.org/abs/2610.26860}\n}"
+      }
+    },
+    {
+      "title": "Manga2Animate: An Agentic Framework for Faithful Manga Animation with Script and Storyboard Planning",
+      "authors": [
+        "Sheng-Wei Zhang",
+        "Hsi-An Chen",
+        "Yan-Ting Liou",
+        "Chih-Hsuan Chen",
+        "Shih-Chen Tseng",
+        "Yu-Lun Liu"
+      ],
+      "abstract": "Adapting existing manga into coherent animation that stays faithful to the source is a valuable yet challenging task. Existing methods either access the manga mainly through text, losing its characters and art style, or feed manga pages directly into video generation models, which misinterpret the manga's structure and produce incorrect storylines. In this paper, we propose Manga2Animate, a multi-agent framework that grounds every stage of generation in the source manga. We decompose the task into two intermediate representations, an animation script and a visual storyboard. Each representation is produced by a creator agent and reviewed against the source panels by a paired reviewer agent. We tailor representation-specific selection and dual-level feedback to progressively refine both before synthesizing the final animation. Extensive experiments and a user study demonstrate that Manga2Animate produces animations more faithful to the source manga and more consistent across shots than state-of-the-art approaches. Project page: https://annchenn.github.io/Manga2Animate/",
+      "doi": "",
+      "arxiv_id": "2610.26851",
+      "url": "https://arxiv.org/abs/2610.26851",
+      "pdf_url": "https://arxiv.org/pdf/2610.26851",
+      "published": "2026-10-19",
+      "updated": "2026-10-19",
+      "venue": "arXiv",
+      "source": "arXiv",
+      "kind": "preprint",
+      "keywords": [
+        "cs.CV"
+      ],
+      "id": "dab50ca92202dfa43cee",
+      "topics": [
+        "vision"
+      ],
+      "feeds": [
+        "arxiv-vision"
+      ],
+      "year": 2026,
+      "citations": {
+        "gb7714": "Sheng-Wei Zhang, Hsi-An Chen, Yan-Ting Liou, et al.. Manga2Animate: An Agentic Framework for Faithful Manga Animation with Script and Storyboard Planning[EB/OL]. arXiv, 2026. https://arxiv.org/abs/2610.26851.",
+        "apa": "Zhang, S., Chen, H., Liou, Y., Chen, C., Tseng, S., & Liu, Y. (2026). Manga2Animate: An Agentic Framework for Faithful Manga Animation with Script and Storyboard Planning. arXiv. https://arxiv.org/abs/2610.26851",
+        "bibtex": "@misc{arxiv261026851,\n  title = {Manga2Animate: An Agentic Framework for Faithful Manga Animation with Script and Storyboard Planning},\n  author = {Sheng-Wei Zhang and Hsi-An Chen and Yan-Ting Liou and Chih-Hsuan Chen and Shih-Chen Tseng and Yu-Lun Liu},\n  year = {2026},\n  eprint = {2610.26851},\n  archivePrefix = {arXiv},\n  url = {https://arxiv.org/abs/2610.26851}\n}"
+      }
+    },
+    {
+      "title": "LatComm: Reusable Context Compression for Latent Communication between Large Language Models",
+      "authors": [
+        "Huawei Lin",
+        "Jinting Liu",
+        "Tan Yu",
+        "Weijie Zhao"
+      ],
+      "abstract": "Systems that combine several large language models (LLMs) often use one context for many questions. When the context is passed between models as text, the receiving model processes all of its tokens again for every question. Avoiding this cost requires a context representation that is compact, reusable across questions, and readable by a different LLM. Existing compression and latent communication methods each provide only some of these properties. We introduce LatComm, a Latent Communication interface that provides all three by separating encoding from reading: the context is encoded once without the question, and the receiver selects what to read for each question. A frozen context encoder LLM compresses the context into a fixed-size packet and sends it to a different frozen receiver LLM, which reads the packet through cross-attention, with gates computed from its prompt. On 12 multiple-choice question-answering datasets, LatComm improves average accuracy over single-vector baselines by up to 10.2 points. On QuALITY, it reduces the receiver's input by 57x and answers the questions of an article 3x faster.",
+      "doi": "",
+      "arxiv_id": "2610.26840",
+      "url": "https://arxiv.org/abs/2610.26840",
+      "pdf_url": "https://arxiv.org/pdf/2610.26840",
+      "published": "2026-10-19",
+      "updated": "2026-10-19",
+      "venue": "arXiv",
+      "source": "arXiv",
+      "kind": "preprint",
+      "keywords": [
+        "cs.CL",
+        "cs.AI"
+      ],
+      "id": "705a998ab154ef95adb5",
+      "topics": [
+        "agents"
+      ],
+      "feeds": [
+        "arxiv-agents"
+      ],
+      "year": 2026,
+      "citations": {
+        "gb7714": "Huawei Lin, Jinting Liu, Tan Yu, et al.. LatComm: Reusable Context Compression for Latent Communication between Large Language Models[EB/OL]. arXiv, 2026. https://arxiv.org/abs/2610.26840.",
+        "apa": "Lin, H., Liu, J., Yu, T., & Zhao, W. (2026). LatComm: Reusable Context Compression for Latent Communication between Large Language Models. arXiv. https://arxiv.org/abs/2610.26840",
+        "bibtex": "@misc{arxiv261026840,\n  title = {LatComm: Reusable Context Compression for Latent Communication between Large Language Models},\n  author = {Huawei Lin and Jinting Liu and Tan Yu and Weijie Zhao},\n  year = {2026},\n  eprint = {2610.26840},\n  archivePrefix = {arXiv},\n  url = {https://arxiv.org/abs/2610.26840}\n}"
+      }
+    },
+    {
+      "title": "Kronecker Delta Rule for Long Context Linear Attention",
+      "authors": [
+        "Anamaria-Roberta Hartl",
+        "Levente Zólyomi",
+        "Michael List",
+        "Günter Klambauer",
+        "Sebastian Böck",
+        "Sepp Hochreiter"
+      ],
+      "abstract": "We propose KronLSTM, a linear attention architecture based on the Kronecker Delta Rule, a novel update rule for associative matrix memories. KronLSTM extends the xLSTM family with a memory-revision mechanism that corrects targeted associations while modifying the memory only along a single direction in matrix space. This minimally invasive memory revision reduces interference with previously stored information compared with delta-rule updates, making it particularly well suited for long-context language modeling. The resulting memory dynamics can be mathematically described as a Markov chain that converges to a steady-state distribution, while the expected norm of the memory matrix remains uniformly bounded throughout the entire input sequence. Hence, KronLSTM ensures stable memory dynamics without requiring additional normalization and stabilization mechanisms for the memory state. Experiments show that KronLSTM is competitive with, and often outperforms, existing linear attention architectures, including models of the (Gated) DeltaNet family, with particularly strong performance on long context benchmarks. These results establish the Kronecker Delta Rule as an effective and analytically tractable foundation for stable associative memory in recurrent linear attention architectures. Our code (https://github.com/NX-AI/KronLSTM) and models (https://huggingface.co/collections/NX-AI/kronlstm) are open-source.",
+      "doi": "",
+      "arxiv_id": "2610.26834",
+      "url": "https://arxiv.org/abs/2610.26834",
+      "pdf_url": "https://arxiv.org/pdf/2610.26834",
+      "published": "2026-10-19",
+      "updated": "2026-10-19",
+      "venue": "arXiv",
+      "source": "arXiv",
+      "kind": "preprint",
+      "keywords": [
+        "cs.LG",
+        "cs.AI"
+      ],
+      "id": "13ec90f02dcb24cfaac1",
+      "topics": [
+        "agents"
+      ],
+      "feeds": [
+        "arxiv-agents"
+      ],
+      "year": 2026,
+      "citations": {
+        "gb7714": "Anamaria-Roberta Hartl, Levente Zólyomi, Michael List, et al.. Kronecker Delta Rule for Long Context Linear Attention[EB/OL]. arXiv, 2026. https://arxiv.org/abs/2610.26834.",
+        "apa": "Hartl, A., Zólyomi, L., List, M., Klambauer, G., Böck, S., & Hochreiter, S. (2026). Kronecker Delta Rule for Long Context Linear Attention. arXiv. https://arxiv.org/abs/2610.26834",
+        "bibtex": "@misc{arxiv261026834,\n  title = {Kronecker Delta Rule for Long Context Linear Attention},\n  author = {Anamaria-Roberta Hartl and Levente Zólyomi and Michael List and Günter Klambauer and Sebastian Böck and Sepp Hochreiter},\n  year = {2026},\n  eprint = {2610.26834},\n  archivePrefix = {arXiv},\n  url = {https://arxiv.org/abs/2610.26834}\n}"
+      }
+    },
+    {
+      "title": "InfiniDream: Open-Ended Photorealistic 3D Worlds Through Procedural Generation",
+      "authors": [
+        "Yi-Chuan Huang",
+        "Hao-Jen Chien",
+        "Zheng-Hui Huang",
+        "Yu-Lun Liu",
+        "Kaipeng Zhang",
+        "Zhixiang Wang"
+      ],
+      "abstract": "Procedural generation plays a key role in synthetic data creation and game development, offering greater controllability, editability, and diversity than static mesh representations. However, VLM-based code generation often produces relatively simple 3D assets, while sophisticated photorealistic procedural systems require extensive manual development. Existing VLM-guided procedural methods remain largely constrained by predefined factories and APIs, limiting their ability to create novel asset types. We introduce InfiniDream, a VLM-driven framework for open-ended procedural 3D world generation. First, we propose Symbolically Constrained Asset Generation, which leverages existing procedural algorithms to create novel, photorealistic assets while preserving editability and seed-based diversity. Second, we develop an end-to-end text-to-world pipeline that combines semantic scene planning with Deterministic Frustum-Guided Grid Placement to construct large-scale 3D worlds with precise object placement, procedural population, and animation. Extensive evaluations on 100 object and 20 scene generation tasks demonstrate improvements across four perceptual metrics. Diversity analysis, ablation studies, and human preference evaluations further validate the effectiveness of our framework. Project page: https://yichuanh.github.io/infinidream-page/",
+      "doi": "",
+      "arxiv_id": "2610.26853",
+      "url": "https://arxiv.org/abs/2610.26853",
+      "pdf_url": "https://arxiv.org/pdf/2610.26853",
+      "published": "2026-10-19",
+      "updated": "2026-10-19",
+      "venue": "arXiv",
+      "source": "arXiv",
+      "kind": "preprint",
+      "keywords": [
+        "cs.CV"
+      ],
+      "id": "ebd75a5abb1ed6114f1f",
+      "topics": [
+        "vision"
+      ],
+      "feeds": [
+        "arxiv-vision"
+      ],
+      "year": 2026,
+      "citations": {
+        "gb7714": "Yi-Chuan Huang, Hao-Jen Chien, Zheng-Hui Huang, et al.. InfiniDream: Open-Ended Photorealistic 3D Worlds Through Procedural Generation[EB/OL]. arXiv, 2026. https://arxiv.org/abs/2610.26853.",
+        "apa": "Huang, Y., Chien, H., Huang, Z., Liu, Y., Zhang, K., & Wang, Z. (2026). InfiniDream: Open-Ended Photorealistic 3D Worlds Through Procedural Generation. arXiv. https://arxiv.org/abs/2610.26853",
+        "bibtex": "@misc{arxiv261026853,\n  title = {InfiniDream: Open-Ended Photorealistic 3D Worlds Through Procedural Generation},\n  author = {Yi-Chuan Huang and Hao-Jen Chien and Zheng-Hui Huang and Yu-Lun Liu and Kaipeng Zhang and Zhixiang Wang},\n  year = {2026},\n  eprint = {2610.26853},\n  archivePrefix = {arXiv},\n  url = {https://arxiv.org/abs/2610.26853}\n}"
+      }
+    },
+    {
+      "title": "HandsOn: A Large-Scale Simulation Benchmark for Generalizable Dexterous Manipulation",
+      "authors": [
+        "Tianwei Luo",
+        "Yiming He",
+        "Hongjin Wu",
+        "Ting Pan",
+        "Debin Ren",
+        "Haorui Guo",
+        "Junlin Yang",
+        "Yuxin Zuo",
+        "Zhehao Kou",
+        "Kaisen Yang",
+        "Zhuoqun Lai",
+        "Yi Ding",
+        "Jiale Yu",
+        "Yuchen Zhang",
+        "Zijie Qiu",
+        "Haozhan Li",
+        "Ning Ding"
+      ],
+      "abstract": "General-purpose manipulation requires reliable behavior across embodiments, objects, and task demands. We introduce HandsOn, a composable simulation platform and benchmark for cross-embodiment dexterous manipulation. It supports five robotic arms, six dexterous hands, and approximately 200 rigid, articulated, and deformable assets in randomized scenes. The benchmark pairs 18,000 curated human demonstrations with 66 human-verified tasks: Core-50 supports demonstration-based learning and execution tests, while Transfer-16 evaluates asset and relation transfer, skill composition, and deformable manipulation without target-task training demonstrations. Qualitative real-robot rollouts illustrate sim-to-real transfer. Across diffusion, vision-language-action, world-action, and prompted VLM-based methods, the best trained multi-task policy achieves 29.1% Core-50 success. Without benchmark finetuning, GPT-6 using move_eef for palm-and-finger control achieves 5.2% on Core-50 and 1.9% on Transfer-16 over 660 trials. Trained-policy stage diagnostics expose failures in contact establishment, action coordination, and maintaining achieved goals, with additional sequencing errors in composed tasks. HandsOn provides a shared basis for investigating manipulation generalization and the limits of reliable physical interaction.",
+      "doi": "",
+      "arxiv_id": "2610.26765",
+      "url": "https://arxiv.org/abs/2610.26765",
+      "pdf_url": "https://arxiv.org/pdf/2610.26765",
+      "published": "2026-10-19",
+      "updated": "2026-10-19",
+      "venue": "arXiv",
+      "source": "arXiv",
+      "kind": "preprint",
+      "keywords": [
+        "cs.RO"
+      ],
+      "id": "4178576b0c4e98565fd4",
+      "topics": [
+        "robotics"
+      ],
+      "feeds": [
+        "arxiv-robotics"
+      ],
+      "year": 2026,
+      "citations": {
+        "gb7714": "Tianwei Luo, Yiming He, Hongjin Wu, et al.. HandsOn: A Large-Scale Simulation Benchmark for Generalizable Dexterous Manipulation[EB/OL]. arXiv, 2026. https://arxiv.org/abs/2610.26765.",
+        "apa": "Luo, T., He, Y., Wu, H., Pan, T., Ren, D., Guo, H., Yang, J., Zuo, Y., Kou, Z., Yang, K., Lai, Z., Ding, Y., Yu, J., Zhang, Y., Qiu, Z., Li, H., & Ding, N. (2026). HandsOn: A Large-Scale Simulation Benchmark for Generalizable Dexterous Manipulation. arXiv. https://arxiv.org/abs/2610.26765",
+        "bibtex": "@misc{arxiv261026765,\n  title = {HandsOn: A Large-Scale Simulation Benchmark for Generalizable Dexterous Manipulation},\n  author = {Tianwei Luo and Yiming He and Hongjin Wu and Ting Pan and Debin Ren and Haorui Guo and Junlin Yang and Yuxin Zuo and Zhehao Kou and Kaisen Yang and Zhuoqun Lai and Yi Ding and Jiale Yu and Yuchen Zhang and Zijie Qiu and Haozhan Li and Ning Ding},\n  year = {2026},\n  eprint = {2610.26765},\n  archivePrefix = {arXiv},\n  url = {https://arxiv.org/abs/2610.26765}\n}"
+      }
+    },
+    {
+      "title": "GenOlympiad: Benchmarking Frontier Image Models at Their Capability Boundaries",
+      "authors": [
+        "Xi Hu",
+        "Martin Bell",
+        "Liang Zheng"
+      ],
+      "abstract": "Text-to-image models have made tremendous progress and can produce high-quality images. However, a question which would be asked in any other discipline is where the frontier models fall short. We introduce GenOlympiad, a benchmark which provides the most challenging text prompts from nine capability axes for stress-testing frontier text-to-image models. The assessed capabilities include generating large quantities, performing deep reasoning, ensuring hard physical consistency, following complex rules and so on. The prompts are designed such that prompt alignment is visually verifiable (e.g., counting) instead of relying on subjectiveness (e.g., style). Based on this, we develop an automated evaluation framework which decomposes the prompt into easy and hard questions, and for most hard questions, draws help lines to ground evidence for accurate grading. We evaluate 20+ strong text-to-image models, including Nano Banana Pro, GPT-Image-2.5, Seedream-5.0 and so on. We report that even the best-performing T2I model (Nano Banana Pro) only achieves a strict score of 23.9 out of 100 and that coding models such as GPT-6 Astra have higher prompt alignment scores (but not as visually pleasing). We also derive insights in model evolution, alignment with Elo scores, and effectiveness of our grounding-based evaluation protocol. Code is available at https://github.com/GenOlympiad/GenOlympiad and the project page is at https://genolympiad.github.io/",
+      "doi": "",
+      "arxiv_id": "2610.26850",
+      "url": "https://arxiv.org/abs/2610.26850",
+      "pdf_url": "https://arxiv.org/pdf/2610.26850",
+      "published": "2026-10-19",
+      "updated": "2026-10-19",
+      "venue": "arXiv",
+      "source": "arXiv",
+      "kind": "preprint",
+      "keywords": [
+        "cs.CV"
+      ],
+      "id": "cf425feeeaf548db4548",
+      "topics": [
+        "vision"
+      ],
+      "feeds": [
+        "arxiv-vision"
+      ],
+      "year": 2026,
+      "citations": {
+        "gb7714": "Xi Hu, Martin Bell, Liang Zheng. GenOlympiad: Benchmarking Frontier Image Models at Their Capability Boundaries[EB/OL]. arXiv, 2026. https://arxiv.org/abs/2610.26850.",
+        "apa": "Hu, X., Bell, M., & Zheng, L. (2026). GenOlympiad: Benchmarking Frontier Image Models at Their Capability Boundaries. arXiv. https://arxiv.org/abs/2610.26850",
+        "bibtex": "@misc{arxiv261026850,\n  title = {GenOlympiad: Benchmarking Frontier Image Models at Their Capability Boundaries},\n  author = {Xi Hu and Martin Bell and Liang Zheng},\n  year = {2026},\n  eprint = {2610.26850},\n  archivePrefix = {arXiv},\n  url = {https://arxiv.org/abs/2610.26850}\n}"
+      }
+    },
+    {
+      "title": "GPT-6 Astra Is a Native Visuo-Tactile Policy for Contact-Rich Manipulation",
+      "authors": [
+        "Chen Yang",
+        "Linzhe Shi",
+        "Hang Zhang",
+        "Mu Xu",
+        "Jiansheng Fan",
+        "Chen Wang"
+      ],
+      "abstract": "Recent advances in multimodal models have enabled GPT-6 Astra to perform robotic manipulation through in-context learning. Yet contact-rich control and tactile perception are often regarded as strengths of specialist policies, leaving open whether Astra can directly understand and use tactile observations. We provide, to our knowledge, the first demonstration that Astra directly interprets vision-based tactile images and uses their contact cues for manipulation. Tactile RGB images enter through its existing visual interface, enabling few-shot closed-loop control on nineteen simulated UniVTAC and OpenViTac tasks with 210 sampled scene seeds per setting. With visuo-tactile input, Astra achieves mean success rates of 93.8% and 81.8%, exceeding the strongest reported specialist baselines in our comparison by 22.9 and 13.1 percentage points, respectively. Vision-only performance also leads these baselines, reaching 76.3% and 80.6%. Trajectory analysis reveals active probing, cautious grasping, contact-guided alignment, and recovery, alongside difficulties with tangential loading and corrective execution. Our findings challenge the exclusivity of specialist policies in contact-rich manipulation and show that fine-grained vision can partially compensate for missing touch. They also identify vision-based tactile sensing as an interface for scaling contact understanding with foundation models and reveal signs of benchmark saturation. These results motivate joint visual-tactile pretraining, harder contact-rich evaluations, and physical-robot validation.",
+      "doi": "",
+      "arxiv_id": "2610.26846",
+      "url": "https://arxiv.org/abs/2610.26846",
+      "pdf_url": "https://arxiv.org/pdf/2610.26846",
+      "published": "2026-10-19",
+      "updated": "2026-10-19",
+      "venue": "arXiv",
+      "source": "arXiv",
+      "kind": "preprint",
+      "keywords": [
+        "cs.RO"
+      ],
+      "id": "3f267a27bc7deda08ac1",
+      "topics": [
+        "robotics"
+      ],
+      "feeds": [
+        "arxiv-robotics"
+      ],
+      "year": 2026,
+      "citations": {
+        "gb7714": "Chen Yang, Linzhe Shi, Hang Zhang, et al.. GPT-6 Astra Is a Native Visuo-Tactile Policy for Contact-Rich Manipulation[EB/OL]. arXiv, 2026. https://arxiv.org/abs/2610.26846.",
+        "apa": "Yang, C., Shi, L., Zhang, H., Xu, M., Fan, J., & Wang, C. (2026). GPT-6 Astra Is a Native Visuo-Tactile Policy for Contact-Rich Manipulation. arXiv. https://arxiv.org/abs/2610.26846",
+        "bibtex": "@misc{arxiv261026846,\n  title = {GPT-6 Astra Is a Native Visuo-Tactile Policy for Contact-Rich Manipulation},\n  author = {Chen Yang and Linzhe Shi and Hang Zhang and Mu Xu and Jiansheng Fan and Chen Wang},\n  year = {2026},\n  eprint = {2610.26846},\n  archivePrefix = {arXiv},\n  url = {https://arxiv.org/abs/2610.26846}\n}"
+      }
+    },
+    {
+      "title": "DexOAK: Object-Aware Kinematic Retargeting",
+      "authors": [
+        "Federica Spinola",
+        "Robert Katzschmann",
+        "Cordelia Schmid"
+      ],
+      "abstract": "We introduce DexOAK, a learning-based object-aware kinematic retargeting framework for generating contact-consistent robot hand references from human motion-capture data. DexOAK first minimizes an interaction-graph Laplacian objective over a joint hand-object graph, so the robot reproduces the demonstrated object-relative interaction geometry rather than the human hand pose alone. These per-frame solutions form seed retargeted references, from which a feed-forward network conditioned on human keypoints and object point clouds learns the retargeting function. Object-aware finetuning then refines the network under contact, non-penetration, and self-collision losses that position the fingers on the demonstrated contacts and reduce artifacts destabilizing physics-based refinement. Once trained, the network transfers to unseen data by inference alone, without per-frame optimization. DexOAK references improve dynamic retargeting over the state-of-the-art across bimanual tasks with rigid and articulated objects. On the Inspire hand, success rises from 39.5% to 48.4% on OakInk-v2, and ADD-AUC rises from 62.7% to 77.9% on ARCTIC. Ablations trace the gains to object-aware kinematic retargeting and the amortized network refined with contact losses. Trained on OakInk-v2, it transfers to ARCTIC zero-shot and nears in-domain performance after fine-tuning. On hardware, 46/56 open-loop replays succeed across five tasks, enabling dexterous robot data generation from human data. Visualizations and interactive results are at: https://fspinola.github.io/dexoak/.",
+      "doi": "",
+      "arxiv_id": "2610.26762",
+      "url": "https://arxiv.org/abs/2610.26762",
+      "pdf_url": "https://arxiv.org/pdf/2610.26762",
+      "published": "2026-10-19",
+      "updated": "2026-10-19",
+      "venue": "arXiv",
+      "source": "arXiv",
+      "kind": "preprint",
+      "keywords": [
+        "cs.RO"
+      ],
+      "id": "dab5137d2f97ef24a4b5",
+      "topics": [
+        "robotics"
+      ],
+      "feeds": [
+        "arxiv-robotics"
+      ],
+      "year": 2026,
+      "citations": {
+        "gb7714": "Federica Spinola, Robert Katzschmann, Cordelia Schmid. DexOAK: Object-Aware Kinematic Retargeting[EB/OL]. arXiv, 2026. https://arxiv.org/abs/2610.26762.",
+        "apa": "Spinola, F., Katzschmann, R., & Schmid, C. (2026). DexOAK: Object-Aware Kinematic Retargeting. arXiv. https://arxiv.org/abs/2610.26762",
+        "bibtex": "@misc{arxiv261026762,\n  title = {DexOAK: Object-Aware Kinematic Retargeting},\n  author = {Federica Spinola and Robert Katzschmann and Cordelia Schmid},\n  year = {2026},\n  eprint = {2610.26762},\n  archivePrefix = {arXiv},\n  url = {https://arxiv.org/abs/2610.26762}\n}"
+      }
+    },
+    {
+      "title": "CoopUQ: Robust Multi-Robot Social Navigation via Uncertainty-Aware Cooperative Forecasting",
+      "authors": [
+        "Zehao Wang",
+        "Jianpeng Yao",
+        "Yuping Wang",
+        "Yiping Li",
+        "Jiaqi Li",
+        "Zhixu Li",
+        "Kanghoon Lee",
+        "Jinfeng Wang",
+        "Cong Liu",
+        "Zhaowei Tan",
+        "Jinkyoo Park",
+        "Jiachen Li"
+      ],
+      "abstract": "Reinforcement learning enables mobile robots to make fast and scalable navigation decisions in constrained human-shared environments. However, directly extending single-robot approaches to multi-robot settings often fails to ensure safety and efficiency, especially under occlusions and out-of-distribution (OOD) scenarios, where individual robots may overlook potential risks or make inaccurate predictions. Leveraging cooperation effectively for both prediction and navigation remains a major challenge. We propose CoopUQ, a multi-robot social navigation framework that bridges uncertainty-aware cooperative occupancy forecasting and robust decision making. CoopUQ predicts future occupancy grid maps through cross-robot spatiotemporal feature fusion and further leverages forecasts and their uncertainty to guide policy via constrained multi-agent reinforcement learning, where the cost penalizes navigation through regions predicted to be occupied or highly uncertain. This design enables the policy to adapt its risk sensitivity under distribution shifts. Experimental results across multiple Unity3D-based simulation environments with both in-distribution and OOD settings, including diverse layouts, pedestrian densities, and rushing behavior, demonstrate improved prediction performance and safety over representative baselines. Real-robot experiments further demonstrate its robustness across various scenes. Our code and videos are available at https://coopuq.github.io/.",
+      "doi": "",
+      "arxiv_id": "2610.26852",
+      "url": "https://arxiv.org/abs/2610.26852",
+      "pdf_url": "https://arxiv.org/pdf/2610.26852",
+      "published": "2026-10-19",
+      "updated": "2026-10-19",
+      "venue": "arXiv",
+      "source": "arXiv",
+      "kind": "preprint",
+      "keywords": [
+        "cs.RO",
+        "cs.AI",
+        "cs.LG"
+      ],
+      "id": "8750389b1363881b293f",
+      "topics": [
+        "agents",
+        "robotics"
+      ],
+      "feeds": [
+        "arxiv-agents",
+        "arxiv-robotics"
+      ],
+      "year": 2026,
+      "citations": {
+        "gb7714": "Zehao Wang, Jianpeng Yao, Yuping Wang, et al.. CoopUQ: Robust Multi-Robot Social Navigation via Uncertainty-Aware Cooperative Forecasting[EB/OL]. arXiv, 2026. https://arxiv.org/abs/2610.26852.",
+        "apa": "Wang, Z., Yao, J., Wang, Y., Li, Y., Li, J., Li, Z., Lee, K., Wang, J., Liu, C., Tan, Z., Park, J., & Li, J. (2026). CoopUQ: Robust Multi-Robot Social Navigation via Uncertainty-Aware Cooperative Forecasting. arXiv. https://arxiv.org/abs/2610.26852",
+        "bibtex": "@misc{arxiv261026852,\n  title = {CoopUQ: Robust Multi-Robot Social Navigation via Uncertainty-Aware Cooperative Forecasting},\n  author = {Zehao Wang and Jianpeng Yao and Yuping Wang and Yiping Li and Jiaqi Li and Zhixu Li and Kanghoon Lee and Jinfeng Wang and Cong Liu and Zhaowei Tan and Jinkyoo Park and Jiachen Li},\n  year = {2026},\n  eprint = {2610.26852},\n  archivePrefix = {arXiv},\n  url = {https://arxiv.org/abs/2610.26852}\n}"
+      }
+    },
+    {
+      "title": "Competing Learning in Hybrid Architectures",
+      "authors": [
+        "Xingyu Shen",
+        "Yingfa Chen",
+        "Ziqing Qiao",
+        "Chaojun Xiao",
+        "Xu Han",
+        "Zhiyuan Liu"
+      ],
+      "abstract": "Many modern language models have adopted hybrid architectures that incorporate both linear-time recurrence and softmax attention. Modern recurrence layers provide a highly expressive mixing mechanism while ensuring high throughput by compressing contextual information into a fixed-size state, but underperform softmax attention in contextual information retrieval. In this paper, we reveal a Competing Learning phenomenon where different kinds of mixers compete to learn the same function, and when any layer learns a function, it suppresses the corresponding learning signal for other layers. Layer attribution analysis reveals that under typical data distributions, modern recurrence learns retrieval functions faster than softmax attention, causing attention to fail to learn retrieval in most cases. Stopping weight updates in recurrence in the middle of training helps attention learn retrieval. Based on these results, we propose a staged training procedure for pre-training hybrid architectures on natural language. Empirical results on models up to 1B parameters show that our method results in substantial improvement in language modeling loss, common-sense reasoning, as well as a wide range of retrieval-related tasks across different context lengths.",
+      "doi": "",
+      "arxiv_id": "2610.26830",
+      "url": "https://arxiv.org/abs/2610.26830",
+      "pdf_url": "https://arxiv.org/pdf/2610.26830",
+      "published": "2026-10-19",
+      "updated": "2026-10-19",
+      "venue": "arXiv",
+      "source": "arXiv",
+      "kind": "preprint",
+      "keywords": [
+        "cs.CL"
+      ],
+      "id": "23ef7b73b011a292dc9c",
+      "topics": [
+        "agents"
+      ],
+      "feeds": [
+        "arxiv-agents"
+      ],
+      "year": 2026,
+      "citations": {
+        "gb7714": "Xingyu Shen, Yingfa Chen, Ziqing Qiao, et al.. Competing Learning in Hybrid Architectures[EB/OL]. arXiv, 2026. https://arxiv.org/abs/2610.26830.",
+        "apa": "Shen, X., Chen, Y., Qiao, Z., Xiao, C., Han, X., & Liu, Z. (2026). Competing Learning in Hybrid Architectures. arXiv. https://arxiv.org/abs/2610.26830",
+        "bibtex": "@misc{arxiv261026830,\n  title = {Competing Learning in Hybrid Architectures},\n  author = {Xingyu Shen and Yingfa Chen and Ziqing Qiao and Chaojun Xiao and Xu Han and Zhiyuan Liu},\n  year = {2026},\n  eprint = {2610.26830},\n  archivePrefix = {arXiv},\n  url = {https://arxiv.org/abs/2610.26830}\n}"
+      }
+    },
+    {
+      "title": "Can It Actually Work? Synthesizing Functional CAD Mechanisms",
+      "authors": [
+        "Wenqian Zhang",
+        "Yangyi Huang",
+        "Zigeng Xu",
+        "Weiyang Liu",
+        "Zhen Liu"
+      ],
+      "abstract": "While LLM agents can generate visually plausible CAD assemblies, these designs often fail to fulfill their intended physical functions. We study functional CAD design, a setting where agents interpret underspecified requests to construct and iteratively revise mechanisms that satisfy functional requirements in physical simulation. Verifying these requirements is nontrivial: different candidate mechanisms may realize the same function through entirely different components, controls, and operating sequences. To bridge this gap, we propose FunCAD-Harness, a framework that translates abstract requirements into candidate-specific physical tests and uses simulation feedback to guide design revisions. To systematically evaluate this capability, we introduce FunCADBench, a benchmark spanning 46 mechanism families with interdependent and multi-step operations. Experiments across frontier LLM agents show that FunCAD-Harness exposes subtle mechanical failures invisible to visual inspection, substantially improving functional success rates over standard simulation-augmented baselines. Ultimately, our work marks a step toward CAD agents capable of translating human intent into working mechanisms.",
+      "doi": "",
+      "arxiv_id": "2610.26861",
+      "url": "https://arxiv.org/abs/2610.26861",
+      "pdf_url": "https://arxiv.org/pdf/2610.26861",
+      "published": "2026-10-19",
+      "updated": "2026-10-19",
+      "venue": "arXiv",
+      "source": "arXiv",
+      "kind": "preprint",
+      "keywords": [
+        "cs.CV",
+        "cs.CL",
+        "cs.GR"
+      ],
+      "id": "7abede7d822031d70a84",
+      "topics": [
+        "agents",
+        "vision"
+      ],
+      "feeds": [
+        "arxiv-agents",
+        "arxiv-vision"
+      ],
+      "year": 2026,
+      "citations": {
+        "gb7714": "Wenqian Zhang, Yangyi Huang, Zigeng Xu, et al.. Can It Actually Work? Synthesizing Functional CAD Mechanisms[EB/OL]. arXiv, 2026. https://arxiv.org/abs/2610.26861.",
+        "apa": "Zhang, W., Huang, Y., Xu, Z., Liu, W., & Liu, Z. (2026). Can It Actually Work? Synthesizing Functional CAD Mechanisms. arXiv. https://arxiv.org/abs/2610.26861",
+        "bibtex": "@misc{arxiv261026861,\n  title = {Can It Actually Work? Synthesizing Functional CAD Mechanisms},\n  author = {Wenqian Zhang and Yangyi Huang and Zigeng Xu and Weiyang Liu and Zhen Liu},\n  year = {2026},\n  eprint = {2610.26861},\n  archivePrefix = {arXiv},\n  url = {https://arxiv.org/abs/2610.26861}\n}"
+      }
+    },
+    {
+      "title": "Bio-inspired Thrust-Assisted Trotting on a legged-Aerial Robot via Real-Time QP-MPC",
+      "authors": [
+        "Shreyansh Pitroda",
+        "Eric Sihite",
+        "Alireza Ramezani",
+        "Morteza Gharib"
+      ],
+      "abstract": "This paper presents the hardware implementation of a quadratic program-based controller on Harpy: thruster-assisted bipedal robot to perform thruster-assisted trotting. This is inspired by wing-assisted locomotion observed in birds such as the chukar partridge, which employ thrust vectoring to manipulate the ground reaction force. The proposed controller formulates the thruster-assisted spring-loaded inverted pendulum dynamics as a condensed QP-based model predictive control problem, enabling simultaneous regulation of ground contact force and active thrust vectoring at 500 Hz. A decoupled control architecture is used, where the robot's sagittal dynamics are controlled using QP-MPC while the frontal dynamics is regulated using a cascade orientation stabilization controller. Two experiments were conducted with different forward reference velocities of 0 m/s and 0.1 m/s. While the instantaneous velocity oscillates, the mean velocities can track their respective reference. Additionally, joint tracking error remains within 1 deg while tracking the desired leg length given by the leg trajectory controller and desired swing trajectory given by Raibert's heuristic. The QP-MPC problem is consistently solved with 0.18ms, which is well within the 2ms computation budget while satisfying the GRF friction cone constraint.",
+      "doi": "",
+      "arxiv_id": "2610.26810",
+      "url": "https://arxiv.org/abs/2610.26810",
+      "pdf_url": "https://arxiv.org/pdf/2610.26810",
+      "published": "2026-10-19",
+      "updated": "2026-10-19",
+      "venue": "arXiv",
+      "source": "arXiv",
+      "kind": "preprint",
+      "keywords": [
+        "cs.RO"
+      ],
+      "id": "b49fae118fe586942ff4",
+      "topics": [
+        "robotics"
+      ],
+      "feeds": [
+        "arxiv-robotics"
+      ],
+      "year": 2026,
+      "citations": {
+        "gb7714": "Shreyansh Pitroda, Eric Sihite, Alireza Ramezani, et al.. Bio-inspired Thrust-Assisted Trotting on a legged-Aerial Robot via Real-Time QP-MPC[EB/OL]. arXiv, 2026. https://arxiv.org/abs/2610.26810.",
+        "apa": "Pitroda, S., Sihite, E., Ramezani, A., & Gharib, M. (2026). Bio-inspired Thrust-Assisted Trotting on a legged-Aerial Robot via Real-Time QP-MPC. arXiv. https://arxiv.org/abs/2610.26810",
+        "bibtex": "@misc{arxiv261026810,\n  title = {Bio-inspired Thrust-Assisted Trotting on a legged-Aerial Robot via Real-Time QP-MPC},\n  author = {Shreyansh Pitroda and Eric Sihite and Alireza Ramezani and Morteza Gharib},\n  year = {2026},\n  eprint = {2610.26810},\n  archivePrefix = {arXiv},\n  url = {https://arxiv.org/abs/2610.26810}\n}"
+      }
+    },
+    {
+      "title": "AnyGoal: On World Model Generalization Beyond Expert Rollouts",
+      "authors": [
+        "Heejeong Nam",
+        "Divyat Mahajan",
+        "Quentin Le Lidec",
+        "Randall Balestriero",
+        "David Klindt"
+      ],
+      "abstract": "The goal of a world model is to capture the dynamics of an environment. This has the great appeal that it allows agents to plan and simulate a course of actions with the help of a world model. For these uses to be reliable, however, the learned dynamics must behave well beyond the specific state-action combinations observed in expert rollouts. Despite this, the relationship between data coverage, dynamics generalization, and downstream planning performance remains underexplored. We study this relationship through the lens of compositional generalization: can a world model recombine familiar state and action factors into valid dynamics? To answer this, we introduce AnyGoal, a benchmark of goal-shifted task variants built from widely used world-model environments, together with an open-source library. Each task is designed to be within reach of a world model that has learned the underlying dynamics: individual state factors and actions remain within their training support, but their combinations are underrepresented in expert trajectories. Across multiple environments and world model families, we find that current models consistently exhibit failures under these recombinations. By examining dynamics and representation failures across model families, interaction regimes, and evaluation metrics, we study where current world models generalize and where challenges remain for goal-shifted prediction and planning. Together, this framework, benchmark, and analysis provide a basis for evaluating progress toward world models that generalize to new planning tasks.",
+      "doi": "",
+      "arxiv_id": "2610.26844",
+      "url": "https://arxiv.org/abs/2610.26844",
+      "pdf_url": "https://arxiv.org/pdf/2610.26844",
+      "published": "2026-10-19",
+      "updated": "2026-10-19",
+      "venue": "arXiv",
+      "source": "arXiv",
+      "kind": "preprint",
+      "keywords": [
+        "cs.AI"
+      ],
+      "id": "4e83d1bddac13d103c0f",
+      "topics": [
+        "agents"
+      ],
+      "feeds": [
+        "arxiv-agents"
+      ],
+      "year": 2026,
+      "citations": {
+        "gb7714": "Heejeong Nam, Divyat Mahajan, Quentin Le Lidec, et al.. AnyGoal: On World Model Generalization Beyond Expert Rollouts[EB/OL]. arXiv, 2026. https://arxiv.org/abs/2610.26844.",
+        "apa": "Nam, H., Mahajan, D., Lidec, Q. L., Balestriero, R., & Klindt, D. (2026). AnyGoal: On World Model Generalization Beyond Expert Rollouts. arXiv. https://arxiv.org/abs/2610.26844",
+        "bibtex": "@misc{arxiv261026844,\n  title = {AnyGoal: On World Model Generalization Beyond Expert Rollouts},\n  author = {Heejeong Nam and Divyat Mahajan and Quentin Le Lidec and Randall Balestriero and David Klindt},\n  year = {2026},\n  eprint = {2610.26844},\n  archivePrefix = {arXiv},\n  url = {https://arxiv.org/abs/2610.26844}\n}"
+      }
+    },
+    {
+      "title": "Feeling included by AI: belonging and authenticity in human–AI interaction",
+      "authors": [
+        "Rasha Alahmad",
+        "Nikhat Afshan",
+        "Chigozie Francis Obasi",
+        "Isma Javed"
+      ],
+      "abstract": "Purpose This study aims to examine how users’ experiences of artificial intelligence (AI) inclusion, reflected in feelings of belonging and authenticity during human–AI interaction, are associated with user satisfaction and interactional justice. Design/methodology/approach The study assesses the proposed relationships between the constructs using two separately analyzed data sets: 219 Amazon Alexa users and 577 ChatGPT users. Regression analysis was used to assess the proposed relationships within each data set. Additionally, the study adopts Latent Profile Analysis (LPA) to identify distinct AI user profiles. Findings The findings indicate that AI inclusion dimensions (i.e. belonging and authenticity) are positively associated with user satisfaction and interactional justice. The LPA results reveal different user profiles based on inclusion, satisfaction and justice scores. Research limitations/implications While this study assesses AI inclusion in the contexts of Amazon Alexa and ChatGPT, future research may explore AI inclusion in other AI systems and use longitudinal or experimental methodologies. Previous research has largely approached AI inclusion through access, participation or design-oriented perspectives, whereas this study examines AI inclusion from a micro-level experiential perspective. Practical implications The findings of this study have several implications for AI developers, organizations, policymakers, society and education by showing that AI systems should be designed not only for functional performance but also to foster users’ feelings of belonging and authenticity. Hence, users’ emotional experiences should be treated as an important dimension of AI evaluation and governance. Originality/value This study advances research on AI and inclusion by conceptualizing AI inclusion as users’ felt experience during human–AI interactions rather than access to, participation in, or governance of AI systems. It defines AI inclusion as a micro-level experiential construct and highlights its importance for understanding user satisfaction and interactional justice.",
+      "doi": "10.1108/jsit-09-2025-0425",
+      "url": "https://doi.org/10.1108/jsit-09-2025-0425",
+      "pdf_url": "",
+      "published": "2026-10-09",
+      "updated": "",
+      "venue": "Journal of Systems and Information Technology",
+      "source": "Crossref",
+      "kind": "journal",
+      "keywords": [],
+      "volume": null,
+      "issue": null,
+      "pages": "1-25",
+      "id": "7e3f3fbcbb78984c79ec",
+      "topics": [
+        "human"
+      ],
+      "feeds": [
+        "crossref-human"
+      ],
+      "year": 2026,
+      "citations": {
+        "gb7714": "Rasha Alahmad, Nikhat Afshan, Chigozie Francis Obasi, 等. Feeling included by AI: belonging and authenticity in human–AI interaction[J/OL]. Journal of Systems and Information Technology, 2026: 1-25. DOI: 10.1108/jsit-09-2025-0425.",
+        "apa": "Alahmad, R., Afshan, N., Obasi, C. F., & Javed, I. (2026). Feeling included by AI: belonging and authenticity in human–AI interaction. Journal of Systems and Information Technology, 1-25. https://doi.org/10.1108/jsit-09-2025-0425",
+        "bibtex": "@article{papercash7e3f3fbcbb78984c79ec,\n  title = {Feeling included by AI: belonging and authenticity in human–AI interaction},\n  author = {Rasha Alahmad and Nikhat Afshan and Chigozie Francis Obasi and Isma Javed},\n  year = {2026},\n  journal = {Journal of Systems and Information Technology},\n  doi = {10.1108/jsit-09-2025-0425},\n  url = {https://doi.org/10.1108/jsit-09-2025-0425},\n}"
+      }
+    },
+    {
+      "title": "Human-AI interaction: themes, applications, and challenges",
+      "authors": [
+        "Li Zhou",
+        "Yu Li",
+        "Zining Zhang",
+        "Xiaoyun Chen"
+      ],
+      "abstract": "",
+      "doi": "10.1016/j.dsm.2026.100214",
+      "url": "https://doi.org/10.1016/j.dsm.2026.100214",
+      "pdf_url": "",
+      "published": "2026-10",
+      "updated": "",
+      "venue": "Data Science and Management",
+      "source": "Crossref",
+      "kind": "journal",
+      "keywords": [],
+      "volume": null,
+      "issue": null,
+      "pages": "100214",
+      "id": "822ca9aeee5fc516d724",
+      "topics": [
+        "human"
+      ],
+      "feeds": [
+        "crossref-human"
+      ],
+      "year": 2026,
+      "citations": {
+        "gb7714": "Li Zhou, Yu Li, Zining Zhang, 等. Human-AI interaction: themes, applications, and challenges[J/OL]. Data Science and Management, 2026: 100214. DOI: 10.1016/j.dsm.2026.100214.",
+        "apa": "Zhou, L., Li, Y., Zhang, Z., & Chen, X. (2026). Human-AI interaction: themes, applications, and challenges. Data Science and Management, 100214. https://doi.org/10.1016/j.dsm.2026.100214",
+        "bibtex": "@article{papercash822ca9aeee5fc516d724,\n  title = {Human-AI interaction: themes, applications, and challenges},\n  author = {Li Zhou and Yu Li and Zining Zhang and Xiaoyun Chen},\n  year = {2026},\n  journal = {Data Science and Management},\n  doi = {10.1016/j.dsm.2026.100214},\n  url = {https://doi.org/10.1016/j.dsm.2026.100214},\n}"
+      }
+    },
+    {
+      "title": "Dancing with AI: how human-AI interaction affects employee task performance",
+      "authors": [
+        "Yepeng Wu",
+        "Yuanyuan Jiao",
+        "Ping Li",
+        "Yujie Liang"
+      ],
+      "abstract": "",
+      "doi": "10.1057/s41599-026-09043-5",
+      "url": "https://doi.org/10.1057/s41599-026-09043-5",
+      "pdf_url": "",
+      "published": "2026-09-09",
+      "updated": "",
+      "venue": "Humanities and Social Sciences Communications",
+      "source": "Crossref",
+      "kind": "journal",
+      "keywords": [],
+      "volume": "13",
+      "issue": "1",
+      "pages": null,
+      "id": "b4e8f6f3bbb3f08376d1",
+      "topics": [
+        "human"
+      ],
+      "feeds": [
+        "crossref-human"
+      ],
+      "year": 2026,
+      "citations": {
+        "gb7714": "Yepeng Wu, Yuanyuan Jiao, Ping Li, 等. Dancing with AI: how human-AI interaction affects employee task performance[J/OL]. Humanities and Social Sciences Communications, 2026, 13(1). DOI: 10.1057/s41599-026-09043-5.",
+        "apa": "Wu, Y., Jiao, Y., Li, P., & Liang, Y. (2026). Dancing with AI: how human-AI interaction affects employee task performance. Humanities and Social Sciences Communications, 13(1). https://doi.org/10.1057/s41599-026-09043-5",
+        "bibtex": "@article{papercashb4e8f6f3bbb3f08376d1,\n  title = {Dancing with AI: how human-AI interaction affects employee task performance},\n  author = {Yepeng Wu and Yuanyuan Jiao and Ping Li and Yujie Liang},\n  year = {2026},\n  journal = {Humanities and Social Sciences Communications},\n  doi = {10.1057/s41599-026-09043-5},\n  url = {https://doi.org/10.1057/s41599-026-09043-5},\n}"
+      }
+    },
+    {
+      "title": "SympTrack: machine learning meets medical symptoms",
+      "authors": [
+        "Ratnam Dodda",
+        "Rabel Guharoy",
+        "Manikanta Paka",
+        "Alavala VishnuKanth Reddy",
+        "Rahul Kichad",
+        "G. Raghuram Reddy"
+      ],
+      "abstract": "",
+      "doi": "10.1049/icp.2026.2543",
+      "url": "https://doi.org/10.1049/icp.2026.2543",
+      "pdf_url": "",
+      "published": "2026-08-01",
+      "updated": "",
+      "venue": "IET Conference Proceedings",
+      "source": "Crossref",
+      "kind": "journal",
+      "keywords": [],
+      "volume": "2025",
+      "issue": "63",
+      "pages": "669-673",
+      "id": "4887f431e6395fdcd183",
+      "topics": [
+        "health"
+      ],
+      "feeds": [
+        "crossref-health"
+      ],
+      "year": 2026,
+      "citations": {
+        "gb7714": "Ratnam Dodda, Rabel Guharoy, Manikanta Paka, 等. SympTrack: machine learning meets medical symptoms[C]. IET Conference Proceedings, 2026, 2025(63): 669-673. DOI: 10.1049/icp.2026.2543.",
+        "apa": "Dodda, R., Guharoy, R., Paka, M., Reddy, A. V., Kichad, R., & Reddy, G. R. (2026). SympTrack: machine learning meets medical symptoms. IET Conference Proceedings, 2025(63), 669-673. https://doi.org/10.1049/icp.2026.2543",
+        "bibtex": "@article{papercash4887f431e6395fdcd183,\n  title = {SympTrack: machine learning meets medical symptoms},\n  author = {Ratnam Dodda and Rabel Guharoy and Manikanta Paka and Alavala VishnuKanth Reddy and Rahul Kichad and G. Raghuram Reddy},\n  year = {2026},\n  journal = {IET Conference Proceedings},\n  doi = {10.1049/icp.2026.2543},\n  url = {https://doi.org/10.1049/icp.2026.2543},\n}"
+      }
+    },
+    {
+      "title": "Deep Learning for Medical Imaging Analysis",
+      "authors": [
+        "Gayatri Gupta",
+        "Aafila Shrivastava"
+      ],
+      "abstract": "This paper presents a comprehensive analysis of deep learning applications in medical imaging analysis. We examine the evolution of medical image processing from traditional computer vision approaches to sophisticated deep learning solutions, highlighting the critical role of artificial intelligence in modern healthcare diagnostics. Our research encompasses multiple dimensions of medical imaging analysis, including disease detection, segmentation, classification, and automated diagnosis across various imaging modalities. Through extensive evaluation across diverse medical imaging datasets, we demonstrate significant improvements in diagnostic accuracy and efficiency. Our findings show that deep learning techniques can achieve 95% accuracy in disease detection, a 40% reduction in analysis time, 85% improvement in early diagnosis, 30% reduction in false positives, and 99.9% reproducibility in results. Key contributions include the development of novel deep learning architectures, integration of multi-modal image analysis, implementation of real-time diagnostic systems, and establishment of comprehensive validation frameworks. Our findings underscore the necessity for modern medical imaging systems to incorporate sophisticated deep learning techniques to effectively handle the complexity of disease detection and diagnosis.",
+      "doi": "10.66069/ojspub.27450770",
+      "url": "https://doi.org/10.66069/ojspub.27450770",
+      "pdf_url": "",
+      "published": "2026-07-30",
+      "updated": "",
+      "venue": "Journal of Artificial Intelligence and Information",
+      "source": "Crossref",
+      "kind": "journal",
+      "keywords": [],
+      "volume": "8",
+      "issue": "7",
+      "pages": "425-427",
+      "id": "9b056a94089c2379659d",
+      "topics": [
+        "health"
+      ],
+      "feeds": [
+        "crossref-health"
+      ],
+      "year": 2026,
+      "citations": {
+        "gb7714": "Gayatri Gupta, Aafila Shrivastava. Deep Learning for Medical Imaging Analysis[J/OL]. Journal of Artificial Intelligence and Information, 2026, 8(7): 425-427. DOI: 10.66069/ojspub.27450770.",
+        "apa": "Gupta, G. & Shrivastava, A. (2026). Deep Learning for Medical Imaging Analysis. Journal of Artificial Intelligence and Information, 8(7), 425-427. https://doi.org/10.66069/ojspub.27450770",
+        "bibtex": "@article{papercash9b056a94089c2379659d,\n  title = {Deep Learning for Medical Imaging Analysis},\n  author = {Gayatri Gupta and Aafila Shrivastava},\n  year = {2026},\n  journal = {Journal of Artificial Intelligence and Information},\n  doi = {10.66069/ojspub.27450770},\n  url = {https://doi.org/10.66069/ojspub.27450770},\n}"
+      }
+    },
+    {
+      "title": "Quantum Reasoner Agents for Adaptive Medical Imaging with Hybrid Agentic Quantum Machine Learning Framework",
+      "authors": [
+        "Muthukumarapandian Chandrasekaran"
+      ],
+      "abstract": "Quantum computing, agentic artificial intelligence (AI), and machine learning (ML) are converging to reshape adaptive medical imaging. This paper presents a hybrid Agentic Quantum Machine Learning (AQML) framework featuring a Quantum Reasoner Agent (QRA), a specialized sub-agent that performs high-dimensional optimization, kernel reasoning, and uncertainty modelling using variational quantum circuits within an LLM-orchestrated agentic pipeline. To address the documented limitations of outdated baselines and insufficient benchmarking in prior quantum medical imaging work, the AQML framework is evaluated against four modern architectures on an identical 500-slice BraTS 2023 subset. AQML achieves Dice = 0.910 and AUC = 0.970, outperforming nnU-Net (Dice 0.890), SwinUNet (0.876), TransUNet (0.872), and UNet (0.860). Entropy-aware regularization reduced mean quantum entropy from 0.48 to 0.37, and uncertainty calibration improved by 12% over the classical UNet baseline. IBM Quantum hardware characterization (ibmq_toronto: mean T1 = 91.5 μs, mean CNOT error = 1.08%) provides a concrete noise baseline for near-term feasibility planning. The Entanglement-Aware Regularization (EAR) term and the LLM-governed agentic feedback loop are mathematically specified in full, with Algorithm 1 detailing the complete Adam-SPSA training protocol and three structured refinement actions. The explainability layer and multi-modal fusion across CT and PET modalities are architectural design features pending formal clinical validation, as explicitly acknowledged in the limitations. This framework lays the foundation for scalable, federated, and ethically grounded quantum-intelligent radiology systems.",
+      "doi": "10.64820/aepjcser.31.48.55.62026",
+      "url": "https://doi.org/10.64820/aepjcser.31.48.55.62026",
+      "pdf_url": "",
+      "published": "2026-06-30",
+      "updated": "",
+      "venue": "Journal of Computer Science and Engineering Research",
+      "source": "Crossref",
+      "kind": "journal",
+      "keywords": [],
+      "volume": "3",
+      "issue": "1",
+      "pages": "48-55",
+      "id": "da76856267d4ef9ccbe0",
+      "topics": [
+        "health"
+      ],
+      "feeds": [
+        "crossref-health"
+      ],
+      "year": 2026,
+      "citations": {
+        "gb7714": "Muthukumarapandian Chandrasekaran. Quantum Reasoner Agents for Adaptive Medical Imaging with Hybrid Agentic Quantum Machine Learning Framework[J/OL]. Journal of Computer Science and Engineering Research, 2026, 3(1): 48-55. DOI: 10.64820/aepjcser.31.48.55.62026.",
+        "apa": "Chandrasekaran, M. (2026). Quantum Reasoner Agents for Adaptive Medical Imaging with Hybrid Agentic Quantum Machine Learning Framework. Journal of Computer Science and Engineering Research, 3(1), 48-55. https://doi.org/10.64820/aepjcser.31.48.55.62026",
+        "bibtex": "@article{papercashda76856267d4ef9ccbe0,\n  title = {Quantum Reasoner Agents for Adaptive Medical Imaging with Hybrid Agentic Quantum Machine Learning Framework},\n  author = {Muthukumarapandian Chandrasekaran},\n  year = {2026},\n  journal = {Journal of Computer Science and Engineering Research},\n  doi = {10.64820/aepjcser.31.48.55.62026},\n  url = {https://doi.org/10.64820/aepjcser.31.48.55.62026},\n}"
+      }
+    },
+    {
+      "title": "From Interaction to Involution: Human-AI Interaction and Employee Work Involution",
+      "authors": [
+        "Songsong Cheng",
+        "Qunpeng Fan"
+      ],
+      "abstract": "",
+      "doi": "10.1080/10447318.2026.2691241",
+      "url": "https://doi.org/10.1080/10447318.2026.2691241",
+      "pdf_url": "",
+      "published": "2026-06-29",
+      "updated": "",
+      "venue": "International Journal of Human–Computer Interaction",
+      "source": "Crossref",
+      "kind": "journal",
+      "keywords": [],
+      "volume": null,
+      "issue": null,
+      "pages": "1-18",
+      "id": "5f6842ab93bf2b1cec88",
+      "topics": [
+        "human"
+      ],
+      "feeds": [
+        "crossref-human"
+      ],
+      "year": 2026,
+      "citations": {
+        "gb7714": "Songsong Cheng, Qunpeng Fan. From Interaction to Involution: Human-AI Interaction and Employee Work Involution[J/OL]. International Journal of Human–Computer Interaction, 2026: 1-18. DOI: 10.1080/10447318.2026.2691241.",
+        "apa": "Cheng, S. & Fan, Q. (2026). From Interaction to Involution: Human-AI Interaction and Employee Work Involution. International Journal of Human–Computer Interaction, 1-18. https://doi.org/10.1080/10447318.2026.2691241",
+        "bibtex": "@article{papercash5f6842ab93bf2b1cec88,\n  title = {From Interaction to Involution: Human-AI Interaction and Employee Work Involution},\n  author = {Songsong Cheng and Qunpeng Fan},\n  year = {2026},\n  journal = {International Journal of Human–Computer Interaction},\n  doi = {10.1080/10447318.2026.2691241},\n  url = {https://doi.org/10.1080/10447318.2026.2691241},\n}"
+      }
+    },
+    {
+      "title": "AI-Based Early Detection of Bone Cancer from Medical Imaging using Machine Learning",
+      "authors": [
+        "Gayatri Hingane, Shraddha Raut"
+      ],
+      "abstract": "",
+      "doi": "10.68296/ijvast20260035",
+      "url": "https://doi.org/10.68296/ijvast20260035",
+      "pdf_url": "",
+      "published": "2026-06-13",
+      "updated": "",
+      "venue": "International Journal of Vast Advancements in Science and Technology",
+      "source": "Crossref",
+      "kind": "journal",
+      "keywords": [],
+      "volume": "1",
+      "issue": "6",
+      "pages": null,
+      "id": "3536bb2d52a92784e377",
+      "topics": [
+        "health"
+      ],
+      "feeds": [
+        "crossref-health"
+      ],
+      "year": 2026,
+      "citations": {
+        "gb7714": "Gayatri Hingane, Shraddha Raut. AI-Based Early Detection of Bone Cancer from Medical Imaging using Machine Learning[J/OL]. International Journal of Vast Advancements in Science and Technology, 2026, 1(6). DOI: 10.68296/ijvast20260035.",
+        "apa": "Raut, G. H. S. (2026). AI-Based Early Detection of Bone Cancer from Medical Imaging using Machine Learning. International Journal of Vast Advancements in Science and Technology, 1(6). https://doi.org/10.68296/ijvast20260035",
+        "bibtex": "@article{papercash3536bb2d52a92784e377,\n  title = {AI-Based Early Detection of Bone Cancer from Medical Imaging using Machine Learning},\n  author = {Gayatri Hingane, Shraddha Raut},\n  year = {2026},\n  journal = {International Journal of Vast Advancements in Science and Technology},\n  doi = {10.68296/ijvast20260035},\n  url = {https://doi.org/10.68296/ijvast20260035},\n}"
+      }
+    },
+    {
+      "title": "Medical Image Segmentation Using Machine Learning",
+      "authors": [
+        "Lakshmi Inturi",
+        "Nageswara Rao Kapu"
+      ],
+      "abstract": "Accurate medical image segmentation is critical for diagnosis and treatment planning, yet manual delineation is time consuming and prone to error. Automatic methods like thresholding and edge detection often fail in the presence of noise, artifacts, and complex textures. This study addresses the need for robust segmentation of CT scans and wound images by combining traditional machine learning with lightweight deep learning, enabling precise region-of-interest extraction for clinical analysis.",
+      "doi": "10.36948/ijfmr.2026.v08i03.79909",
+      "url": "https://doi.org/10.36948/ijfmr.2026.v08i03.79909",
+      "pdf_url": "",
+      "published": "2026-06-01",
+      "updated": "",
+      "venue": "International Journal For Multidisciplinary Research",
+      "source": "Crossref",
+      "kind": "journal",
+      "keywords": [],
+      "volume": "8",
+      "issue": "3",
+      "pages": null,
+      "id": "7ac8623f8b461cc68adb",
+      "topics": [
+        "health"
+      ],
+      "feeds": [
+        "crossref-health"
+      ],
+      "year": 2026,
+      "citations": {
+        "gb7714": "Lakshmi Inturi, Nageswara Rao Kapu. Medical Image Segmentation Using Machine Learning[J/OL]. International Journal For Multidisciplinary Research, 2026, 8(3). DOI: 10.36948/ijfmr.2026.v08i03.79909.",
+        "apa": "Inturi, L. & Kapu, N. R. (2026). Medical Image Segmentation Using Machine Learning. International Journal For Multidisciplinary Research, 8(3). https://doi.org/10.36948/ijfmr.2026.v08i03.79909",
+        "bibtex": "@article{papercash7ac8623f8b461cc68adb,\n  title = {Medical Image Segmentation Using Machine Learning},\n  author = {Lakshmi Inturi and Nageswara Rao Kapu},\n  year = {2026},\n  journal = {International Journal For Multidisciplinary Research},\n  doi = {10.36948/ijfmr.2026.v08i03.79909},\n  url = {https://doi.org/10.36948/ijfmr.2026.v08i03.79909},\n}"
+      }
+    },
+    {
+      "title": "Advancements in Medical Imaging and Diagnostics with Machine Learning: Current Trends and Future Directions",
+      "authors": [
+        "Prasanna Mathi",
+        "Karunasree Repaka",
+        "Bushra Muneeb",
+        "Vanktesh Kumar"
+      ],
+      "abstract": "Medical imaging has long played a pivotal role in healthcare, from early detection to disease monitoring, making its importance in diagnosis undeniable. Given this critical role, the incorporation of Artificial Intelligence (AI) and Machine Learning (ML) has become essential to enhance diagnostic accuracy and support clinical decision-making. This study focuses on recent advancements in medical imaging and diagnostics following this integration, emphasizing current trends, novel methodologies, clinical applications, and future challenges. Based on an extensive literature search of databases including IEEE Xplore, PubMed, Web of Science, and Scopus from 2015 to 2024, the review highlights the significant utility of supervised and unsupervised learning models, as well as deep learning architectures such as CNNs, U-Net, and Transformers, across diverse fields including radiology, pathology, ophthalmology, cardiology, and dermatology. Innovations such as federated learning and explainable AI are discussed alongside practical challenges including data scarcity, generalizability, and model interpretability. In conclusion, Machine Learning continues to revolutionize medical imaging by offering automated, accurate, and scalable diagnostic solutions. Despite existing limitations, emerging technologies such as quantum computing and edge AI provide a glimpse into the future of personalized and decentralized healthcare. However, widespread clinical adoption requires further research to address critical ethical, regulatory, and data-standardization issues to ensure these powerful tools are implemented effectively and responsibly.",
+      "doi": "10.2174/0115743624392981251201085036",
+      "url": "https://doi.org/10.2174/0115743624392981251201085036",
+      "pdf_url": "",
+      "published": "2026-05-13",
+      "updated": "",
+      "venue": "Current Signal Transduction Therapy",
+      "source": "Crossref",
+      "kind": "journal",
+      "keywords": [],
+      "volume": "21",
+      "issue": null,
+      "pages": null,
+      "id": "5373a74a4f16547d8b46",
+      "topics": [
+        "health"
+      ],
+      "feeds": [
+        "crossref-health"
+      ],
+      "year": 2026,
+      "citations": {
+        "gb7714": "Prasanna Mathi, Karunasree Repaka, Bushra Muneeb, 等. Advancements in Medical Imaging and Diagnostics with Machine Learning: Current Trends and Future Directions[J/OL]. Current Signal Transduction Therapy, 2026, 21. DOI: 10.2174/0115743624392981251201085036.",
+        "apa": "Mathi, P., Repaka, K., Muneeb, B., & Kumar, V. (2026). Advancements in Medical Imaging and Diagnostics with Machine Learning: Current Trends and Future Directions. Current Signal Transduction Therapy, 21. https://doi.org/10.2174/0115743624392981251201085036",
+        "bibtex": "@article{papercash5373a74a4f16547d8b46,\n  title = {Advancements in Medical Imaging and Diagnostics with Machine Learning: Current Trends and Future Directions},\n  author = {Prasanna Mathi and Karunasree Repaka and Bushra Muneeb and Vanktesh Kumar},\n  year = {2026},\n  journal = {Current Signal Transduction Therapy},\n  doi = {10.2174/0115743624392981251201085036},\n  url = {https://doi.org/10.2174/0115743624392981251201085036},\n}"
+      }
+    },
+    {
+      "title": "Textile emitter for AI-enhanced human–machine interaction",
+      "authors": [
+        "Ya Sun",
+        "Xuanyu Cui",
+        "Gaoyang Kong",
+        "Jiaxin Li",
+        "Xiaomei Chen",
+        "Jianing Xu",
+        "Chengxin Xu",
+        "Peng Jin",
+        "Tao Hou",
+        "Hui Pan",
+        "Di Zhang",
+        "Han Zhou"
+      ],
+      "abstract": "ABSTRACT Wearable textile interfaces hold significant promise for advanced human–machine interaction, yet realizing wireless, battery-free on-body signal generation without embedded circuitry in textiles remains a formidable challenge. Here, we present a textile emitter that enables precise interaction by directly transducing user-induced mechanical deformation into time-coded infrared (IR) thermal signals. Constructed from strain-responsive IR-emitting fibers, the textile emitter simultaneously functions as a programmable signal generator without embedded electronic circuits or power sources within the textile. Seamlessly integrated into everyday garments, it ensures stable performance while maintaining comfort and wearability. Inspired by Morse code, user motions are encoded as temporally structured IR signals and wirelessly decoded by machine learning algorithms, achieving up to 99.6% recognition accuracy across diverse interaction commands. This AI-enhanced textile emitter establishes a scalable and robust foundation for future wearable systems in information communication, robotic control, and digital interaction.",
+      "doi": "10.1093/nsr/nwag231",
+      "url": "https://doi.org/10.1093/nsr/nwag231",
+      "pdf_url": "",
+      "published": "2026-04-17",
+      "updated": "",
+      "venue": "National Science Review",
+      "source": "Crossref",
+      "kind": "journal",
+      "keywords": [],
+      "volume": "13",
+      "issue": "12",
+      "pages": null,
+      "id": "944338c80cb4f66a81c6",
+      "topics": [
+        "human"
+      ],
+      "feeds": [
+        "crossref-human"
+      ],
+      "year": 2026,
+      "citations": {
+        "gb7714": "Ya Sun, Xuanyu Cui, Gaoyang Kong, 等. Textile emitter for AI-enhanced human–machine interaction[J/OL]. National Science Review, 2026, 13(12). DOI: 10.1093/nsr/nwag231.",
+        "apa": "Sun, Y., Cui, X., Kong, G., Li, J., Chen, X., Xu, J., Xu, C., Jin, P., Hou, T., Pan, H., Zhang, D., & Zhou, H. (2026). Textile emitter for AI-enhanced human–machine interaction. National Science Review, 13(12). https://doi.org/10.1093/nsr/nwag231",
+        "bibtex": "@article{papercash944338c80cb4f66a81c6,\n  title = {Textile emitter for AI-enhanced human–machine interaction},\n  author = {Ya Sun and Xuanyu Cui and Gaoyang Kong and Jiaxin Li and Xiaomei Chen and Jianing Xu and Chengxin Xu and Peng Jin and Tao Hou and Hui Pan and Di Zhang and Han Zhou},\n  year = {2026},\n  journal = {National Science Review},\n  doi = {10.1093/nsr/nwag231},\n  url = {https://doi.org/10.1093/nsr/nwag231},\n}"
+      }
+    },
+    {
+      "title": "Artificial Intelligence and Machine Learning Approaches in Radiology for Medical Imaging Diagnostics",
+      "authors": [
+        "Virendra S. Gomase",
+        "Arjun P. Ghatule"
+      ],
+      "abstract": "Introduction: The radiology unit of healthcare management has seen a remarkable transformation with the integration of Artificial Intelligence (AI) and Machine Learning (ML), which offers higher diagnostic accuracy, increased efficiency, and individualized patient care. Radiology, which utilizes imaging methods such as X-rays, MRIs, and CT scans, plays a vital role in diagnosis and has historically relied on human interpretation of images. Artificial Intelligence (AI) systems, especially deep learning models like Convolutional Neural Networks (CNNs), can accurately identify anomalies in medical images and frequently outperform human radiologists in specialized tasks. Additionally, healthcare systems are using ML-based predictive models to estimate patient outcomes and optimize resource allocation. Methods: This article examines the present applications of AI and ML in radiology, ranging from image identification to predictive analytics, along with issues such as data protection, legal restrictions, and the need for transparency in algorithmic decision-making. Results: This study also examines emerging developments, including how AI can improve access to healthcare in remote locations and its potential applications in telemedicine. The AI and ML results represent exciting new possibilities, and resolving technical, moral, and legal concerns is necessary for their effective application. Discussion: The integration of Artificial Intelligence (AI) and Machine Learning (ML) into radiology is significantly reshaping diagnostic practices in healthcare. AI, particularly deep learning techniques such as Convolutional Neural Networks (CNNs), is proving highly effective in analyzing complex imaging data, enhancing both speed and accuracy of diagnostic techniques. Conclusion: Radiology could undergo a revolution due to AI and ML, which could improve diagnostic skills and healthcare administration in general. AI and ML hold transformative potential for the field of radiology, promising improved diagnostic accuracy, operational efficiency, and expanded access to care, particularly in underserved areas.",
+      "doi": "10.2174/0123520965407792250811093550",
+      "url": "https://doi.org/10.2174/0123520965407792250811093550",
+      "pdf_url": "",
+      "published": "2026-04-01",
+      "updated": "",
+      "venue": "Recent Advances in Electrical & Electronic Engineering (Formerly Recent Patents on Electrical & Electronic Engineering)",
+      "source": "Crossref",
+      "kind": "journal",
+      "keywords": [],
+      "volume": "19",
+      "issue": null,
+      "pages": null,
+      "id": "fe4930b72b49cd8a6884",
+      "topics": [
+        "health"
+      ],
+      "feeds": [
+        "crossref-health"
+      ],
+      "year": 2026,
+      "citations": {
+        "gb7714": "Virendra S. Gomase, Arjun P. Ghatule. Artificial Intelligence and Machine Learning Approaches in Radiology for Medical Imaging Diagnostics[J/OL]. Recent Advances in Electrical & Electronic Engineering (Formerly Recent Patents on Electrical & Electronic Engineering), 2026, 19. DOI: 10.2174/0123520965407792250811093550.",
+        "apa": "Gomase, V. S. & Ghatule, A. P. (2026). Artificial Intelligence and Machine Learning Approaches in Radiology for Medical Imaging Diagnostics. Recent Advances in Electrical & Electronic Engineering (Formerly Recent Patents on Electrical & Electronic Engineering), 19. https://doi.org/10.2174/0123520965407792250811093550",
+        "bibtex": "@article{papercashfe4930b72b49cd8a6884,\n  title = {Artificial Intelligence and Machine Learning Approaches in Radiology for Medical Imaging Diagnostics},\n  author = {Virendra S. Gomase and Arjun P. Ghatule},\n  year = {2026},\n  journal = {Recent Advances in Electrical & Electronic Engineering (Formerly Recent Patents on Electrical & Electronic Engineering)},\n  doi = {10.2174/0123520965407792250811093550},\n  url = {https://doi.org/10.2174/0123520965407792250811093550},\n}"
+      }
+    },
+    {
+      "title": "Progress in machine learning-assisted medical imaging for osteoarthritis and osteoporosis diagnosis: a narrative review",
+      "authors": [
+        "Wuyi Ming",
+        "Ting Liu",
+        "Rui Hu",
+        "Wenbin He",
+        "Yuan Yang"
+      ],
+      "abstract": "",
+      "doi": "10.21037/qims-2025-aw-2168",
+      "url": "https://doi.org/10.21037/qims-2025-aw-2168",
+      "pdf_url": "",
+      "published": "2026-04",
+      "updated": "",
+      "venue": "Quantitative Imaging in Medicine and Surgery",
+      "source": "Crossref",
+      "kind": "journal",
+      "keywords": [],
+      "volume": "16",
+      "issue": "4",
+      "pages": "320-320",
+      "id": "bd4a7dfe160125402cfe",
+      "topics": [
+        "health"
+      ],
+      "feeds": [
+        "crossref-health"
+      ],
+      "year": 2026,
+      "citations": {
+        "gb7714": "Wuyi Ming, Ting Liu, Rui Hu, 等. Progress in machine learning-assisted medical imaging for osteoarthritis and osteoporosis diagnosis: a narrative review[J/OL]. Quantitative Imaging in Medicine and Surgery, 2026, 16(4): 320-320. DOI: 10.21037/qims-2025-aw-2168.",
+        "apa": "Ming, W., Liu, T., Hu, R., He, W., & Yang, Y. (2026). Progress in machine learning-assisted medical imaging for osteoarthritis and osteoporosis diagnosis: a narrative review. Quantitative Imaging in Medicine and Surgery, 16(4), 320-320. https://doi.org/10.21037/qims-2025-aw-2168",
+        "bibtex": "@article{papercashbd4a7dfe160125402cfe,\n  title = {Progress in machine learning-assisted medical imaging for osteoarthritis and osteoporosis diagnosis: a narrative review},\n  author = {Wuyi Ming and Ting Liu and Rui Hu and Wenbin He and Yuan Yang},\n  year = {2026},\n  journal = {Quantitative Imaging in Medicine and Surgery},\n  doi = {10.21037/qims-2025-aw-2168},\n  url = {https://doi.org/10.21037/qims-2025-aw-2168},\n}"
+      }
+    },
+    {
+      "title": "Malpractice in the machine age: Legal and ethical responses to machine learning in medical imaging",
+      "authors": [
+        "M.T. Chau",
+        "K.M. Spuur",
+        "S. White",
+        "A. Pyper",
+        "M. Crossman"
+      ],
+      "abstract": "",
+      "doi": "10.1016/j.radi.2026.103339",
+      "url": "https://doi.org/10.1016/j.radi.2026.103339",
+      "pdf_url": "",
+      "published": "2026-04",
+      "updated": "",
+      "venue": "Radiography",
+      "source": "Crossref",
+      "kind": "journal",
+      "keywords": [],
+      "volume": "32",
+      "issue": "3",
+      "pages": "103339",
+      "id": "c75d0ad2465f25adc1c6",
+      "topics": [
+        "health"
+      ],
+      "feeds": [
+        "crossref-health"
+      ],
+      "year": 2026,
+      "citations": {
+        "gb7714": "M.T. Chau, K.M. Spuur, S. White, 等. Malpractice in the machine age: Legal and ethical responses to machine learning in medical imaging[J/OL]. Radiography, 2026, 32(3): 103339. DOI: 10.1016/j.radi.2026.103339.",
+        "apa": "Chau, M., Spuur, K., White, S., Pyper, A., & Crossman, M. (2026). Malpractice in the machine age: Legal and ethical responses to machine learning in medical imaging. Radiography, 32(3), 103339. https://doi.org/10.1016/j.radi.2026.103339",
+        "bibtex": "@article{papercashc75d0ad2465f25adc1c6,\n  title = {Malpractice in the machine age: Legal and ethical responses to machine learning in medical imaging},\n  author = {M.T. Chau and K.M. Spuur and S. White and A. Pyper and M. Crossman},\n  year = {2026},\n  journal = {Radiography},\n  doi = {10.1016/j.radi.2026.103339},\n  url = {https://doi.org/10.1016/j.radi.2026.103339},\n}"
+      }
+    },
+    {
+      "title": "Review of Human-AI Interaction and Collaboration",
+      "authors": [
+        "Michael Umeokoli"
+      ],
+      "abstract": "Dan Wu, Shaobo Liang, and their co-authors make a strong case in Human-AI Interaction and Collaboration that the days of considering artificial intelligence (AI) as a simple computing tool are over. The authors instead propose a paradigm change in favor of Human-AI Collaboration (HAIC), a collaborative model in which AI and humans function as a Joint Cognitive System (JCS) in symbiotic harmony. The authors propose that we may address complicated societal and scientific issues without compromising human autonomy by combining AI's computational power with human biological and cognitive intelligence. This book effectively provides a thorough, human-centered paradigm for the future of AI integration, making it an essential resource for engineers, academics, developers, and ethicists.",
+      "doi": "10.55613/jeet.v36i1.218",
+      "url": "https://doi.org/10.55613/jeet.v36i1.218",
+      "pdf_url": "",
+      "published": "2026-03-31",
+      "updated": "",
+      "venue": "Journal of Ethics and Emerging Technologies",
+      "source": "Crossref",
+      "kind": "journal",
+      "keywords": [],
+      "volume": "36",
+      "issue": "1",
+      "pages": "1-3",
+      "id": "c191319e852072bb0ea1",
+      "topics": [
+        "human"
+      ],
+      "feeds": [
+        "crossref-human"
+      ],
+      "year": 2026,
+      "citations": {
+        "gb7714": "Michael Umeokoli. Review of Human-AI Interaction and Collaboration[J/OL]. Journal of Ethics and Emerging Technologies, 2026, 36(1): 1-3. DOI: 10.55613/jeet.v36i1.218.",
+        "apa": "Umeokoli, M. (2026). Review of Human-AI Interaction and Collaboration. Journal of Ethics and Emerging Technologies, 36(1), 1-3. https://doi.org/10.55613/jeet.v36i1.218",
+        "bibtex": "@article{papercashc191319e852072bb0ea1,\n  title = {Review of Human-AI Interaction and Collaboration},\n  author = {Michael Umeokoli},\n  year = {2026},\n  journal = {Journal of Ethics and Emerging Technologies},\n  doi = {10.55613/jeet.v36i1.218},\n  url = {https://doi.org/10.55613/jeet.v36i1.218},\n}"
+      }
+    },
+    {
+      "title": "Cognitive Pragmatics in Human–AI Interaction",
+      "authors": [
+        "Muhammad Natsir",
+        "Nadya Anggita Lubis",
+        "Fanny Agnesya Siagian",
+        "Sry Juniar Limbong",
+        "Yoanne Simbolon"
+      ],
+      "abstract": "The rapid development of language-based artificial intelligence has transformed the ways humans interact, communicate, and construct meaning, particularly within social, educational, and personal reflective contexts. This transformation raises fundamental questions regarding how meaning is produced and interpreted when interaction no longer involves a human interlocutor. This study examines human–AI interaction through the lens of cognitive pragmatics, with a specific focus on users’ subjective experiences, inferential meaning-making processes, and relational negotiation. Adopting a qualitative phenomenological approach, the study explores participants’ lived experiences of interacting with language-based AI systems in academic and reflective settings. Data were collected through in-depth semi-structured interviews with active AI users and complemented by document analysis of selected interaction records. The data were analyzed using thematic analysis to identify recurring patterns of meaning construction and emergent pragmatic dynamics. The findings reveal three interrelated themes: the experience of an illusion of understanding, the attribution of intention and politeness to AI, and the negotiation of emotional distance accompanied by ethical reflection. These findings demonstrate that meaning in human–AI interaction is not derived from AI’s communicative capacities but is actively constructed through users’ pragmatic inference and metapragmatic awareness. Theoretically, this study extends the scope of cognitive pragmatics to the domain of human–technology interaction by foregrounding users’ experiential and inferential processes. Practically, the findings offer important implications for digital literacy, education, and the development of more reflective and responsible human–AI relationships",
+      "doi": "10.59890/ijir.v4i3.150",
+      "url": "https://doi.org/10.59890/ijir.v4i3.150",
+      "pdf_url": "",
+      "published": "2026-03-31",
+      "updated": "",
+      "venue": "International Journal of Integrative Research",
+      "source": "Crossref",
+      "kind": "journal",
+      "keywords": [],
+      "volume": "4",
+      "issue": "3",
+      "pages": "139-152",
+      "id": "2f7a3df4322c2810bde7",
+      "topics": [
+        "human"
+      ],
+      "feeds": [
+        "crossref-human"
+      ],
+      "year": 2026,
+      "citations": {
+        "gb7714": "Muhammad Natsir, Nadya Anggita Lubis, Fanny Agnesya Siagian, 等. Cognitive Pragmatics in Human–AI Interaction[J/OL]. International Journal of Integrative Research, 2026, 4(3): 139-152. DOI: 10.59890/ijir.v4i3.150.",
+        "apa": "Natsir, M., Lubis, N. A., Siagian, F. A., Limbong, S. J., & Simbolon, Y. (2026). Cognitive Pragmatics in Human–AI Interaction. International Journal of Integrative Research, 4(3), 139-152. https://doi.org/10.59890/ijir.v4i3.150",
+        "bibtex": "@article{papercash2f7a3df4322c2810bde7,\n  title = {Cognitive Pragmatics in Human–AI Interaction},\n  author = {Muhammad Natsir and Nadya Anggita Lubis and Fanny Agnesya Siagian and Sry Juniar Limbong and Yoanne Simbolon},\n  year = {2026},\n  journal = {International Journal of Integrative Research},\n  doi = {10.59890/ijir.v4i3.150},\n  url = {https://doi.org/10.59890/ijir.v4i3.150},\n}"
+      }
+    },
+    {
+      "title": "Medical Diagnosis Prediction using Machine Learning",
+      "authors": [
+        "Eshwar Thatikonda",
+        "Himateja Allibadha",
+        "Akhil Nallabai",
+        "Rajasekhar Nennuri"
+      ],
+      "abstract": "The escalating complexity of medical diagnosis, characterized by overlapping symptomatology and exponential growth in healthcare data, necessitates innovative solutions for accurate and timely disease identification. This paper presents the design and implementation of a comprehensive Medical Diagnosis System that leverages machine learning algorithms within a Flask-based web framework to automate disease prediction and optimize healthcare delivery. The system incorporates an ensemble learning approach utilizing Random Forest, Logistic Regression, and Support Vector Machine classifiers, integrated through a Voting Classifier mechanism to enhance diagnostic reliability. Experimental results demonstrate exceptional performance with prediction accuracy ranging from 88% to 95%, with the Voting Classifier achieving peak accuracy of 94.241%. The platform features three synchronized user modules—Administrator, Medical Practitioner, and Patient—enabling seamless symptom input, AI-driven disease forecasting, and intelligent appointment scheduling with specialized physicians. By bridging automated diagnostic capabilities with practical clinical workflow management, the system significantly reduces diagnostic time, minimizes human error, and provides healthcare professionals with an interpretable decision-support tool. This research contributes both empirical validation and architectural framework for deploying intelligent healthcare systems in real-world medical environments.",
+      "doi": "10.36948/ijfmr.2026.v08i01.67449",
+      "url": "https://doi.org/10.36948/ijfmr.2026.v08i01.67449",
+      "pdf_url": "",
+      "published": "2026-02-04",
+      "updated": "",
+      "venue": "International Journal For Multidisciplinary Research",
+      "source": "Crossref",
+      "kind": "journal",
+      "keywords": [],
+      "volume": "8",
+      "issue": "1",
+      "pages": null,
+      "id": "99166698358e36fd11ed",
+      "topics": [
+        "health"
+      ],
+      "feeds": [
+        "crossref-health"
+      ],
+      "year": 2026,
+      "citations": {
+        "gb7714": "Eshwar Thatikonda, Himateja Allibadha, Akhil Nallabai, 等. Medical Diagnosis Prediction using Machine Learning[J/OL]. International Journal For Multidisciplinary Research, 2026, 8(1). DOI: 10.36948/ijfmr.2026.v08i01.67449.",
+        "apa": "Thatikonda, E., Allibadha, H., Nallabai, A., & Nennuri, R. (2026). Medical Diagnosis Prediction using Machine Learning. International Journal For Multidisciplinary Research, 8(1). https://doi.org/10.36948/ijfmr.2026.v08i01.67449",
+        "bibtex": "@article{papercash99166698358e36fd11ed,\n  title = {Medical Diagnosis Prediction using Machine Learning},\n  author = {Eshwar Thatikonda and Himateja Allibadha and Akhil Nallabai and Rajasekhar Nennuri},\n  year = {2026},\n  journal = {International Journal For Multidisciplinary Research},\n  doi = {10.36948/ijfmr.2026.v08i01.67449},\n  url = {https://doi.org/10.36948/ijfmr.2026.v08i01.67449},\n}"
+      }
+    },
+    {
+      "title": "A Comparative Review of Machine Learning and Deep Learning Models for Lung Disease Classification Across Medical Imaging Modalities",
+      "authors": [
+        "Mrs. Ashwini Bhavsar"
+      ],
+      "abstract": "The increasing integration of artificial intelligence into medical imaging has significantly advanced lung disease detection using chest X-rays and related modalities. This survey conducts a comprehensive comparative analysis of 12 researchworkspublishedbetween 2021 and 2025, with emphasis on five key studies employing machine learning, deep learning, and hybrid algorithms for image-based lung disease classification. Design/methodology/approach–Thereviewexaminesmethodologiesinvolving segmentation-classification pipelines, attentionenhanced CNNs, hybrid CNN–ELM architectures, multi-branch deep networks, and fusion models combining handcrafted and deep features. Datasets used across these studies include NIH ChestX-ray14, JSRT, MC, LC25000, SIIM-ACR, LIDCIDRI,andCOVID-19imagerepositories.Eachalgorithmisanalyzedinterms of preprocessing strategies, model design, evaluation metrics, computational efficiency, and applicability to different imaging types such as chest X-rays, CT scans, and histopathologyslides. Findings – The analysis shows thatnosinglearchitectureperformsbestacrossalltasks;instead, each model demonstrates unique advantages depending on data modality and clinical objective. Attention-based CNNs excel in feature refinement, hybrid CNNELM models offer lightweight computation, and dual-branch frameworks improve multi-label chest disease detection.. Originality/value – By consolidating state-of-the-art image-based lung disease classification research, this survey highlights methodological strengths, limitations, and emerging trends. Although key research gaps are identified for future inclusion, the present review provides a structured foundation for developing more scalable and reliable diagnostic systems.",
+      "doi": "10.22214/ijraset.2026.76714",
+      "url": "https://doi.org/10.22214/ijraset.2026.76714",
+      "pdf_url": "",
+      "published": "2026-01-31",
+      "updated": "",
+      "venue": "International Journal for Research in Applied Science and Engineering Technology",
+      "source": "Crossref",
+      "kind": "journal",
+      "keywords": [],
+      "volume": "14",
+      "issue": "1",
+      "pages": "486-509",
+      "id": "0224c65a22572a5a4f95",
+      "topics": [
+        "health"
+      ],
+      "feeds": [
+        "crossref-health"
+      ],
+      "year": 2026,
+      "citations": {
+        "gb7714": "Mrs. Ashwini Bhavsar. A Comparative Review of Machine Learning and Deep Learning Models for Lung Disease Classification Across Medical Imaging Modalities[J/OL]. International Journal for Research in Applied Science and Engineering Technology, 2026, 14(1): 486-509. DOI: 10.22214/ijraset.2026.76714.",
+        "apa": "Bhavsar, M. A. (2026). A Comparative Review of Machine Learning and Deep Learning Models for Lung Disease Classification Across Medical Imaging Modalities. International Journal for Research in Applied Science and Engineering Technology, 14(1), 486-509. https://doi.org/10.22214/ijraset.2026.76714",
+        "bibtex": "@article{papercash0224c65a22572a5a4f95,\n  title = {A Comparative Review of Machine Learning and Deep Learning Models for Lung Disease Classification Across Medical Imaging Modalities},\n  author = {Mrs. Ashwini Bhavsar},\n  year = {2026},\n  journal = {International Journal for Research in Applied Science and Engineering Technology},\n  doi = {10.22214/ijraset.2026.76714},\n  url = {https://doi.org/10.22214/ijraset.2026.76714},\n}"
+      }
+    },
+    {
+      "title": "Review of Medical Diagnostic Imaging Using Machine Learning",
+      "authors": [],
+      "abstract": "",
+      "doi": "10.25212/lfu.qzj.11.1.30",
+      "url": "https://doi.org/10.25212/lfu.qzj.11.1.30",
+      "pdf_url": "",
+      "published": "2026-01-30",
+      "updated": "",
+      "venue": "Qalaai Zanist Scientific Journal",
+      "source": "Crossref",
+      "kind": "journal",
+      "keywords": [],
+      "volume": "11",
+      "issue": "1",
+      "pages": null,
+      "id": "1b84ee6ecad7dbef7848",
+      "topics": [
+        "health"
+      ],
+      "feeds": [
+        "crossref-health"
+      ],
+      "year": 2026,
+      "citations": {
+        "gb7714": "未知作者. Review of Medical Diagnostic Imaging Using Machine Learning[J/OL]. Qalaai Zanist Scientific Journal, 2026, 11(1). DOI: 10.25212/lfu.qzj.11.1.30.",
+        "apa": "Unknown (2026). Review of Medical Diagnostic Imaging Using Machine Learning. Qalaai Zanist Scientific Journal, 11(1). https://doi.org/10.25212/lfu.qzj.11.1.30",
+        "bibtex": "@article{papercash1b84ee6ecad7dbef7848,\n  title = {Review of Medical Diagnostic Imaging Using Machine Learning},\n  author = {Unknown},\n  year = {2026},\n  journal = {Qalaai Zanist Scientific Journal},\n  doi = {10.25212/lfu.qzj.11.1.30},\n  url = {https://doi.org/10.25212/lfu.qzj.11.1.30},\n}"
+      }
+    },
+    {
+      "title": "Human–AI Interaction for Visual Media",
+      "authors": [
+        "Wei Zeng",
+        "Hongbo Fu",
+        "Nanxuan Zhao",
+        "Remco Chang"
+      ],
+      "abstract": "",
+      "doi": "10.1109/mcg.2025.3639837",
+      "url": "https://doi.org/10.1109/mcg.2025.3639837",
+      "pdf_url": "",
+      "published": "2026-01",
+      "updated": "",
+      "venue": "IEEE Computer Graphics and Applications",
+      "source": "Crossref",
+      "kind": "journal",
+      "keywords": [],
+      "volume": "46",
+      "issue": "1",
+      "pages": "10-12",
+      "id": "a9038bbaf47f0859fd96",
+      "topics": [
+        "human"
+      ],
+      "feeds": [
+        "crossref-human"
+      ],
+      "year": 2026,
+      "citations": {
+        "gb7714": "Wei Zeng, Hongbo Fu, Nanxuan Zhao, 等. Human–AI Interaction for Visual Media[J/OL]. IEEE Computer Graphics and Applications, 2026, 46(1): 10-12. DOI: 10.1109/mcg.2025.3639837.",
+        "apa": "Zeng, W., Fu, H., Zhao, N., & Chang, R. (2026). Human–AI Interaction for Visual Media. IEEE Computer Graphics and Applications, 46(1), 10-12. https://doi.org/10.1109/mcg.2025.3639837",
+        "bibtex": "@article{papercasha9038bbaf47f0859fd96,\n  title = {Human–AI Interaction for Visual Media},\n  author = {Wei Zeng and Hongbo Fu and Nanxuan Zhao and Remco Chang},\n  year = {2026},\n  journal = {IEEE Computer Graphics and Applications},\n  doi = {10.1109/mcg.2025.3639837},\n  url = {https://doi.org/10.1109/mcg.2025.3639837},\n}"
+      }
+    },
+    {
+      "title": "HUMAN-AI INTERACTION IN MULTILINGUAL PROFESSIONAL",
+      "authors": [
+        "Kateryna Matukh",
+        "Kateryna Liashenko",
+        "Larysa Liashenko",
+        "Liana Budanova"
+      ],
+      "abstract": "The article offers a comprehensive pragmatic analysis of human – artificial intelligence (AI) interaction in multilingual professional teams operating in digital and remote work environments. Drawing on Speech Act Theory (Austin, Searle), Grice’s Cooperative Principle, and Goffman’s face-work theory as reinterpreted for digital discourse, the study examines how AI-mediated communication reshapes pragmatic patterns across language and cultural boundaries. The empirical base consists of 240 anonymized interaction logs from international remote teams that actively used AI assistants – including ChatGPT, Microsoft Copilot, and DeepL Write – over the period 2021-2024. Participating teams comprised members from at least three distinct linguistic backgrounds (Anglophone, Hispanophone, and Germanophone regions). Four dominant pragmatic strategies are identified in the corpus: reformulation, hedging, metalinguistic commentary, and code-switching facilitation. The article argues that contemporary AI tools function not merely as passive translation instruments but as active pragmatic mediators that partially compensate for intercultural miscommunication while simultaneously introducing new forms of pragmatic asymmetry and communicative impoverishment. Algorithmic pragmatic failures – particularly the systematic misreading of irony and culturally specific connotations – are identified and theorised as a distinctive feature of AI-mediated discourse. Implications for translation studies, intercultural communication theory, applied linguistics, and corporate communication practice are discussed.",
+      "doi": "10.17721/studling2026.28.68-82",
+      "url": "https://doi.org/10.17721/studling2026.28.68-82",
+      "pdf_url": "",
+      "published": "2026",
+      "updated": "",
+      "venue": "Studia Linguistica",
+      "source": "Crossref",
+      "kind": "journal",
+      "keywords": [],
+      "volume": null,
+      "issue": "28",
+      "pages": "68-82",
+      "id": "e7ab07eb50550cf10777",
+      "topics": [
+        "human"
+      ],
+      "feeds": [
+        "crossref-human"
+      ],
+      "year": 2026,
+      "citations": {
+        "gb7714": "Kateryna Matukh, Kateryna Liashenko, Larysa Liashenko, 等. HUMAN-AI INTERACTION IN MULTILINGUAL PROFESSIONAL[J/OL]. Studia Linguistica, 2026, (28): 68-82. DOI: 10.17721/studling2026.28.68-82.",
+        "apa": "Matukh, K., Liashenko, K., Liashenko, L., & Budanova, L. (2026). HUMAN-AI INTERACTION IN MULTILINGUAL PROFESSIONAL. Studia Linguistica(28), 68-82. https://doi.org/10.17721/studling2026.28.68-82",
+        "bibtex": "@article{papercashe7ab07eb50550cf10777,\n  title = {HUMAN-AI INTERACTION IN MULTILINGUAL PROFESSIONAL},\n  author = {Kateryna Matukh and Kateryna Liashenko and Larysa Liashenko and Liana Budanova},\n  year = {2026},\n  journal = {Studia Linguistica},\n  doi = {10.17721/studling2026.28.68-82},\n  url = {https://doi.org/10.17721/studling2026.28.68-82},\n}"
+      }
+    },
+    {
+      "title": "Exploring the Future of Human-AI Collaboration: Insights from \"Human-AI Interaction and Collaboration\"",
+      "authors": [
+        "Dan Wu",
+        "Shaobo Liang"
+      ],
+      "abstract": "How should people and AI work together in ways that are useful, ethical, and trustworthy? Edited by Dan Wu and Shaobo Liang (Wuhan University), “Human–AI Interaction and Collaboration” maps the fast-moving terrain where users, systems, and information meet—treating human strengths and machine strengths as complements, not substitutes. The introduction frames collaboration as a user-centered endeavor that must balance capability with ethics, transparency, and trust.",
+      "doi": "10.2139/ssrn.6250558",
+      "url": "https://doi.org/10.2139/ssrn.6250558",
+      "pdf_url": "",
+      "published": "2026",
+      "updated": "",
+      "venue": "SSRN Electronic Journal",
+      "source": "Crossref",
+      "kind": "journal",
+      "keywords": [],
+      "volume": null,
+      "issue": null,
+      "pages": null,
+      "id": "aeda85441ba554274763",
+      "topics": [
+        "human"
+      ],
+      "feeds": [
+        "crossref-human"
+      ],
+      "year": 2026,
+      "citations": {
+        "gb7714": "Dan Wu, Shaobo Liang. Exploring the Future of Human-AI Collaboration: Insights from \"Human-AI Interaction and Collaboration\"[J/OL]. SSRN Electronic Journal, 2026. DOI: 10.2139/ssrn.6250558.",
+        "apa": "Wu, D. & Liang, S. (2026). Exploring the Future of Human-AI Collaboration: Insights from \"Human-AI Interaction and Collaboration\". SSRN Electronic Journal. https://doi.org/10.2139/ssrn.6250558",
+        "bibtex": "@article{papercashaeda85441ba554274763,\n  title = {Exploring the Future of Human-AI Collaboration: Insights from \"Human-AI Interaction and Collaboration\"},\n  author = {Dan Wu and Shaobo Liang},\n  year = {2026},\n  journal = {SSRN Electronic Journal},\n  doi = {10.2139/ssrn.6250558},\n  url = {https://doi.org/10.2139/ssrn.6250558},\n}"
+      }
+    },
+    {
+      "title": "Building Trust in AI: A Qualitative Study of Human-AI Interaction",
+      "authors": [
+        "Viktoria Leutheuser",
+        "Felix Schäfer",
+        "Julian M. Müller",
+        "Kai-Ingo Voigt"
+      ],
+      "abstract": "",
+      "doi": "10.1016/j.procs.2026.02.048",
+      "url": "https://doi.org/10.1016/j.procs.2026.02.048",
+      "pdf_url": "",
+      "published": "2026",
+      "updated": "",
+      "venue": "Procedia Computer Science",
+      "source": "Crossref",
+      "kind": "journal",
+      "keywords": [],
+      "volume": "277",
+      "issue": null,
+      "pages": "71-80",
+      "id": "8b9972be5ad26d6122fe",
+      "topics": [
+        "human"
+      ],
+      "feeds": [
+        "crossref-human"
+      ],
+      "year": 2026,
+      "citations": {
+        "gb7714": "Viktoria Leutheuser, Felix Schäfer, Julian M. Müller, 等. Building Trust in AI: A Qualitative Study of Human-AI Interaction[J/OL]. Procedia Computer Science, 2026, 277: 71-80. DOI: 10.1016/j.procs.2026.02.048.",
+        "apa": "Leutheuser, V., Schäfer, F., Müller, J. M., & Voigt, K. (2026). Building Trust in AI: A Qualitative Study of Human-AI Interaction. Procedia Computer Science, 277, 71-80. https://doi.org/10.1016/j.procs.2026.02.048",
+        "bibtex": "@article{papercash8b9972be5ad26d6122fe,\n  title = {Building Trust in AI: A Qualitative Study of Human-AI Interaction},\n  author = {Viktoria Leutheuser and Felix Schäfer and Julian M. Müller and Kai-Ingo Voigt},\n  year = {2026},\n  journal = {Procedia Computer Science},\n  doi = {10.1016/j.procs.2026.02.048},\n  url = {https://doi.org/10.1016/j.procs.2026.02.048},\n}"
+      }
+    },
+    {
+      "title": "AI and Human Interaction in Translation Education",
+      "authors": [
+        "Suratman Dahlan",
+        "Syarifuddin Dollah",
+        "Sukardi Weda",
+        "La Sunra",
+        "Geminastiti Sakkir"
+      ],
+      "abstract": "This study investigates Indonesian lecturers’ perceptions of Artificial Intelligence (AI) in translation education, focusing on how technology reshapes pedagogy, student engagement, and institutional practices. Employing a qualitative phenomenological design, data were collected through semi-structured interviews with lecturers who actively integrated AI tools into translation teaching. Thematic analysis identified five major findings: perceived benefits of AI for efficiency and accessibility, pedagogical shifts and curriculum integration, challenges of student dependence and diminished critical thinking, ethical and responsible use of AI tools, and AI as a catalyst for institutional and administrative efficiency. While lecturers acknowledged AI’s transformative potential in facilitating translation tasks, they also highlighted risks of overreliance, ethical dilemmas, and uneven access. The study concludes that integration requires balancing technological affordances with humanistic values, fostering critical AI literacy, and embedding ethical considerations in pedagogy. These findings contribute to ongoing debates on AI-enhanced translation pedagogy in global higher education institutions.",
+      "doi": "10.51629/cjls.v5i2.259",
+      "url": "https://doi.org/10.51629/cjls.v5i2.259",
+      "pdf_url": "",
+      "published": "2025-11-30",
+      "updated": "",
+      "venue": "Celebes Journal of Language Studies",
+      "source": "Crossref",
+      "kind": "journal",
+      "keywords": [],
+      "volume": null,
+      "issue": null,
+      "pages": "221-236",
+      "id": "4c2a27b2dfbcf7cfd666",
+      "topics": [
+        "human"
+      ],
+      "feeds": [
+        "crossref-human"
+      ],
+      "year": 2025,
+      "citations": {
+        "gb7714": "Suratman Dahlan, Syarifuddin Dollah, Sukardi Weda, 等. AI and Human Interaction in Translation Education[J/OL]. Celebes Journal of Language Studies, 2025: 221-236. DOI: 10.51629/cjls.v5i2.259.",
+        "apa": "Dahlan, S., Dollah, S., Weda, S., Sunra, L., & Sakkir, G. (2025). AI and Human Interaction in Translation Education. Celebes Journal of Language Studies, 221-236. https://doi.org/10.51629/cjls.v5i2.259",
+        "bibtex": "@article{papercash4c2a27b2dfbcf7cfd666,\n  title = {AI and Human Interaction in Translation Education},\n  author = {Suratman Dahlan and Syarifuddin Dollah and Sukardi Weda and La Sunra and Geminastiti Sakkir},\n  year = {2025},\n  journal = {Celebes Journal of Language Studies},\n  doi = {10.51629/cjls.v5i2.259},\n  url = {https://doi.org/10.51629/cjls.v5i2.259},\n}"
+      }
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="42" viewBox="0 0 600 42" role="img" aria-labelledby="title desc">
+<title id="title">A little clarity for your next paper.</title><desc id="desc">Three gentle, animated notes for a research desk.</desc>
+<style>
+text{font-family:'SFMono-Regular',Consolas,'Liberation Mono',monospace}
+.line{opacity:0;animation:show 18s steps(1,end) infinite}.line-0{opacity:1}
+.line-1{animation-delay:6s}.line-2{animation-delay:12s}
+.reveal{animation:type 18s steps(38,end) infinite;transform-box:fill-box;transform-origin:left}
+.reveal-1{animation-delay:6s}.reveal-2{animation-delay:12s}
+@keyframes show{0%,33.32%{opacity:1}33.33%,100%{opacity:0}}
+@keyframes type{0%{transform:scaleX(0)}13%,29%{transform:scaleX(1)}33.33%,100%{transform:scaleX(0)}}
+@media(prefers-reduced-motion:reduce){.line,.reveal{animation:none}.line{opacity:0}.line-0{opacity:1}}
+</style><g class="line line-0"><clipPath id="clip-0"><rect class="reveal reveal-0" x="138.12" y="0" width="331.75" height="42"/></clipPath><text x="300" y="27" text-anchor="middle" font-size="14" letter-spacing=".2" fill="#a6c4ad" clip-path="url(#clip-0)">A little clarity for your next paper.</text></g><g class="line line-1"><clipPath id="clip-1"><rect class="reveal reveal-1" x="129.38" y="0" width="349.25" height="42"/></clipPath><text x="300" y="27" text-anchor="middle" font-size="14" letter-spacing=".2" fill="#a6c4ad" clip-path="url(#clip-1)">Find the papers. Follow your curiosity.</text></g><g class="line line-2"><clipPath id="clip-2"><rect class="reveal reveal-2" x="164.38" y="0" width="279.25" height="42"/></clipPath><text x="300" y="27" text-anchor="middle" font-size="14" letter-spacing=".2" fill="#a6c4ad" clip-path="url(#clip-2)">Less formatting. More thinking.</text></g>
+</svg>

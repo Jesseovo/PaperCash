@@ -1,0 +1,63 @@
+name: PaperCash Discovery
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/**'
+      - 'scripts/build_discovery.py'
+      - 'scripts/lib/features/citation.py'
+      - 'scripts/lib/schema.py'
+      - '.github/workflows/discovery-pages.yml'
+  schedule:
+    - cron: '20 0 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: papercash-pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      pages: read
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Install snapshot dependency
+        run: python -m pip install requests
+      - name: Refresh paper discovery snapshot
+        run: python scripts/build_discovery.py
+      - name: Prepare public site
+        run: |
+          mkdir -p site
+          cp docs/index.html docs/styles.css docs/app.js docs/.nojekyll site/
+          cp -r docs/assets docs/data site/
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

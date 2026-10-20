@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="780" height="104" viewBox="0 0 780 104" role="img" aria-labelledby="title desc">
+<title id="title">Make room for a little curiosity</title><desc id="desc">Pixel books, warm coffee, and a small green plant.</desc>
+<style>
+.steam{animation:drift 4s ease-in-out infinite}.spark{animation:glow 5s ease-in-out infinite}
+@keyframes drift{0%,100%{opacity:.35;transform:translateY(2px)}50%{opacity:.85;transform:translateY(-2px)}}
+@keyframes glow{0%,100%{opacity:.3}50%{opacity:1}}
+@media(prefers-reduced-motion:reduce){.steam,.spark{animation:none}}
+</style>
+<g shape-rendering="crispEdges">
+<path d="M224 81h332v3H224zM238 84h304v3H238z" fill="#303c35"/>
+<path d="M275 68h48v13h-48z" fill="#99b5c2"/><path d="M280 71h40v6h-40z" fill="#d8cfba"/>
+<path d="M281 56h45v11h-45z" fill="#d4a28e"/><path d="M285 59h38v5h-38z" fill="#d8cfba"/>
+<path d="M287 49h31v7h-31z" fill="#d8cfba"/>
+<path d="M368 52h30v24h-4v5h-22v-5h-4z" fill="#d8cfba"/><path d="M398 57h11v17h-11v-4h7v-9h-7z" fill="#99b5c2"/>
+<path d="M372 52h22v4h-22z" fill="#7d6354"/><path d="M363 81h44v3h-44z" fill="#938777"/>
+<g class="steam" fill="#7f9089"><path d="M376 36h3v9h-3zM373 30h3v6h-3zM376 24h3v6h-3zM389 32h3v9h-3zM392 26h3v6h-3z"/></g>
+<path d="M461 63h30v5h-30zM465 68h22v13h-22z" fill="#d4a28e"/>
+<path d="M475 31h3v32h-3z" fill="#67876f"/>
+<path d="M461 35h10v4h5v11h-10v-4h-5zM478 45h11v4h5v9h-12v-4h-4z" fill="#a6bc9c"/>
+<path d="M479 25h9v4h4v9h-10v4h-4z" fill="#b4c6a4"/>
+<g class="spark" fill="#938777"><path d="M248 35h2v4h4v2h-4v4h-2v-4h-4v-2h4zM525 52h2v3h3v2h-3v3h-2v-3h-3v-2h3z"/></g>
+</g>
+</svg>

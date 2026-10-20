@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="780" height="130" viewBox="0 0 780 130" role="img" aria-labelledby="title desc">
+<title id="title">A little research desk</title><desc id="desc">Discover papers, connect ideas, and keep citations in order.</desc>
+<style>text{font-family:'SFMono-Regular',Consolas,'Liberation Mono',monospace}</style>
+<g shape-rendering="crispEdges" fill="#303c35"><path d="M0 121h780v1H0zM247 36h1v50h-1zM514 36h1v50h-1z"/></g>
+<g transform="translate(31 20) scale(1.65)"><g shape-rendering="crispEdges">
+<path d="M2 15h5v-2h10v2h4v2h2v16h-4v-2H7v-2H2zM44 15h-5v-2H29v2h-4v2h-2v16h4v-2h12v-2h5z" fill="#99b5c2"/>
+<path d="M6 16h10v2h4v12h-4v-2H6zM40 16H30v2h-4v12h4v-2h10z" fill="#d8cfba"/>
+<path d="M9 19h7v2H9zM9 23h8v2H9zM30 19h7v2h-7zM29 23h8v2h-8z" fill="#938777"/>
+<path d="M32 27h4v10h-2v-2h-2z" fill="#a6bc9c"/>
+</g></g>
+<g transform="translate(299 18) scale(1.6)" shape-rendering="crispEdges">
+ <path d="M1 5h26v30H1z" fill="#938777"/><path d="M3 7h22v26H3z" fill="#d8cfba"/>
+ <path d="M13 1h25v31H13z" fill="#99b5c2"/><path d="M15 3h21v27H15z" fill="#d8cfba"/>
+ <path d="M19 8h12v2H19zM19 13h9v2h-9zM19 18h12v2H19zM19 23h8v2h-8z" fill="#938777"/>
+ <path d="M30 21h11v3H30zM33 18h5v9h-5z" fill="#a6bc9c"/>
+</g>
+<g transform="translate(565 22) scale(1.55)" shape-rendering="crispEdges">
+ <path d="M0 0h38v34H0z" fill="#d4a28e"/><path d="M2 2h34v30H2z" fill="#d8cfba"/>
+ <path d="M7 8h7v5h-3v4H7zM19 8h7v5h-3v4h-4z" fill="#a6bc9c"/>
+ <path d="M7 22h23v2H7zM7 26h17v2H7z" fill="#938777"/>
+ <path d="M29 29h10v3H29zM32 26h4v10h-4z" fill="#99b5c2"/>
+</g>
+<g fill="#9faea5" font-size="10" letter-spacing="1.1">
+ <text x="119" y="45">01 / DISCOVER</text><text x="386" y="45">02 / CONNECT</text><text x="651" y="45">03 / WRITE</text>
+</g>
+<g fill="#d6e2d5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif" font-size="13">
+ <text x="119" y="68">Find the papers.</text><text x="386" y="68">Connect the ideas.</text><text x="651" y="68">Keep it in order.</text>
+</g>
+<g fill="#a6bc9c" shape-rendering="crispEdges"><path d="M87 13h2v4h4v2h-4v4h-2v-4h-4v-2h4zM548 82h2v3h3v2h-3v3h-2v-3h-3v-2h3z"/></g>
+</svg>
