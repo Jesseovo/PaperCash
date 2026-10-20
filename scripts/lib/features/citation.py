@@ -64,8 +64,8 @@ def _get_paper_from_doi(doi: str) -> Paper | None:
 
 
 def format_gb7714(paper: Paper) -> str:
-    """GB/T 7714-2015 格式"""
-    authors = ", ".join(paper.authors[:3])
+    """根据已取得的元数据生成 GB/T 7714 参考文献草稿。"""
+    authors = ", ".join(paper.authors[:3]) or "未知作者"
     if len(paper.authors) > 3:
         authors += ", 等"
 
@@ -76,16 +76,25 @@ def format_gb7714(paper: Paper) -> str:
 
     if paper.venue:
         venue = _clean_text(paper.venue)
-        tail = f"{venue}, {year}."
+        tail = f"{venue}, {year}"
+        if paper.volume:
+            tail += f", {paper.volume}"
+            if paper.issue:
+                tail += f"({paper.issue})"
+        elif paper.issue:
+            tail += f", ({paper.issue})"
+        if paper.pages:
+            tail += f": {paper.pages}"
+        tail += "."
         if paper.doi:
             tail += f" DOI: {paper.doi}."
-        result = f"[{paper.citation_key}] {authors}. {title}{marker}. {tail}"
+        result = f"{authors}. {title}{marker}. {tail}"
     elif paper.doi:
-        result = f"[{paper.citation_key}] {authors}. {title}{marker}. {year}. DOI: {paper.doi}."
+        result = f"{authors}. {title}{marker}. {year}. DOI: {paper.doi}."
     elif paper.url:
-        result = f"[{paper.citation_key}] {authors}. {title}{marker}. {year}. {paper.url}."
+        result = f"{authors}. {title}{marker}. {year}. {paper.url}."
     else:
-        result = f"[{paper.citation_key}] {authors}. {title}{marker}. {year}."
+        result = f"{authors}. {title}{marker}. {year}."
 
     return result
 
@@ -119,7 +128,15 @@ def format_apa(paper: Paper) -> str:
 
     parts = [f"{author_str} {year}. {title}."]
     if paper.venue:
-        parts.append(f" *{paper.venue}*.")
+        journal = f" *{_clean_text(paper.venue)}"
+        if paper.volume:
+            journal += f", {paper.volume}"
+        journal += "*"
+        if paper.issue:
+            journal += f"({paper.issue})"
+        if paper.pages:
+            journal += f", {paper.pages}"
+        parts.append(journal + ".")
     if paper.doi:
         parts.append(f" https://doi.org/{paper.doi}")
 
@@ -225,7 +242,8 @@ def format_citation(doi: str, style: str = "gb7714") -> str:
         return f"[错误] 无法通过 DOI '{doi}' 获取文献信息。请检查 DOI 是否正确。"
 
     formatter = _FORMATTERS.get(style, format_gb7714)
-    return formatter(paper)
+    citation = formatter(paper)
+    return f"[1] {citation}" if style == "gb7714" else citation
 
 
 def format_citations_batch(dois: list[str], style: str = "gb7714") -> str:
@@ -240,7 +258,7 @@ def format_citations_batch(dois: list[str], style: str = "gb7714") -> str:
         paper = _get_paper_from_doi(doi)
         if paper:
             citation = formatter(paper)
-            results.append(f"[{i}] {citation}")
+            results.append(f"[{i}] {citation}" if style == "gb7714" else citation)
         else:
             results.append(f"[{i}] [错误] 无法解析 DOI: {doi}")
 

@@ -1,4 +1,4 @@
-"""降AI率改写 - 让AI生成内容更像人写的"""
+"""提供可人工审核的表达修改建议；不预测 AI 检测结果。"""
 
 from __future__ import annotations
 import re
@@ -7,6 +7,7 @@ import sys, os
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
 from query import is_chinese
+from safety import identify_high_risk_segments
 
 _AI_CLICHES_CN = {
     "综上所述": ["基于上述分析", "通过以上论述可以发现", "回顾前文的讨论"],
@@ -141,51 +142,40 @@ _PERSONAL_INJECTIONS_EN = [
 ]
 
 
-def humanize_text(text: str) -> str:
-    """降AI率改写"""
-    is_cn = is_chinese(text)
+_SAFE_REPLACEMENTS_CN = {
+    "综上所述": "综合上述分析",
+    "总而言之": "总体而言",
+    "值得注意的是": "需要注意的是",
+    "在当今社会": "目前",
+    "总的来说": "总体而言",
+}
+_SAFE_REPLACEMENTS_EN = {
+    "In conclusion": "To summarize",
+    "Furthermore": "Additionally",
+    "In summary": "To summarize",
+}
 
-    lines = ["# PaperCash 降AI率改写结果\n"]
-    lines.append("## 原文\n")
-    lines.append(f"{text}\n")
-    lines.append("---\n")
-    lines.append("## 改写后\n")
 
-    result = text
+def rewrite_text(text: str, protect_high_risk: bool = True) -> str:
+    """只改写有限的套话；含数据、公式或引用的整句保持原样。"""
+    replacements = _SAFE_REPLACEMENTS_CN if is_chinese(text) else _SAFE_REPLACEMENTS_EN
+    # 英文句号只有后接空白时才分句，避免拆开小数和 DOI。
+    pieces = re.split(r"(?<=[。！？；])|(?<=[.!?])(?=\s)", text)
+    rewritten = []
+    for piece in pieces:
+        if protect_high_risk and identify_high_risk_segments(piece):
+            rewritten.append(piece)
+            continue
+        for old, new in replacements.items():
+            piece = piece.replace(old, new)
+        rewritten.append(piece)
+    return "".join(rewritten)
 
-    result = _replace_cliches(result, is_cn)
-    result = _restructure_sentences(result, is_cn)
-    result = _inject_perspective(result, is_cn)
-    result = _vary_sentence_length(result, is_cn)
 
-    lines.append(f"{result}\n")
-    lines.append("---\n")
-
-    changes = _diff_summary(text, result, is_cn)
-    lines.append("## 修改摘要\n")
-    lines.extend(changes)
-
-    lines.append("\n## 降AI率策略说明\n")
-    if is_cn:
-        lines.extend([
-            '1. **替换AI高频套话**: 将"综上所述"等AI常用表达替换为更自然的学术用语',
-            '2. **注入个人视角**: 添加"笔者认为"等体现独立思考的表述',
-            "3. **调整句式结构**: 长短句交替，被动改主动，增加句式多样性",
-            "4. **增加具体性**: 建议在改写基础上补充具体数据、案例或对比",
-            "",
-            "⚠️ 本工具仅提供改写建议，最终文本需体现学生本人的思考和理解。",
-        ])
-    else:
-        lines.extend([
-            "1. **Replace AI clichés**: Swap common AI phrases for more natural academic language",
-            "2. **Inject perspective**: Add phrases showing independent thinking",
-            "3. **Restructure sentences**: Vary length and voice for diversity",
-            "4. **Add specificity**: Supplement with data, examples, or comparisons",
-            "",
-            "⚠️ This tool provides rewriting suggestions only. Final text should reflect your own understanding.",
-        ])
-
-    return "\n".join(lines)
+def humanize_text(text: str, lock_segments: dict | None = None) -> str:
+    """兼容旧调用，返回原文与建议文本的 Markdown 对照。"""
+    modified = rewrite_text(text, protect_high_risk=lock_segments is not None)
+    return f"# 表达修改建议\n\n## 原文\n\n{text}\n\n## 修改后\n\n{modified}\n\n请核对原意、数据和引用。"
 
 
 def _replace_cliches(text: str, is_cn: bool) -> str:

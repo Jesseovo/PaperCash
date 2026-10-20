@@ -20,8 +20,11 @@ from query import extract_keywords, build_search_queries, is_chinese
 from score import score_papers
 from dedupe import dedupe_papers
 from render import render_search, render_check_results
+from render_agent import (render_search_for_agent, render_check_for_agent, render_humanize_diff,
+                          render_check_v2_for_agent, render_check_v2_results)
 from env import diagnose
 from ui import header, info, error, success, warning, diagnose_table, progress
+from safety import show_risk_warning, identify_high_risk_segments, get_academic_integrity_notice
 
 
 def _search_all_sources(query: str, limit: int = 20,
@@ -34,13 +37,13 @@ def _search_all_sources(query: str, limit: int = 20,
 
     default_sources = ["semantic_scholar", "arxiv", "crossref", "baidu_xueshu"]
 
-    from env import diagnose as env_diagnose
-    status = env_diagnose()
-    for extra in ["google_scholar", "pubmed", "cnki", "wanfang"]:
-        if status.get(extra) is True:
+    from env import get as env_get
+    for extra, key in [("google_scholar", "GOOGLE_SCHOLAR_PROXY"),
+                       ("cnki", "CNKI_COOKIE"), ("wanfang", "WANFANG_COOKIE")]:
+        if env_get(key):
             default_sources.append(extra)
 
-    available = sources or default_sources
+    available = sources if sources is not None else default_sources
 
     _SOURCE_MAP = {
         "semantic_scholar": ("sources.semantic_scholar", "semantic_scholar", "Semantic Scholar"),
@@ -63,7 +66,10 @@ def _search_all_sources(query: str, limit: int = 20,
         except Exception as e:
             return display_name, [], e
 
-    to_run = [s for s in available if s in _SOURCE_MAP]
+    unknown = [s for s in available if s not in _SOURCE_MAP]
+    if unknown:
+        raise ValueError(f"未知数据源: {', '.join(unknown)}")
+    to_run = available
     with ThreadPoolExecutor(max_workers=4) as ex:
         futures = {ex.submit(_search_one_source, src): src for src in to_run}
         for fut in as_completed(futures):
@@ -90,18 +96,27 @@ def _search_all_sources(query: str, limit: int = 20,
 
 def cmd_search(args):
     """论文检索"""
-    header("PaperCash 论文检索")
+    if args.emit != "json":
+        header("PaperCash 论文检索")
     info(f"查询: {args.query}")
     info(f"限制: {args.limit} 篇\n")
 
-    sources = args.sources.split(",") if args.sources else None
-    result = _search_all_sources(args.query, limit=args.limit, sources=sources)
-    output = render_search(result, mode=args.emit)
+    sources = [s.strip() for s in args.sources.split(",")] if args.sources else None
+    try:
+        result = _search_all_sources(args.query, limit=args.limit, sources=sources)
+    except ValueError as exc:
+        error(str(exc))
+        raise SystemExit(2) from exc
 
-    if args.emit == "json":
-        print(output)
+    # 根据输出模式选择渲染器
+    if args.emit == "agent":
+        output = render_search_for_agent(result, top_n=args.limit)
+    elif args.emit == "json":
+        output = render_search(result, mode="json")
     else:
-        print(output)
+        output = render_search(result, mode=args.emit)
+
+    print(output)
 
     if args.save_dir:
         _save_result(output, args.save_dir, args.query, args.emit)
@@ -118,20 +133,26 @@ def cmd_search(args):
 
 def cmd_review(args):
     """文献综述生成"""
-    header("PaperCash 文献综述生成")
+    if args.emit != "json":
+        header("PaperCash 文献综述生成")
     info(f"主题: {args.topic}")
 
     result = _search_all_sources(args.topic, limit=30)
 
     if not result.papers:
         error("未找到相关论文，请尝试调整搜索词。")
-        return
+        raise SystemExit(1)
 
     review = _generate_review(result, args.format)
-    print(review)
+    output = (json.dumps({"topic": args.topic, "review": review,
+                          "papers": [p.to_dict() for p in result.papers]},
+                         ensure_ascii=False, indent=2)
+              if args.emit == "json" else review)
+    print(output)
 
     if args.save_dir:
-        _save_result(review, args.save_dir, args.topic, "md")
+        _save_result(output, args.save_dir, args.topic,
+                     "json" if args.emit == "json" else "md")
 
     if args.export_docx is not None:
         from features.docx_export import export_review_to_docx
@@ -162,6 +183,9 @@ def cmd_outline(args):
 
 def cmd_expand(args):
     """段落扩写"""
+    # 显示使用建议
+    show_risk_warning("expand")
+
     from features.writing import expand_paragraph
     text = _read_input(args.text)
     expanded = expand_paragraph(text)
@@ -178,25 +202,102 @@ def cmd_polish(args):
 
 def cmd_check(args):
     """查重预检"""
-    header("PaperCash 查重预检")
+    if args.emit != "json":
+        header("PaperCash 查重预检")
+
+    # ========== v2.0 安全强化: 显示警告 + 审计日志 ==========
+    from safety import show_risk_warning, log_operation
+    show_risk_warning("check")
+
     text = _read_input(args.input)
     info(f"文本长度: {len(text)} 字\n")
 
-    from features.plagiarism import check_plagiarism
-    results, stats = check_plagiarism(text)
-    output = render_check_results(results, mode=args.emit, stats=stats)
+    # 记录审计日志
+    log_operation("check", text, "查重预检")
+
+    # 选择检测引擎
+    if args.engine == 'v2' and args.mode != 'legacy':
+        # 使用增强引擎
+        from features.plagiarism_v2 import check_plagiarism_v2
+        results, stats = check_plagiarism_v2(text, mode=args.mode)
+
+        # v2结果需要特殊渲染
+        if args.emit == "agent":
+            output = render_check_v2_for_agent(results, stats)
+        else:
+            output = render_check_v2_results(results, stats, mode=args.emit)
+    else:
+        # 使用旧引擎(向后兼容)
+        from features.plagiarism import check_plagiarism
+        results, stats = check_plagiarism(text)
+
+        if args.emit == "agent":
+            output = render_check_for_agent(results, stats)
+        else:
+            output = render_check_results(results, mode=args.emit, stats=stats)
+
     print(output)
 
 
 def cmd_humanize(args):
-    """降AI率改写"""
-    header("PaperCash 降AI率改写")
+    """表达修改建议"""
+    if args.emit != "json":
+        header("PaperCash 表达修改建议")
+
+    # ========== v2.0 安全强化: 强制确认机制 ==========
+    from safety import require_explicit_confirmation, log_operation, check_abuse
+
+    confirmation = require_explicit_confirmation("humanize")
+    if not confirmation["confirmed"]:
+        sys.exit(1)
+
+    # 检查异常使用模式
+    check_abuse()
+
+    # 检查危险参数 --allow-modify-protected
+    if hasattr(args, 'allow_modify_protected') and args.allow_modify_protected:
+        print("\n🚨 您正在禁用内容保护!", file=sys.stderr)
+        print("   可能导致: 医学剂量错误、法律条文篡改", file=sys.stderr)
+        print("   输入 'YES I ACCEPT' 继续: ", end="", file=sys.stderr, flush=True)
+        try:
+            confirm = input().strip()
+        except EOFError:
+            confirm = ""
+        if confirm != "YES I ACCEPT":
+            print("❌ 操作已取消", file=sys.stderr)
+            sys.exit(1)
+
     text = _read_input(args.input)
     info(f"文本长度: {len(text)} 字\n")
 
-    from features.ai_humanize import humanize_text
-    result = humanize_text(text)
-    print(result)
+    # 记录审计日志
+    log_operation("humanize", text, confirmation["purpose"])
+
+    # 识别高风险段落
+    risk_segments = identify_high_risk_segments(text)
+    lock = not (hasattr(args, 'allow_modify_protected') and args.allow_modify_protected)
+    if risk_segments and lock:
+        warning("⚠️  检测到以下高风险内容，所在句将保持原样:")
+        for category, data in risk_segments.items():
+            print(f"  • {data['description']}: {data['count']}处", file=sys.stderr)
+            print(f"    示例: {', '.join(data['examples'])}", file=sys.stderr)
+        print(file=sys.stderr)
+
+    from features.ai_humanize import rewrite_text
+    modified = rewrite_text(text, protect_high_risk=lock)
+    if args.emit == "json":
+        output = json.dumps({"original": text, "suggestion": modified,
+                             "protected": bool(lock and risk_segments)}, ensure_ascii=False, indent=2)
+    elif args.emit == "agent":
+        output = render_humanize_diff(text, modified, risk_segments if lock else None)
+    elif args.emit == "md":
+        output = f"# 表达修改建议\n\n## 原文\n\n{text}\n\n## 修改后\n\n{modified}"
+    else:
+        output = modified
+    print(output)
+
+    # 再次提醒审核
+    warning("\n⚠️  请务必逐句审核改写结果，确保数据、引用未被改动")
 
 
 def cmd_cite(args):
@@ -209,14 +310,20 @@ def cmd_cite(args):
     else:
         output = format_citations_batch(dois, style=args.style)
         print(output)
+    if "[错误]" in output:
+        raise SystemExit(1)
 
 
 def cmd_format(args):
     """格式检查"""
-    header("PaperCash 格式检查")
+    if args.emit != "json":
+        header("PaperCash 格式检查")
     from features.format_helper import check_format
     result = check_format(args.file)
-    print(result)
+    print(json.dumps({"file": args.file, "report": result}, ensure_ascii=False, indent=2)
+          if args.emit == "json" else result)
+    if result.startswith("[错误]"):
+        raise SystemExit(1)
 
 
 def cmd_diagnose(args):
@@ -239,7 +346,7 @@ def _read_input(path_or_text: str) -> str:
     return path_or_text
 
 
-_EMIT_TO_EXT = {"compact": "txt", "json": "json", "md": "md", "context": "md"}
+_EMIT_TO_EXT = {"compact": "txt", "json": "json", "md": "md", "context": "md", "agent": "txt"}
 
 
 def _default_docx_path(topic: str, kind: str) -> str:
@@ -261,10 +368,10 @@ def _save_result(content: str, save_dir: str, topic: str, ext: str):
 def main():
     parser = argparse.ArgumentParser(
         prog="papercash",
-        description="PaperCash - 论文全流程辅助引擎",
+        description="PaperCash - 论文检索与写作辅助工具",
     )
     parser.add_argument("--diagnose", action="store_true", help="诊断数据源配置")
-    parser.add_argument("--version", action="version", version="PaperCash 1.0.0")
+    parser.add_argument("--version", action="version", version="PaperCash 2.0.0")
 
     sub = parser.add_subparsers(dest="command")
 
@@ -273,8 +380,8 @@ def main():
     p_search.add_argument("query", help="搜索查询")
     p_search.add_argument("--limit", type=int, default=20, help="结果数量限制")
     p_search.add_argument("--emit", default="compact",
-                          choices=["compact", "json", "md", "context"],
-                          help="输出格式")
+                          choices=["compact", "json", "md", "context", "agent"],
+                          help="输出格式(agent=AI Agent友好)")
     p_search.add_argument("--sources", default=None, help="指定数据源（逗号分隔）")
     p_search.add_argument("--save-dir", default=None, help="保存结果目录")
     p_search.add_argument(
@@ -324,14 +431,22 @@ def main():
     p_check = sub.add_parser("check", help="查重预检")
     p_check.add_argument("input", help="文件路径或文本内容")
     p_check.add_argument("--emit", default="compact",
-                         choices=["compact", "json"], help="输出格式")
+                         choices=["compact", "json", "agent"], help="输出格式")
+    p_check.add_argument("--mode", default="standard",
+                         choices=["fast", "standard", "deep", "legacy"],
+                         help="检测模式: fast(快速), standard(标准,推荐), deep(深度), legacy(旧版兼容)")
+    p_check.add_argument("--engine", default="v2",
+                         choices=["v1", "v2"],
+                         help="检测引擎: v1(旧版), v2(增强版,推荐)")
     p_check.set_defaults(func=cmd_check)
 
     # humanize
-    p_human = sub.add_parser("humanize", help="降AI率改写")
+    p_human = sub.add_parser("humanize", help="表达修改建议（不能预测AI检测结果）")
     p_human.add_argument("input", help="文件路径或文本内容")
     p_human.add_argument("--emit", default="compact",
-                         choices=["compact", "md", "json"], help="输出格式")
+                         choices=["compact", "md", "json", "agent"], help="输出格式")
+    p_human.add_argument("--allow-modify-protected", action="store_true",
+                         help="⚠️ 危险: 允许改写受保护内容（需二次确认）")
     p_human.set_defaults(func=cmd_humanize)
 
     # cite

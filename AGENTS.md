@@ -1,29 +1,7 @@
-# PaperCash Agent Instructions
+# PaperCash 项目指引
 
-本项目是一个论文全流程辅助工具。当用户询问论文、文献、查重、降AI率等相关问题时，使用 `scripts/papercash.py` CLI 来完成任务。
+本项目的功能和使用边界以 [SKILL.md](SKILL.md) 为准。用户提出论文检索、文献整理、相似内容预检、引用格式化或 Word 格式检查时，按需调用 `scripts/papercash.py`；先安装 `requirements.txt`。
 
-## 依赖安装
+修改代码时优先核对命令入口、核心函数签名和实际输出是否一致。运行 `python -m pytest -q` 验证行为；涉及数据源时另做适度的实时检查，明确数据源失败与零结果的区别。
 
-```bash
-pip install -r requirements.txt
-```
-
-## 可用命令
-
-| 命令 | 用途 |
-|------|------|
-| `python scripts/papercash.py search "<主题>"` | 多源论文检索 |
-| `python scripts/papercash.py review "<主题>"` | 文献综述生成 |
-| `python scripts/papercash.py check "<文本>"` | 查重预检 |
-| `python scripts/papercash.py humanize "<文本>"` | 降AI率改写 |
-| `python scripts/papercash.py cite "<DOI>" --style gb7714` | 参考文献格式化 |
-| `python scripts/papercash.py outline "<题目>"` | 论文大纲生成 |
-| `python scripts/papercash.py polish "<文本>"` | 学术润色 |
-| `python scripts/papercash.py format "<文件>"` | Word 格式检查 |
-| `python scripts/papercash.py --diagnose` | 数据源健康检查 |
-
-## 重要约束
-
-1. 所有引用来自真实学术数据库，需提醒用户核实
-2. 查重预检仅供参考，不替代学校指定系统
-3. 降AI率改写仅提供建议，最终文本需体现学生本人思考
+不要把摘要整理称为全文综述，不要把相似度当作正式查重率、抄袭判定或原创证明。没有实际核实的论文和引用不要补造。

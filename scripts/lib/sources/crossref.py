@@ -20,7 +20,7 @@ def search(query: str, limit: int = MAX_RESULTS) -> list[Paper]:
         "sort": "relevance",
         "order": "desc",
         "select": "DOI,title,author,published-print,published-online,"
-                  "abstract,is-referenced-by-count,container-title,URL,subject",
+                  "abstract,is-referenced-by-count,container-title,URL,subject,volume,issue,page",
     }
 
     data = get_json(BASE_URL, params=params, timeout=20)
@@ -76,6 +76,9 @@ def search(query: str, limit: int = MAX_RESULTS) -> list[Paper]:
             citation_count=item.get("is-referenced-by-count", 0) or 0,
             source="CrossRef",
             venue=venue,
+            volume=item.get("volume"),
+            issue=item.get("issue"),
+            pages=item.get("page"),
             keywords=subjects,
         ))
 
@@ -131,5 +134,8 @@ def get_by_doi(doi: str) -> Paper | None:
         citation_count=item.get("is-referenced-by-count", 0) or 0,
         source="CrossRef",
         venue=venues[0] if venues else "",
+        volume=item.get("volume"),
+        issue=item.get("issue"),
+        pages=item.get("page"),
         keywords=item.get("subject", []),
     )

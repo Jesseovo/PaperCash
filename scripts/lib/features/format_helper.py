@@ -34,7 +34,7 @@ def check_format(file_path: str) -> str:
     if not os.path.isfile(file_path):
         return f"[错误] 文件不存在: {file_path}"
 
-    if not file_path.lower().endswith((".docx", ".doc")):
+    if not file_path.lower().endswith(".docx"):
         return "[错误] 仅支持 .docx 格式文件"
 
     try:
@@ -203,7 +203,8 @@ def _render_report(issues: list[FormatIssue], file_path: str) -> str:
     lines.append(f"  PaperCash 格式检查报告")
     lines.append(f"{'=' * 60}")
     lines.append(f"  文件: {file_path}")
-    lines.append(f"  标准: 常见高校毕业论文格式要求")
+    lines.append(f"  标准: 内置常见格式样例（非学校正式模板）")
+    lines.append(f"  范围: 字体/字号前50段，行距前30段，结构标题全文")
     lines.append(f"{'=' * 60}\n")
 
     errors = [i for i in issues if i.severity == "error"]
@@ -214,7 +215,7 @@ def _render_report(issues: list[FormatIssue], file_path: str) -> str:
                  f"(严重: {len(errors)} | 警告: {len(warnings)} | 提示: {len(infos)})\n")
 
     if not issues:
-        lines.append("  ✅ 未发现格式问题，格式基本符合要求！\n")
+        lines.append("  抽样检查未发现问题；仍需对照学校模板核查。\n")
         return "\n".join(lines)
 
     if errors:

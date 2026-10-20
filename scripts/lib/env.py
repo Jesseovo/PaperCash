@@ -11,7 +11,7 @@ _PROJECT_ENV = Path(".papercash.env")
 _cache: dict[str, str] = {}
 
 _PROBE_TIMEOUT = 3.0
-_PROBE_HEADERS = {"User-Agent": "PaperCash/1.0 (diagnostic)"}
+_PROBE_HEADERS = {"User-Agent": "PaperCash/2.0 (diagnostic)"}
 
 
 def _load_env_file(path: Path) -> dict[str, str]:

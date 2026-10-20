@@ -1,7 +1,7 @@
 {
   "name": "papercash",
-  "version": "1.0.0",
-  "description": "PaperCash - 论文全流程辅助 Skill",
+  "version": "2.0.0",
+  "description": "PaperCash - 论文检索与写作辅助 Skill",
   "skill_file": "../SKILL.md",
   "author": "Jesse (@Jesseovo)",
   "repository": "https://github.com/Jesseovo/PaperCash",

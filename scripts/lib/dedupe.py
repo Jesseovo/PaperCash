@@ -14,9 +14,18 @@ def _normalize_title(title: str) -> str:
 
 
 def _title_fingerprint(title: str) -> str:
-    norm = _normalize_title(title)
-    words = norm.split()
-    return " ".join(words[:8])
+    return _normalize_title(title)
+
+
+def _merge_metadata(existing: Paper, paper: Paper) -> None:
+    """保留高分记录，补齐另一个数据源提供的元数据。"""
+    for field_name in ("abstract", "doi", "url", "pdf_url", "venue", "year",
+                       "volume", "issue", "pages"):
+        if not getattr(existing, field_name) and getattr(paper, field_name):
+            setattr(existing, field_name, getattr(paper, field_name))
+    if not existing.authors and paper.authors:
+        existing.authors = paper.authors
+    existing.citation_count = max(existing.citation_count, paper.citation_count)
 
 
 def dedupe_papers(papers: list[Paper]) -> list[Paper]:
@@ -28,28 +37,24 @@ def dedupe_papers(papers: list[Paper]) -> list[Paper]:
     sorted_papers = sorted(papers, key=lambda p: p.final_score, reverse=True)
 
     for paper in sorted_papers:
-        if paper.doi:
-            doi_lower = paper.doi.lower()
-            if doi_lower in seen_dois:
-                existing = result[seen_dois[doi_lower]]
-                if paper.abstract and not existing.abstract:
-                    existing.abstract = paper.abstract
-                if paper.citation_count > existing.citation_count:
-                    existing.citation_count = paper.citation_count
-                continue
-            seen_dois[doi_lower] = len(result)
-
+        doi_lower = paper.doi.strip().lower() if paper.doi else ""
         fp = _title_fingerprint(paper.title)
-        if fp and fp in seen_titles:
-            existing = result[seen_titles[fp]]
-            if paper.abstract and not existing.abstract:
-                existing.abstract = paper.abstract
-            if paper.citation_count > existing.citation_count:
-                existing.citation_count = paper.citation_count
+        existing_index = seen_dois.get(doi_lower) if doi_lower else None
+        if existing_index is None and fp:
+            existing_index = seen_titles.get(fp)
+        if existing_index is not None:
+            _merge_metadata(result[existing_index], paper)
+            if doi_lower:
+                seen_dois[doi_lower] = existing_index
+            if fp:
+                seen_titles[fp] = existing_index
             continue
-        if fp:
-            seen_titles[fp] = len(result)
 
+        index = len(result)
         result.append(paper)
+        if doi_lower:
+            seen_dois[doi_lower] = index
+        if fp:
+            seen_titles[fp] = index
 
     return result

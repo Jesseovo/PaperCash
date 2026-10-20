@@ -1,13 +1,4 @@
-name: papercash
-description: "Full-stack academic paper assistance: search, review, write, check, humanize, cite"
-version: "1.0.0"
-skill_file: SKILL.md
-triggers:
-  - "papercash"
-  - "论文"
-  - "文献"
-  - "查重"
-  - "降AI"
-  - "参考文献"
-  - "paper"
-  - "citation"
+interface:
+  display_name: "PaperCash"
+  short_description: "检索论文元数据，整理摘要并辅助引用与写作"
+  default_prompt: "使用 $papercash 帮我检索论文并整理可核对的参考文献。"

@@ -3,6 +3,8 @@
 import json
 import logging
 import time
+import hashlib
+import threading
 from typing import Optional
 
 import requests
@@ -11,21 +13,28 @@ import cache
 
 logger = logging.getLogger(__name__)
 
-_session: Optional[requests.Session] = None
+_thread_state = threading.local()
 
 DEFAULT_TIMEOUT = 15
 DEFAULT_HEADERS = {
-    "User-Agent": "PaperCash/1.0 (Academic Research Tool; mailto:papercash@example.com)",
+    "User-Agent": "PaperCash/2.0 (Academic Research Tool)",
     "Accept": "application/json",
 }
 
 
 def _get_session() -> requests.Session:
-    global _session
-    if _session is None:
-        _session = requests.Session()
-        _session.headers.update(DEFAULT_HEADERS)
-    return _session
+    if not hasattr(_thread_state, "session"):
+        _thread_state.session = requests.Session()
+        _thread_state.session.headers.update(DEFAULT_HEADERS)
+    return _thread_state.session
+
+
+def _cache_key(kind: str, url: str, params: Optional[dict], headers: Optional[dict]) -> str:
+    # Include authorization context without storing credential bytes in cache filenames.
+    request_shape = json.dumps({"params": params or {}, "headers": headers or {}},
+                               sort_keys=True, ensure_ascii=False)
+    fingerprint = hashlib.sha256(request_shape.encode("utf-8")).hexdigest()
+    return f"{kind}:{url}:{fingerprint}"
 
 
 def _get_with_429_retry(
@@ -47,7 +56,7 @@ def _get_with_429_retry(
             url,
             wait,
         )
-        time.sleep(wait)
+        time.sleep(min(max(wait, 0.0), 10.0))
         r = s.get(url, params=params, headers=headers, timeout=timeout)
     return r
 
@@ -55,7 +64,7 @@ def _get_with_429_retry(
 def get_json(url: str, params: Optional[dict] = None,
              headers: Optional[dict] = None,
              timeout: int = DEFAULT_TIMEOUT) -> Optional[dict]:
-    cache_key = f"json:{url}:{json.dumps(params or {}, sort_keys=True)}"
+    cache_key = _cache_key("json", url, params, headers)
     cached = cache.get(cache_key)
     if cached is not None:
         return cached
@@ -87,7 +96,7 @@ def get_json(url: str, params: Optional[dict] = None,
 def get_text(url: str, params: Optional[dict] = None,
              headers: Optional[dict] = None,
              timeout: int = DEFAULT_TIMEOUT) -> Optional[str]:
-    cache_key = f"text:{url}:{json.dumps(params or {}, sort_keys=True)}"
+    cache_key = _cache_key("text", url, params, headers)
     cached = cache.get(cache_key)
     if cached is not None:
         return cached

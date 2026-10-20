@@ -6,7 +6,6 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
 from schema import Paper, SearchResult
 from features.citation import format_paper_citation
-from query import is_chinese
 
 
 def generate_review(result: SearchResult, cite_format: str = "gb7714") -> str:
@@ -36,6 +35,7 @@ def _header(topic: str, result: SearchResult) -> str:
         f"本综述基于 {len(result.papers)} 篇学术文献，"
         f"来源包括 {', '.join(result.sources_used)}。"
         f"检索时间：{result.search_time_ms}ms。",
+        "本稿仅依据检索元数据和可用摘要整理；论文论点、研究方法及引用信息需阅读原文核实。",
     ]
     return "\n".join(lines)
 
@@ -50,32 +50,29 @@ def _research_background(topic: str, papers: list[Paper]) -> str:
     lines = [
         "## 1. 研究背景与现状",
         "",
-        f'关于"{topic}"的研究在学术界受到了广泛关注。'
-        f"本综述涵盖了 {year_range} 年间的 {len(papers)} 篇相关文献，"
+        f"本次检索收录了 {year_range} 年间的 {len(papers)} 篇相关文献，"
         f"累计被引用 {total_citations} 次。",
     ]
 
     if high_impact:
-        lines.append(f"其中，{len(high_impact)} 篇高影响力论文（被引用 50 次以上）"
-                      f"对该领域的发展产生了重要推动作用。")
+        lines.append(f"其中 {len(high_impact)} 篇的数据库被引次数达到 50 次以上。")
 
     if years:
         recent = [p for p in papers if p.year and p.year >= years[-1] - 2]
-        lines.append(f"近三年（{years[-1] - 2}-{years[-1]}）发表的 {len(recent)} 篇论文"
-                      f"表明该领域仍在活跃发展中。")
+        lines.append(f"按检索结果的最新年份计算，{years[-1] - 2}-{years[-1]} 年间有 {len(recent)} 篇。")
 
     return "\n".join(lines)
 
 
 def _methodology_classification(papers: list[Paper]) -> str:
-    """按研究方法/领域对论文进行简单分类"""
+    """按标题和摘要关键词做粗分类。"""
     categories: dict[str, list[Paper]] = {}
 
     for p in papers:
         cat = _categorize_paper(p)
         categories.setdefault(cat, []).append(p)
 
-    lines = ["## 2. 研究方法分类", ""]
+    lines = ["## 2. 标题与摘要关键词粗分类", "", "类别只供浏览，不代表已经核实论文方法。", ""]
 
     for cat, cat_papers in sorted(categories.items(), key=lambda x: -len(x[1])):
         lines.append(f"### {cat}（{len(cat_papers)} 篇）")
@@ -120,14 +117,14 @@ def _categorize_paper(paper: Paper) -> str:
 
 
 def _key_findings(papers: list[Paper], cite_format: str) -> str:
-    """总结关键发现"""
+    """列出重点文献和数据库摘要摘录。"""
     top_papers = sorted(papers, key=lambda p: p.final_score, reverse=True)[:10]
 
-    lines = ["## 3. 主要研究发现", ""]
+    lines = ["## 3. 重点文献及摘要摘录", ""]
 
     for i, p in enumerate(top_papers, 1):
         year_str = f"({p.year})" if p.year else ""
-        lines.append(f"**发现 {i}**: {p.title}")
+        lines.append(f"**文献 {i}**: {p.title}")
         lines.append(f"- 作者: {p.authors_str} {year_str}")
 
         if p.abstract:
@@ -146,39 +143,14 @@ def _key_findings(papers: list[Paper], cite_format: str) -> str:
 
 
 def _research_gaps(topic: str, papers: list[Paper]) -> str:
-    """分析研究空白"""
+    """列出还需要从原文核实的事项，不从检索结果推断研究空白。"""
     lines = [
-        "## 4. 研究空白与未来方向",
+        "## 4. 后续核查",
         "",
-        f'基于对以上 {len(papers)} 篇文献的分析，当前"{topic}"领域存在以下研究空白：',
-        "",
+        "- 阅读全文，核实研究问题、方法、样本和主要结论。",
+        "- 核对每条 DOI、作者、年份及发表来源。",
+        "- 结合更完整的检索结果，再判断是否存在研究空白。",
     ]
-
-    years = [p.year for p in papers if p.year]
-    if years:
-        avg_year = sum(years) / len(years)
-        if avg_year < 2023:
-            lines.append("1. **时效性不足**：部分研究成果发表较早，可能未涵盖最新技术进展，"
-                         "需要结合最新文献进行补充。")
-
-    venues = set(p.venue for p in papers if p.venue)
-    if len(venues) < 3:
-        lines.append("2. **研究视角单一**：现有文献主要集中在少数期刊/会议，"
-                     "建议拓展更多领域的交叉研究视角。")
-
-    cn_papers = [p for p in papers if any(is_chinese(c) for c in p.title)]
-    en_papers = [p for p in papers if not any(is_chinese(c) for c in p.title)]
-    if cn_papers and en_papers:
-        lines.append(f"3. **中外研究对比**：检索到 {len(cn_papers)} 篇中文文献和 "
-                     f"{len(en_papers)} 篇英文文献，建议深入对比中外研究异同。")
-    elif not cn_papers:
-        lines.append("3. **缺少中文研究**：当前检索结果以英文文献为主，"
-                     "建议补充国内学者的相关研究。")
-
-    lines.append("")
-    lines.append("**建议**：在撰写论文时，应结合以上文献综述，明确自身研究的创新点和贡献，"
-                 "避免重复已有工作。")
-
     return "\n".join(lines)
 
 
@@ -186,8 +158,10 @@ def _references(papers: list[Paper], cite_format: str) -> str:
     """生成参考文献列表"""
     lines = ["## 参考文献", ""]
 
-    for i, p in enumerate(papers, 1):
+    ordered = (sorted(papers, key=lambda p: (p.authors[0].lower() if p.authors else "", p.year or 0))
+               if cite_format == "apa" else papers)
+    for i, p in enumerate(ordered, 1):
         citation = format_paper_citation(p, style=cite_format)
-        lines.append(f"[{i}] {citation}")
+        lines.append(f"[{i}] {citation}" if cite_format == "gb7714" else citation)
 
     return "\n".join(lines)

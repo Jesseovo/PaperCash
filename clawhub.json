@@ -1,10 +1,10 @@
 {
   "name": "papercash",
-  "tagline": "论文全流程辅助 — 免费查文献、查重、降AI率、参考文献格式化",
-  "description": "PaperCash 聚合 Semantic Scholar、arXiv、CrossRef、百度学术等 8 大学术数据源，提供论文检索、文献综述自动生成、查重预检、降AI率改写、参考文献格式化（GB/T 7714 / APA / BibTeX）、Word 导出等全流程功能，帮助中国大学生省时省钱完成论文。",
+  "tagline": "论文元数据检索、摘要整理与引用格式辅助",
+  "description": "PaperCash 默认尝试四个学术数据源，可按配置扩展。提供检索、摘要级文献整理、写作提示、相似内容预检、DOI 引用格式化和 Word 格式检查；结果需人工核对。",
   "category": "research",
   "tags": ["academic", "paper", "citation", "literature-review", "plagiarism", "chinese"],
-  "version": "1.1.0",
+  "version": "2.0.0",
   "license": "MIT",
   "author": "Jesse (@Jesseovo)",
   "repository": "https://github.com/Jesseovo/PaperCash",

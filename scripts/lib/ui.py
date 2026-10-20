@@ -31,19 +31,19 @@ def section(text: str):
 
 
 def info(text: str):
-    print(f"  {_c('dim')}{text}{_c('reset')}")
+    print(f"  {_c('dim')}{text}{_c('reset')}", file=sys.stderr)
 
 
 def success(text: str):
-    print(f"  {_c('green')}[OK] {text}{_c('reset')}")
+    print(f"  {_c('green')}[OK] {text}{_c('reset')}", file=sys.stderr)
 
 
 def warning(text: str):
-    print(f"  {_c('yellow')}[!] {text}{_c('reset')}")
+    print(f"  {_c('yellow')}[!] {text}{_c('reset')}", file=sys.stderr)
 
 
 def error(text: str):
-    print(f"  {_c('red')}[ERROR] {text}{_c('reset')}")
+    print(f"  {_c('red')}[ERROR] {text}{_c('reset')}", file=sys.stderr)
 
 
 def paper_entry(index: int, title: str, authors: str, year: int,
@@ -62,17 +62,18 @@ def progress(current: int, total: int, label: str = ""):
     bar_len = 30
     filled = int(bar_len * current / total) if total else 0
     bar = "#" * filled + "-" * (bar_len - filled)
-    sys.stdout.write(f"\r  [{bar}] {pct}% {label}")
-    sys.stdout.flush()
+    sys.stderr.write(f"\r  [{bar}] {pct}% {label}")
+    sys.stderr.flush()
     if current >= total:
-        print()
+        print(file=sys.stderr)
 
 
 def diagnose_table(status: dict[str, bool | str]):
     header("PaperCash 数据源诊断")
+    config_only = {"google_scholar", "cnki", "wanfang"}
     for name, available in status.items():
         if available is True:
-            success(f"{name}")
+            success(f"{name} (已配置，未检验访问)" if name in config_only else name)
         elif available is False:
             warning(f"{name} (未配置)")
         else:

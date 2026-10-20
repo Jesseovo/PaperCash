@@ -24,7 +24,7 @@ def on_session_start():
     if free_ok:
         info("PaperCash: 免费数据源就绪")
     else:
-        warning("PaperCash: 部分数据源不可用，运行 'papercash --diagnose' 检查")
+        warning("PaperCash: 部分数据源不可用，运行 'python scripts/papercash.py --diagnose' 检查")
 
     optional = {k: v for k, v in status.items() if k not in free_sources}
     configured = [k for k, v in optional.items() if v is True]
